@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./TemplateCard.css";
 
 const TemplateCardContext = React.createContext(null);
 
@@ -8,7 +9,7 @@ export default function TemplateCard({titulo, img, alt, url}) {
         <TemplateCardContext.Provider>
             <div className="col-xl-3 col-md-4 col-sm-6 col-xs-12">
                 <div className="card">
-                    <img src={img} className="card-img-top" alt={alt}></img>
+                    <img src={img} className="card-img-top" style={{height: "180px", width: "100%", objectFit: "cover"}} alt={alt}></img>
                     <div className="card-body">
                         <h3>{titulo}</h3>
                     </div>
