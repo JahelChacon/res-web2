@@ -1,4 +1,5 @@
 import React from "react";
+import { Container, Row } from "react-bootstrap"
 import TemplateCard from "../Compartidos/TemplateCard";
 import caja from "../../img/Seguridad/caja.png";
 import consecutivos from "../../img/Seguridad/consecutivos.png";
@@ -10,9 +11,9 @@ import usuarios from "../../img/Seguridad/usuarios.png";
 
 export default function Seguridad(){
     return(
-        <div className="container">
+        <Container>
             <h2>Seguridad</h2>
-            <div className="row">
+            <Row>
                 <TemplateCard
                     titulo={"Usuarios"}
                     img={usuarios}
@@ -50,7 +51,7 @@ export default function Seguridad(){
                     url={"/medidas"}
                 ></TemplateCard>
                 
-            </div>
-        </div>
+            </Row>
+        </Container>
     )
 }

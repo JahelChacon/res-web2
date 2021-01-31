@@ -1,4 +1,5 @@
 import React from "react";
+import { Container, Row } from "react-bootstrap";
 import TemplateCardInicio from "../Compartidos/TemplateCardInicio";
 import seguridad from "../../img/Inicio/seguridad.jpg"
 import administracion from "../../img/Inicio/administracion.png"
@@ -10,10 +11,9 @@ import "./cssInicio.css";
 
 export default function Inicio() {
     return(
-        <div className="container-fluid">
+        <Container fluid>
             <h1>Bienvenidos al Restaurante</h1> 
-            
-                <div className="row">
+                <Row>
                     <TemplateCardInicio
                         titulo={"Seguridad"}
                         img={seguridad}
@@ -32,8 +32,7 @@ export default function Inicio() {
                         alt={"Clientes"}
                         url={"/clientes"}
                     ></TemplateCardInicio> 
-                </div>
-                <div className="row">
+                
                     <TemplateCardInicio
                         titulo={"Proveedores"}
                         img={proveedores}
@@ -52,7 +51,7 @@ export default function Inicio() {
                         alt={"Reportes"}
                         url={"/reportes"}
                     ></TemplateCardInicio>
-                </div>
-        </div>
+                </Row>
+        </Container>
     )
 }
