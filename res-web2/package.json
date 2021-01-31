@@ -1,5 +1,6 @@
 {
   "name": "res-web2",
+  "homepage": "https://restaurante.depuntos.net",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
