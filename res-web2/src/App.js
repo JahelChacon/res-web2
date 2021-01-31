@@ -2,7 +2,7 @@
 import './App.css';
 import { Link } from 'react-router-dom';
 import { Rutas } from "./Rutas";
-import { Navbar, Nav, Button } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import "./css/css.css";
 
  
