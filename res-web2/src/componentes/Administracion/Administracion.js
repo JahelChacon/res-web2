@@ -22,7 +22,7 @@ export default function Administracion(){
                     titulo={"Mesas"}
                     img={mesas}
                     alt={"Mesas"}
-                    url={"/especiales"}
+                    url={"/mesas"}
                 ></TemplateCard>
                 <TemplateCard
                     titulo={"Empleados"}

@@ -32,12 +32,39 @@ const Clientes = lazy(() => import("./componentes/Clientes/Clientes"));
 
 // PROVEEDORES
 const Proveedores = lazy(() => import("./componentes/Proveedores/Proveedores"));
+const Proveedores2 = lazy(() => import("./componentes/Proveedores/Proveedores/Proveedores2"));
+const Marcas = lazy(() => import("./componentes/Proveedores/Marcas/Marcas"));
+
+const Productos = lazy(() => import("./componentes/Proveedores/Productos/Productos"));
+const Comestibles = lazy(() => import("./componentes/Proveedores/Productos/Comestibles/Comestibles"));
+const Desechables = lazy(() => import("./componentes/Proveedores/Productos/Desechables/Desechables"));
+const Limpieza = lazy(() => import("./componentes/Proveedores/Productos/Limpieza/Limpieza"));
+const Tecnologia = lazy(() => import("./componentes/Proveedores/Productos/Tecnologia/Tecnologia"));
+const Utensilios = lazy(() => import("./componentes/Proveedores/Productos/Utensilios/Utensilios"));
 
 // ADMINISTRACION
 const Administracion = lazy(() => import("./componentes/Administracion/Administracion"));
 
+const Empleados = lazy(() => import("./componentes/Administracion/Empleados/Empleados"));
+const Mesas = lazy(() => import("./componentes/Administracion/Mesas/Mesas"));
+const Puestos = lazy(() => import("./componentes/Administracion/Puestos/Puestos"));
+
+const Especiales = lazy(() => import("./componentes/Administracion/Especiales/Especiales"));
+const Buffet = lazy(() => import("./componentes/Administracion/Especiales/Buffet/Buffet"));
+const Especialidades = lazy(() => import("./componentes/Administracion/Especiales/Especialidades/Especialidades"));
+
+const Bebidas = lazy(() => import("./componentes/Administracion/Especiales/Bebidas/Bebidas"));
+const Calientes = lazy(() => import("./componentes/Administracion/Especiales/Bebidas/Calientes/Calientes"));
+const Heladas = lazy(() => import("./componentes/Administracion/Especiales/Bebidas/Heladas/Heladas"));
+const Gaseosas = lazy(() => import("./componentes/Administracion/Especiales/Bebidas/Gaseosas/Gaseosas"));
+const Vinos = lazy(() => import("./componentes/Administracion/Especiales/Bebidas/Vinos/Vinos"));
+const Licores = lazy(() => import("./componentes/Administracion/Especiales/Bebidas/Licores/Licores"));
+
 // REPORTES
 const Reportes = lazy(() => import("./componentes/Reportes/Reportes"));
+const Bitacoras = lazy(() => import("./componentes/Reportes/Bitacoras/Bitacoras"));
+const ReporteUsuarios = lazy(() => import("./componentes/Reportes/Usuarios/ReporteUsuarios"));
+const Facturas = lazy(() => import("./componentes/Reportes/Facturas/Facturas"));
 
 export function Rutas() {
     return(
@@ -105,17 +132,88 @@ export function Rutas() {
                 <Route path="/proveedores" exact>
                     <Proveedores />
                 </Route>
+                <Route path="/proveedores-2" exact>
+                    <Proveedores2 />
+                </Route>
+                <Route path="/marcas" exact>
+                    <Marcas />
+                </Route>
+                <Route path="/productos" exact>
+                    <Productos />
+                </Route>
+                <Route path="/comestibles" exact>
+                    <Comestibles />
+                </Route>
+                <Route path="/desechables" exact>
+                    <Desechables />
+                </Route>
+                <Route path="/limpieza" exact>
+                    <Limpieza />
+                </Route>
+                <Route path="/tecnologia" exact>
+                    <Tecnologia />
+                </Route>
+                <Route path="/utensilios" exact>
+                    <Utensilios />
+                </Route>
+
+                
 
 
                 {/* ADMINISTRACION */}
                 <Route path="/administracion" exact>
                     <Administracion />
                 </Route>
+                <Route path="/empleados" exact>
+                    <Empleados />
+                </Route>
+                <Route path="/especiales" exact>
+                    <Especiales />
+                </Route>
+                <Route path="/mesas" exact>
+                    <Mesas />
+                </Route>
+                <Route path="/puestos" exact>
+                    <Puestos />
+                </Route>
+                <Route path="/buffet" exact>
+                    <Buffet />
+                </Route>
+                <Route path="/especialidades" exact>
+                    <Especialidades />
+                </Route>
+                <Route path="/bebidas" exact>
+                    <Bebidas />
+                </Route>
+                <Route path="/bebidas-calientes" exact>
+                    <Calientes />
+                </Route>
+                <Route path="/bebidas-heladas" exact>
+                    <Heladas />
+                </Route>
+                <Route path="/gaseosas" exact>
+                    <Gaseosas />
+                </Route>
+                <Route path="/vinos" exact>
+                    <Vinos />
+                </Route>
+                <Route path="/licores" exact>
+                    <Licores />
+                </Route>
 
 
                 {/* REPORTES */}
                 <Route path="/reportes" exact>
                     <Reportes />
+                </Route>
+                <Route path="/bitacoras" exact>
+                    <Bitacoras />
+                </Route>
+                <Route path="/reporte-usuarios" exact>
+                    <ReporteUsuarios />
+                </Route>
+                <Route path="/facturas" exact>
+                    <Facturas />
                 </Route>
 
             </Switch>

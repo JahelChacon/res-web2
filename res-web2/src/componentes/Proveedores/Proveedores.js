@@ -26,7 +26,7 @@ export default function Proveedores(){
                     titulo={"Proveedores"}
                     img={proveedores}
                     alt={"Proveedores"}
-                    url={"/proveedores-proveedores"}
+                    url={"/proveedores-2"}
                 ></TemplateCard>
             </Row>
         </Container>

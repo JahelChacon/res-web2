@@ -15,13 +15,13 @@ export default function Reportes(){
                     titulo={"Bitácoras"}
                     img={bitacora}
                     alt={"Bitácoras"}
-                    url={"/bitacora"}
+                    url={"/bitacoras"}
                 ></TemplateCard>
                 <TemplateCard
                     titulo={"Usuarios"}
                     img={clientes}
                     alt={"Usuarios"}
-                    url={"/reportes-clientes"}
+                    url={"/reporte-usuarios"}
                 ></TemplateCard>
                 <TemplateCard
                     titulo={"Facturas"}
