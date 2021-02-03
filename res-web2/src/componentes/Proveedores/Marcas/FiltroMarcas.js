@@ -1,18 +1,17 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Row, Col } from "react-bootstrap";
-import { useForm } from "react-hook-form";
+
 
 export default function FiltroMarcas(){
-    onSubmit = () => {},
-    onReset = () => {}
     return(
-        <Row>
-            <form> 
+        <Fragment> 
+            <Row>
                 <Col xl={4}>
-                    <div className="form-group">
-                        <label>Código</label>
+                <div className="form-group">
+                        <label>Codigo</label>
                         <input 
-                            placeholder="nombre"
+                            name="codigo"
+                            placeholder="Codigo"
                             className="form-control"
                         />
                     </div>
@@ -53,8 +52,7 @@ export default function FiltroMarcas(){
                         />
                     </div>
                 </Col>
-            </form>
-            
-        </Row>
+            </Row>
+        </Fragment>
     )
 }
