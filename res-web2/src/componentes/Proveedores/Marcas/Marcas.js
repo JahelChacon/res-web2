@@ -1,10 +1,15 @@
 import React from "react";
 import { Container } from "react-bootstrap";
+import TemplateComponentes from "../../Compartidos/TemplateComponentes";
+import FiltroMarcas from "./FiltroMarcas";
 
 export default function Marcas(){
     return(
-        <Container>
-            <h2>Marcas</h2>
-        </Container>
+        <TemplateComponentes
+            titulo={"Marcas"}
+            filtros={<FiltroMarcas />}
+        >
+
+        </TemplateComponentes>
     )
 }
