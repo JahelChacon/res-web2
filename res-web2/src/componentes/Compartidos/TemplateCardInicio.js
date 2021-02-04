@@ -4,12 +4,16 @@ import { Col, Card } from "react-bootstrap";
 
 const TemplateCardInicioContext = React.createContext(null);
 
-export default function TemplateCardInicio({titulo, img, alt, url}) {
+export default function TemplateCardInicio({titulo, img, imgWebp, alt, url}) {
     return(
         <TemplateCardInicioContext.Provider>
             <Col xl={4} md={4} sm={6} xs={12}>
                 <Card>
-                    <img src={img} className="card-img-top" alt={alt}></img>
+                    <picture>
+                      <source class="card-img-top" srcset={imgWebp} type="image/webp" alt={alt} />
+                      <source class="card-img-top" src={img} type="image/jpg" alt={alt} />
+                      <img class="card-img-top" src={img} alt={alt}></img>
+                    </picture>
                     <Card.Body>
                         <h3>{titulo}</h3>
                     </Card.Body>

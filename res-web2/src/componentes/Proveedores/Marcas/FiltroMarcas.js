@@ -2,16 +2,16 @@ import React, { Fragment } from "react";
 import { Row, Col } from "react-bootstrap";
 
 
-export default function FiltroMarcas(){
+
+export default function FiltroMarcas({ register }){
     return(
         <Fragment> 
             <Row>
                 <Col xl={4}>
                 <div className="form-group">
-                        <label>Codigo</label>
+                        <label>Nombre</label>
                         <input 
-                            name="codigo"
-                            placeholder="Codigo"
+                            placeholder="nombre"
                             className="form-control"
                         />
                     </div>

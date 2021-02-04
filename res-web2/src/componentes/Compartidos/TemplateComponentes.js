@@ -5,14 +5,11 @@ import BotonesFiltros from "../Compartidos/BotonesFiltros";
 
 const TemplateComponentesContext = React.createContext(null);
 
-export default function TemplateComponentes({titulo, filtros}){
-    
-    const { handleSubmit, reset } = useForm();
-    const onSubmit = (formData) => console.log(formData);
+export default function TemplateComponentes({titulo, filtros, reset, onSubmit}){
     return(
         <TemplateComponentesContext.Provider>
             <Container>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={onSubmit}>
                     <Row>
                         <Col xl={12} md={12} sm={12} xs={12}>
                             <Card>
