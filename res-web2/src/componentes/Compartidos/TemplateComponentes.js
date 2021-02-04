@@ -4,7 +4,7 @@ import BotonesFiltros from "../Compartidos/BotonesFiltros";
 
 const TemplateComponentesContext = React.createContext(null);
 
-export default function TemplateComponentes({titulo, filtros, reset, onSubmit}){
+export default function TemplateComponentes({titulo, filtros, reset, onSubmit, insertar}){
     return(
         <TemplateComponentesContext.Provider>
             <Container>
@@ -22,7 +22,7 @@ export default function TemplateComponentes({titulo, filtros, reset, onSubmit}){
                                         {filtros}
                                 </Card.Body>
                                 <Card.Footer style={{textAlign: "right"}}>
-                                    <BotonesFiltros limpiar={reset} />
+                                    <BotonesFiltros limpiar={reset} insertar={insertar}/>
                                 </Card.Footer>
                             </Card>
                         </Col>

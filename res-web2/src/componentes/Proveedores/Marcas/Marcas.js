@@ -12,6 +12,7 @@ export default function Marcas(){
             filtros={<FiltroMarcas register={register} errors={errors}/>}
             reset={reset}
             onSubmit={handleSubmit(onSubmit)}
+            insertar={"/marcas/insertar"}
         >
 
         </TemplateComponentes>
