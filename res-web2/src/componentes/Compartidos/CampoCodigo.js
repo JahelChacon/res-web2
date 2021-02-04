@@ -1,21 +1,23 @@
 import React from "react";
-import clsx from "clsx";
+import { Col } from "react-bootstrap";
 
 export default function CampoCodigo({ register, errors, required = true}){
     return(
-        <div className="form-group">
-            <label>Código</label>
-            <input
-                name="codigo"
-                type="text"
-                ref={register({
-                required: required && "Debe insertar un valor",
-                maxLength: { value: 255, message: "El largo máximo es de 255 caracteres" }
-                })}
-                className={clsx("form-control", errors.codigo && "is-invalid")}
-                placeholder={"Código"}
-            />
-            {errors.codigo && (<div className="invalid-feedback">{errors.codigo.message}</div>)}
-        </div>
+        <Col xl={4} lg={4} md={6} sm={12} xs={12}>
+            <div className="form-group">
+                <label>Codigo</label>
+                <input 
+                    type={"text"}
+                    name={"codigo"}
+                    placeholder="codigo"
+                    className="form-control"
+                    ref={register({
+                        required: true && "Port favor ingrese un valor",
+                        maxLength: { value: 5, message: "El largo máximo es de 255 caracteres" }
+                    })}
+                />
+                {errors.codigo && (<div style={{color: "red", fontSize: "14px"}}>{errors.codigo.message}</div>)}
+            </div>
+        </Col>
     )
 }

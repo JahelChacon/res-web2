@@ -1,57 +1,20 @@
 import React, { Fragment } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row } from "react-bootstrap";
+import CampoCodigo from "../../Compartidos/CampoCodigo";
+import CampoNombre from "../../Compartidos/CampoNombre";
+import CampoDescripcion from "../../Compartidos/CampoDescripcion";
+import CampoNacionalidad from "../../Compartidos/CampoNacionalidad";
+import CampoEmpresa from "../../Compartidos/CampoEmpresa";
 
-
-
-export default function FiltroMarcas({ register }){
+export default function FiltroMarcas({ register, errors }){
     return(
         <Fragment> 
             <Row>
-                <Col xl={4}>
-                <div className="form-group">
-                        <label>Nombre</label>
-                        <input 
-                            placeholder="nombre"
-                            className="form-control"
-                        />
-                    </div>
-                </Col>
-                <Col xl={4}>
-                    <div className="form-group">
-                        <label>Nombre</label>
-                        <input 
-                            placeholder="nombre"
-                            className="form-control"
-                        />
-                    </div>
-                </Col>
-                <Col xl={4}>
-                    <div className="form-group">
-                        <label>Descripción</label>
-                        <input 
-                            placeholder="nombre"
-                            className="form-control"
-                        />
-                    </div>
-                </Col>
-                <Col xl={4}>
-                    <div className="form-group">
-                        <label>Nacionalidad</label>
-                        <input 
-                            placeholder="nombre"
-                            className="form-control"
-                        />
-                    </div>
-                </Col>
-                <Col xl={4}>
-                    <div className="form-group">
-                        <label>Empresa</label>
-                        <input 
-                            placeholder="nombre"
-                            className="form-control"
-                        />
-                    </div>
-                </Col>
+                <CampoCodigo register={register} errors={errors}/>
+                <CampoNombre register={register} errors={errors}/>
+                <CampoDescripcion register={register} errors={errors}/>
+                <CampoNacionalidad register={register} errors={errors}/>
+                <CampoEmpresa register={register} errors={errors}/>
             </Row>
         </Fragment>
     )

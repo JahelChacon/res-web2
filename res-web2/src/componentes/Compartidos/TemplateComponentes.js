@@ -1,6 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import { useForm } from "react-hook-form";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import BotonesFiltros from "../Compartidos/BotonesFiltros";
 
 const TemplateComponentesContext = React.createContext(null);
