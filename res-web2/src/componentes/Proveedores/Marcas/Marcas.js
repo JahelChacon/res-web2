@@ -2,11 +2,13 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import TemplateComponentes from "../../Compartidos/TemplateComponentes";
 import FiltroMarcas from "./FiltroMarcas";
+import TablaMarcas from "./TablaMarcas";
 
 export default function Marcas(){
     const { register, handleSubmit, reset, errors } = useForm();
     const onSubmit = (formData) => console.log(formData);
     return(
+        <div>
         <TemplateComponentes
             titulo={"Marcas"}
             filtros={<FiltroMarcas register={register} errors={errors}/>}
@@ -14,7 +16,11 @@ export default function Marcas(){
             onSubmit={handleSubmit(onSubmit)}
             insertar={"/marcas/insertar"}
         >
+        
 
         </TemplateComponentes>
+        <br></br>
+        <TablaMarcas />
+        </div>
     )
 }
