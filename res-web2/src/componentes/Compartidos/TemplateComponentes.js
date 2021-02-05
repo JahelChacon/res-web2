@@ -10,7 +10,7 @@ export default function TemplateComponentes({titulo, filtros, reset, onSubmit, i
             <Container>
                 <form onSubmit={onSubmit}>
                     <Row>
-                        <Col xl={12} md={12} sm={12} xs={12}>
+                        <Col xl={12} lg={12} md={12} sm={12} xs={12}>
                             <Card>
                                 <Card.Header className="bg-primary text-white">
                                     <h2>{titulo}</h2>

@@ -8,7 +8,7 @@ const TemplateCardContext = React.createContext(null);
 export default function TemplateCard({titulo, img, imgWebp, alt, url}) {
     return(
         <TemplateCardContext.Provider>
-            <Col xl={3} md={4} sm={6} xs={12}>
+            <Col xl={3} lg={3} md={4} sm={6} xs={12}>
                 <Card>
                     <picture>
                       <source class="card-img-top" srcset={imgWebp} type="image/webp" alt={alt}
