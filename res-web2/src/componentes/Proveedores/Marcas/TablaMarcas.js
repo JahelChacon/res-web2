@@ -1,15 +1,17 @@
 import React from "react";
 import TemplateTablas from "../../Compartidos/TemplateTablas";
 
-export default function TablaMarcas() {
+export default function TablaMarcas({ marcas }) {
   return (
-
-    <TemplateTablas columnas={[
-      { titulo: "Codigo", propiedad: "codigo" },
-      { titulo: "Nombre", propiedad: "nombre" },
-      { titulo: "Cantidad", propiedad: "cantidad" },
-      { titulo: "Restaurante", propiedad: "ejemplo" }
-    ]} />
-
+    <TemplateTablas
+      data={marcas}
+      columnas={[
+        { text: "Codigo", dataField: "codigo" },
+        { text: "Nombre", dataField: "nombreMarca" },
+        { text: "Descripcion", dataField: "descripcionMarca" },
+        { text: "Nacionalidad", dataField: "nacionalidad" },
+        { text: "Empresa", dataField: "nombreEmpresa" },
+        { text: "Telefono", dataField: "telefonoEmpresa" }
+      ]} />
   )
 }
