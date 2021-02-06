@@ -22,6 +22,7 @@ const Cajas = lazy(() => import("./componentes/Seguridad/Cajas/Cajas"));
 const Consecutivos = lazy(() => import("./componentes/Seguridad/Consecutivos/Consecutivos"));
 const Roles = lazy(() => import("./componentes/Seguridad/Roles/Roles"));
 const Paises = lazy(() => import("./componentes/Seguridad/Paises/Paises"));
+const PaisesInsertar = lazy(() => import("./componentes/Seguridad/Paises/PaisesInsertar"));
 const UnidadMedida = lazy(() => import("./componentes/Seguridad/UnidadMedida/UnidadMedida"));
 
 // RESTAURANTES
@@ -111,6 +112,9 @@ export function Rutas() {
                 </Route>
                 <Route path="/paises" exact>
                     <Paises />
+                </Route>
+                <Route path="/paises/insertar" exact>
+                    <PaisesInsertar />
                 </Route>
                 <Route path="/medidas" exact>
                     <UnidadMedida />
