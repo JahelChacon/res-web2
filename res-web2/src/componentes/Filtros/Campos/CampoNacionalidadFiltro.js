@@ -18,12 +18,7 @@ export default function CampoNacionalidadFiltro({ register, errors, required = t
                 <label>Nacionalidad</label>
                 <select 
                     name={"nacionalidad"}
-                    className="form-control"
-                    ref={register({ 
-                        required: true && "Port favor ingrese un valor",
-                        maxLength: { value: 10, message: "El largo máximo es de 10 caracteres" },
-                        minLength: { value: 3, message: "El largo mínimo es de 3 caracteres" }
-                    })}>
+                    className="form-control">
                     {
                         paises.map(((pais, index) =>
                         <option value={pais.nombre}>{pais.nombre}</option>
