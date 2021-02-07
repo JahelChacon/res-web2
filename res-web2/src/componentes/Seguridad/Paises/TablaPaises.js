@@ -1,13 +1,13 @@
 import React from "react";
 import TemplateTablas from "../../Compartidos/TemplateTablas";
 
-export default function TablaPaises() {
+export default function TablaPaises({ paises }) {
   return (
-
-    <TemplateTablas columnas={[
-      { titulo: "Codigo", propiedad: "codigo" },
-      { titulo: "Nombre", propiedad: "nombre" }
-    ]} />
-
+    <TemplateTablas
+      data={paises}
+      columnas={[
+        { text: "Codigo", dataField: "codigo" },
+        { text: "Nombre", dataField: "nombre" }
+      ]} />
   )
 }
