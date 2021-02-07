@@ -14,13 +14,14 @@ export default function Marcas(){
             filtros={<FiltroMarcas register={register} errors={errors}/>}
             reset={reset}
             onSubmit={handleSubmit(onSubmit)}
-            insertar={"/marcas/insertar"}
+            insertarURL={"/marcas/insertar"}
         >
         
-
-        </TemplateComponentes>
-        <br></br>
         <TablaMarcas />
+        </TemplateComponentes>
+        
+        
+        
         </div>
     )
 }

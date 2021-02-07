@@ -4,7 +4,6 @@ import { Container, Table } from "react-bootstrap";
 export default function TemplateTablas({ columnas }) {
   
   return (
-      <Container>
       <Table striped bordered responsive>
         <thead> 
           <tr>
@@ -27,6 +26,5 @@ export default function TemplateTablas({ columnas }) {
             ))}
         </tbody>
       </Table>
-      </Container>
   )
 }
