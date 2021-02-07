@@ -4,37 +4,36 @@ import TemplateComponentes from "../../Compartidos/TemplateComponentes";
 import FiltroMarcas from "./FiltroMarcas";
 import TablaMarcas from "./TablaMarcas";
 
-export default function Marcas(){
+export default function Marcas() {
     const [marcas, setMarcas] = useState([]);
     const [paises, setPaises] = useState([]);
 
     useEffect(() => {
-      fetch('https://backend-web2ulacit.herokuapp.com/marcas')
-        .then(response => response.json())
-        .then(data => {
-          setMarcas(data)
-        });
-      fetch('https://backend-web2ulacit.herokuapp.com/paises')
-        .then(response => response.json())
-        .then(data => {
-            setPaises(data)
-        });
+        fetch('https://backend-web2ulacit.herokuapp.com/marcas')
+            .then(response => response.json())
+            .then(data => {
+                setMarcas(data)
+            });
+        fetch('https://backend-web2ulacit.herokuapp.com/paises')
+            .then(response => response.json())
+            .then(data => {
+                setPaises(data)
+            });
     }, []);
 
     const { register, handleSubmit, reset, errors } = useForm();
     const onSubmit = (formData) => console.log(formData);
-    return(
+    return (
         <div>
             <TemplateComponentes
                 titulo={"Marcas"}
-                filtros={<FiltroMarcas paises={paises} register={register} errors={errors}/>}
+                filtros={<FiltroMarcas paises={paises} register={register} errors={errors} />}
                 reset={reset}
                 onSubmit={handleSubmit(onSubmit)}
                 insertar={"/marcas/insertar"}
             >
+                <TablaMarcas marcas={marcas} />
             </TemplateComponentes>
-            <br></br>
-            <TablaMarcas marcas={marcas}/>
         </div>
     )
 }
