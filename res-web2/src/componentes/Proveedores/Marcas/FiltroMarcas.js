@@ -1,20 +1,22 @@
 import React, { Fragment } from "react";
 import { Row } from "react-bootstrap";
-import CampoCodigoFiltro from "../../Filtros/Campos/CampoCodigoFiltro";
-import CampoNombreFiltro from "../../Filtros/Campos/CampoNombreFiltro";
-import CampoDescripcionFiltro from "../../Filtros/Campos/CampoDescripcionFiltro";
-import CampoNacionalidadFiltro from "../../Filtros/Campos/CampoNacionalidadFiltro";
-import CampoEmpresaFiltro from "../../Filtros/Campos/CampoEmpresaFiltro";
+import InputTexto from "../../Compartidos/Inputs/InputTexto";
+import InputSelect from "../../Compartidos/Inputs/InputSelect";
 
-export default function FiltroMarcas({ register, errors }){
+export default function FiltroMarcas({ register, errors, paises }){
     return(
         <Fragment> 
             <Row>
-                <CampoCodigoFiltro register={register} errors={errors}/>
-                <CampoNombreFiltro register={register} errors={errors}/>
-                <CampoDescripcionFiltro register={register} errors={errors}/>
-                <CampoNacionalidadFiltro register={register} errors={errors}/>
-                <CampoEmpresaFiltro register={register} errors={errors}/>
+                <InputTexto register={register} errors={errors} label='Codigo' name='codigo' placeholder='Codigo' size='mediano'/>
+                <InputTexto register={register} errors={errors} label='Nombre' name='nombre' placeholder='Nombre' size='mediano'/>
+                <InputTexto register={register} errors={errors} label='Empresa' name='empresa' placeholder='Empresa' size='mediano'/>
+                <InputSelect register={register} errors={errors} label='Nacionalidad' name='nacionalidad' placeholder='Nacionalidad' size='mediano'>
+                    {
+                        paises.map(((pais, index) =>
+                        <option value={pais.nombre}>{pais.nombre}</option>
+                        ))
+                    }
+                </InputSelect>
             </Row>
         </Fragment>
     )
