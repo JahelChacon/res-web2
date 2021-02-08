@@ -14,7 +14,7 @@ export default function PaisesInsertar() {
 
     return (
         <Insertar
-            titulo={"Insertar Marcas"}
+            titulo={"Insertar Paises"}
             tabla={TABLAS.PAIS}
             camposDerecha={camposDerecha}
         />

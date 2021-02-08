@@ -53,6 +53,7 @@ export default function Insertar({
                                                     : campo.tipo === 'nacionalidad'
                                                         ?
                                                         <InputNacionalidad
+                                                            key={index}
                                                             label={campo.label}
                                                             name={campo.name}
                                                             size={campo.size}
@@ -61,6 +62,7 @@ export default function Insertar({
                                                         : campo.tipo === 'imagen'
                                                         &&
                                                         <InputImagen
+                                                            key={index}
                                                             label={campo.label}
                                                             name={campo.name}
                                                             size={campo.size}
@@ -73,7 +75,7 @@ export default function Insertar({
                                         {(camposIzquierda && camposIzquierda.titulo) &&  <h3>{camposIzquierda.titulo}</h3> }
                                         {
                                             (camposIzquierda && camposIzquierda.campos.length > 0) && camposIzquierda.campos.map(((campo, index) =>
-                                                campo.tipo == 'texto'
+                                                campo.tipo === 'texto'
                                                     ?
                                                     <InputTexto
                                                         key={index}
@@ -83,17 +85,19 @@ export default function Insertar({
                                                         size={campo.size}
                                                         register={register}
                                                         errors={errors} />
-                                                    : campo.tipo == 'nacionalidad'
+                                                    : campo.tipo === 'nacionalidad'
                                                         ?
                                                         <InputNacionalidad
+                                                            key={index}
                                                             label={campo.label}
                                                             name={campo.name}
                                                             size={campo.size}
                                                             register={register}
                                                             errors={errors} />
-                                                        : campo.tipo == 'imagen'
+                                                        : campo.tipo === 'imagen'
                                                         &&
                                                         <InputImagen
+                                                            key={index}
                                                             label={campo.label}
                                                             name={campo.name}
                                                             size={campo.size}

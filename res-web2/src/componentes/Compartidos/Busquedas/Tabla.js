@@ -9,6 +9,7 @@ export default function Tabla({ columnas, filas }) {
         <Row>
             <Col xl={12} lg={12} md={12} sm={12} xs={12}>
                 {filas && <BootstrapTable
+                    keyField="codigo"
                     striped
                     bordered
                     wrapperClasses="table-responsive"
