@@ -1,39 +1,30 @@
-import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import TemplateComponentes from "../../Compartidos/TemplateComponentes";
-import FiltroMarcas from "./FiltroMarcas";
-import TablaMarcas from "./TablaMarcas";
+import React from "react";
+import Busqueda from "../../Compartidos/Busquedas/Busqueda";
+import { TABLAS } from "../../../utils/utils";
 
 export default function Marcas() {
-    const [marcas, setMarcas] = useState([]);
-    const [paises, setPaises] = useState([]);
+    const columnas = [
+        { text: "Codigo", dataField: "codigo" },
+        { text: "Nombre", dataField: "nombreMarca" },
+        { text: "Descripcion", dataField: "descripcionMarca" },
+        { text: "Nacionalidad", dataField: "nacionalidad" },
+        { text: "Empresa", dataField: "nombreEmpresa" },
+        { text: "Telefono", dataField: "telefonoEmpresa" }
+    ];
 
-    useEffect(() => {
-        fetch('https://backend-web2ulacit.herokuapp.com/marcas')
-            .then(response => response.json())
-            .then(data => {
-                setMarcas(data)
-            });
-        fetch('https://backend-web2ulacit.herokuapp.com/paises')
-            .then(response => response.json())
-            .then(data => {
-                setPaises(data)
-            });
-    }, []);
+    const filtros = [
+        { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "pequeno" },
+        { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "pequeno" },
+        { tipo: "texto", label: "Empresa", name: "empresa", placeholder: "Empresa", size: "pequeno" },
+        { tipo: "nacionalidad", label: "Nacionalidad", name: "nacionalidad", size: "pequeno" },
+    ];
 
-    const { register, handleSubmit, reset, errors } = useForm();
-    const onSubmit = (formData) => console.log(formData);
     return (
-        <div>
-            <TemplateComponentes
-                titulo={"Marcas"}
-                filtros={<FiltroMarcas paises={paises} register={register} errors={errors} />}
-                reset={reset}
-                onSubmit={handleSubmit(onSubmit)}
-                insertar={"/marcas/insertar"}
-            >
-                <TablaMarcas marcas={marcas} />
-            </TemplateComponentes>
-        </div>
+        <Busqueda
+            titulo={"Marcas"}
+            tabla={TABLAS.MARCA}
+            columnas={columnas}
+            filtros={filtros}
+        />
     )
 }

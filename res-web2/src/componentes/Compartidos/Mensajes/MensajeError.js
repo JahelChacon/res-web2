@@ -1,14 +1,14 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Alert } from "react-bootstrap";
 
-export default function MensajeError({ mensajeError }){
+export default function MensajeError({ error }){
     return(
-        <>
-            {mensajeError && (
+        <Fragment>
+            {error && (
                 <Alert variant="danger" style={{textAlign: "center"}}>
                     Ocurrió un problema
                 </Alert>
             )}
-        </>
+        </Fragment>
     )
 }

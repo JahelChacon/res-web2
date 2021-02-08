@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
-import TemplateCardInicio from "../Compartidos/TemplateCardInicio";
+import TemplateCardInicio from "../Compartidos/Cards/TemplateCardInicio";
 import seguridad from "../../img/Inicio/seguridad.jpg"
 import seguridadWebp from "../../img/Inicio/seguridad.webp"
 import administracion from "../../img/Inicio/administracion.png"

@@ -28,8 +28,6 @@ export default function InputTexto({
                     className="form-control"
                     ref={register && register({
                         required: required && "Por favor ingrese un valor",
-                        maxLength: { value: 10, message: "El largo máximo es de 10 caracteres" },
-                        minLength: { value: 3, message: "El largo mínimo es de 3 caracteres" }
                     })}
                 />
                 {errors[name] && (<div style={{color: "red", fontSize: "14px"}}>{errors[name].message}</div>)}

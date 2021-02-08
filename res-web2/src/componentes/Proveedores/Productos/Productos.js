@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
-import TemplateCard from "../../Compartidos/TemplateCard";
+import TemplateCard from "../../Compartidos/Cards/TemplateCard";
 import comestibles from "../../../img/Proveedores/Productos/comestibles.jpg";
 import comestiblesWebp from "../../../img/Proveedores/Productos/comestibles.webp";
 import limpieza from "../../../img/Proveedores/Productos/limpieza.jpg";
