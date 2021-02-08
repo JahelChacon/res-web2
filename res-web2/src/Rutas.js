@@ -1,7 +1,6 @@
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import React, { lazy, Suspense } from "react";
 
-import { ROLES } from "../src/seguridad/roles";
 
 // INICIO
 const Inicio = lazy(() => import("../src/componentes/Inicio/Inicio"));

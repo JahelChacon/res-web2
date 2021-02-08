@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Col } from "react-bootstrap";
 
 export default function InputSelect({
@@ -12,9 +12,9 @@ export default function InputSelect({
 }) {
     return (
         <Col
-            xl={size == 'grande' ? 12 : size == 'mediano' ? 6 : 4}
-            lg={size == 'grande' ? 12 : size == 'mediano' ? 6 : 4}
-            md={size == 'grande' ? 12 : 6}
+            xl={size === 'grande' ? 12 : size === 'mediano' ? 6 : 4}
+            lg={size === 'grande' ? 12 : size === 'mediano' ? 6 : 4}
+            md={size === 'grande' ? 12 : 6}
             sm={12}
             xs={12}>
             <div className="form-group">

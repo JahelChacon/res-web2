@@ -23,9 +23,9 @@ export default function InputNacionalidad({
                 setPaises(data);
                 setCargando(false);
             })
-        .catch((error) => {
-            setFallo(true);
-        });
+            .catch((error) => {
+                setFallo(true);
+            });
     }, []);
 
     return (
@@ -38,12 +38,16 @@ export default function InputNacionalidad({
                     <InputSelect required={required} label={label} name={name} size={size} register={register} errors={errors}>
                         {
                             paises.map(((pais, index) =>
-                                <option value={pais.nombre}>{pais.nombre}</option>
+                                <option
+                                    key={index}
+                                    value={pais.nombre}>
+                                    {pais.nombre}
+                                </option>
                             ))
                         }
                     </InputSelect>
             }
-            <MensajeError error={fallo}/>
+            <MensajeError error={fallo} />
         </Fragment>
     )
 }

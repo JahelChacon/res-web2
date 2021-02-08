@@ -29,7 +29,7 @@ export default function Busqueda({
             .catch((error) => {
                 setFallo(true);
             });
-    }, []);
+    }, [tabla]);
 
     const onSubmit = (formData) => {
         console.log(formData)
@@ -57,6 +57,7 @@ export default function Busqueda({
                                     : filtro.tipo === 'nacionalidad'
                                     &&
                                     <InputNacionalidad
+                                        key={index}
                                         label={filtro.label}
                                         name={filtro.name}
                                         size={filtro.size}
@@ -68,8 +69,8 @@ export default function Busqueda({
                     </Row>
                 </Filtro>
                 <br></br>
-                <MensajeCargando cargando={cargando}/>
-                <MensajeError error={fallo}/>
+                <MensajeCargando cargando={cargando} />
+                <MensajeError error={fallo} />
                 {
                     (!cargando && !fallo) &&
                     <Tabla columnas={columnas} filas={tablaData} />

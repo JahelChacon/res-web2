@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, Button, Container, Col, Row } from "react-bootstrap";
+import { Modal, Button, Container } from "react-bootstrap";
 import checkGreen from "../../../img/General/check_green.png";
 
 export default function ModalExito({
