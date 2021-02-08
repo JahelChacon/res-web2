@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
-import TemplateCard from "../../../Compartidos/TemplateCard";
+import TemplateCard from "../../../Compartidos/Cards/TemplateCard";
 import calientes from "../../../../img/Administracion/Especiales/Bebidas/calientes.png";
 import calientesWebp from "../../../../img/Administracion/Especiales/Bebidas/calientes.webp";
 import gaseosas from "../../../../img/Administracion/Especiales/Bebidas/gaseosas.png";

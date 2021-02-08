@@ -1,33 +1,25 @@
-import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import TemplateComponentes from "../../Compartidos/TemplateComponentes";
-import FiltroPaises from "./FiltroPaises";
-import TablaPaises from "./TablaPaises";
+import React from "react";
+import Busqueda from "../../Compartidos/Busquedas/Busqueda";
+import { TABLAS } from "../../../utils/utils";
 
-export default function Paises() {
-    const [paises, setPaises] = useState([]);
+export default function Marcas() {
+    const columnas = [
+        { text: "Codigo", dataField: "codigo" },
+        { text: "Nombre", dataField: "nombre" },
+    ];
 
-    useEffect(() => {
-        fetch('https://backend-web2ulacit.herokuapp.com/paises')
-            .then(response => response.json())
-            .then(data => {
-                setPaises(data)
-            });
-    }, []);
+    const filtros = [
+        { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "pequeno" },
+        { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "pequeno" },
+        { tipo: "imagen", label: "Bandera", name: "imagen", size: "pequeno" },
+    ];
 
-    const { register, handleSubmit, reset, errors } = useForm();
-    const onSubmit = (formData) => console.log(formData);
     return (
-        <div>
-            <TemplateComponentes
-                titulo={"Países"}
-                filtros={<FiltroPaises register={register} errors={errors} />}
-                reset={reset}
-                onSubmit={handleSubmit(onSubmit)}
-                insertar={"/paises/insertar"}
-            >
-                <TablaPaises paises={paises} />
-            </TemplateComponentes>
-        </div>
+        <Busqueda
+            titulo={"Países"}
+            tabla={TABLAS.PAIS}
+            columnas={columnas}
+            filtros={filtros}
+        />
     )
 }

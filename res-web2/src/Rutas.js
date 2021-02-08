@@ -1,72 +1,72 @@
 import { Route, Switch, Redirect } from "react-router-dom";
 import React, { lazy, Suspense } from "react";
 
-import { ROLES } from "./seguridad/roles";
+import { ROLES } from "../src/seguridad/roles";
 
 // INICIO
-const Inicio = lazy(() => import("./componentes/Inicio/Inicio"));
+const Inicio = lazy(() => import("../src/componentes/Inicio/Inicio"));
 
 // AYUDA
-const Ayuda = lazy(() => import("./componentes/Ayuda/Ayuda"));
+const Ayuda = lazy(() => import("../src/componentes/Ayuda/Ayuda"));
 
 // LOGIN
-const Login = lazy(() => import("./componentes/Login/Login"));
+const Login = lazy(() => import("../src/componentes/Login/Login"));
 
 // MENU DE COMIDAS
-const Menu = lazy(() => import("./componentes/Menu/Menu"));
+const Menu = lazy(() => import("../src/componentes/Menu/Menu"));
 
 // SEGURIDAD
-const Seguridad = lazy(() => import("./componentes/Seguridad/Seguridad"));
-const Usuarios = lazy(() => import("./componentes/Seguridad/Usuarios/Usuarios"));
-const Cajas = lazy(() => import("./componentes/Seguridad/Cajas/Cajas"));
-const Consecutivos = lazy(() => import("./componentes/Seguridad/Consecutivos/Consecutivos"));
-const Roles = lazy(() => import("./componentes/Seguridad/Roles/Roles"));
-const Paises = lazy(() => import("./componentes/Seguridad/Paises/Paises"));
-const PaisesInsertar = lazy(() => import("./componentes/Seguridad/Paises/PaisesInsertar"));
-const UnidadMedida = lazy(() => import("./componentes/Seguridad/UnidadMedida/UnidadMedida"));
+const Seguridad = lazy(() => import("../src/componentes/Seguridad/Seguridad"));
+const Usuarios = lazy(() => import("../src/componentes/Seguridad/Usuarios/Usuarios"));
+const Cajas = lazy(() => import("../src/componentes/Seguridad/Cajas/Cajas"));
+const Consecutivos = lazy(() => import("../src/componentes/Seguridad/Consecutivos/Consecutivos"));
+const Roles = lazy(() => import("../src/componentes/Seguridad/Roles/Roles"));
+const Paises = lazy(() => import("../src/componentes/Seguridad/Paises/Paises"));
+const PaisesInsertar = lazy(() => import("../src/componentes/Seguridad/Paises/PaisesInsertar"));
+const UnidadMedida = lazy(() => import("../src/componentes/Seguridad/UnidadMedida/UnidadMedida"));
 
 // RESTAURANTES
-const Restaurantes = lazy(() => import("./componentes/Restaurantes/Restaurantes"));
+const Restaurantes = lazy(() => import("../src/componentes/Restaurantes/Restaurantes"));
 
 // CLIENTES
-const Clientes = lazy(() => import("./componentes/Clientes/Clientes"));
+const Clientes = lazy(() => import("../src/componentes/Clientes/Clientes"));
 
 // PROVEEDORES
-const Proveedores = lazy(() => import("./componentes/Proveedores/Proveedores"));
-const Proveedores2 = lazy(() => import("./componentes/Proveedores/Proveedores/Proveedores2"));
-const Marcas = lazy(() => import("./componentes/Proveedores/Marcas/Marcas"));
-const MarcasInsertar = lazy(() => import("./componentes/Proveedores/Marcas/MarcasInsertar"));
+const Proveedores = lazy(() => import("../src/componentes/Proveedores/Proveedores"));
+const Proveedores2 = lazy(() => import("../src/componentes/Proveedores/Proveedores/Proveedores2"));
+const Marcas = lazy(() => import("../src/componentes/Proveedores/Marcas/Marcas"));
+const MarcasInsertar = lazy(() => import("../src/componentes/Proveedores/Marcas/MarcasInsertar"));
 
-const Productos = lazy(() => import("./componentes/Proveedores/Productos/Productos"));
-const Comestibles = lazy(() => import("./componentes/Proveedores/Productos/Comestibles/Comestibles"));
-const Desechables = lazy(() => import("./componentes/Proveedores/Productos/Desechables/Desechables"));
-const Limpieza = lazy(() => import("./componentes/Proveedores/Productos/Limpieza/Limpieza"));
-const Tecnologia = lazy(() => import("./componentes/Proveedores/Productos/Tecnologia/Tecnologia"));
-const Utensilios = lazy(() => import("./componentes/Proveedores/Productos/Utensilios/Utensilios"));
+const Productos = lazy(() => import("../src/componentes/Proveedores/Productos/Productos"));
+const Comestibles = lazy(() => import("../src/componentes/Proveedores/Productos/Comestibles/Comestibles"));
+const Desechables = lazy(() => import("../src/componentes/Proveedores/Productos/Desechables/Desechables"));
+const Limpieza = lazy(() => import("../src/componentes/Proveedores/Productos/Limpieza/Limpieza"));
+const Tecnologia = lazy(() => import("../src/componentes/Proveedores/Productos/Tecnologia/Tecnologia"));
+const Utensilios = lazy(() => import("../src/componentes/Proveedores/Productos/Utensilios/Utensilios"));
 
 // ADMINISTRACION
-const Administracion = lazy(() => import("./componentes/Administracion/Administracion"));
+const Administracion = lazy(() => import("../src/componentes/Administracion/Administracion"));
 
-const Empleados = lazy(() => import("./componentes/Administracion/Empleados/Empleados"));
-const Mesas = lazy(() => import("./componentes/Administracion/Mesas/Mesas"));
-const Puestos = lazy(() => import("./componentes/Administracion/Puestos/Puestos"));
+const Empleados = lazy(() => import("../src/componentes/Administracion/Empleados/Empleados"));
+const Mesas = lazy(() => import("../src/componentes/Administracion/Mesas/Mesas"));
+const Puestos = lazy(() => import("../src/componentes/Administracion/Puestos/Puestos"));
 
-const Especiales = lazy(() => import("./componentes/Administracion/Especiales/Especiales"));
-const Buffet = lazy(() => import("./componentes/Administracion/Especiales/Buffet/Buffet"));
-const Especialidades = lazy(() => import("./componentes/Administracion/Especiales/Especialidades/Especialidades"));
+const Especiales = lazy(() => import("../src/componentes/Administracion/Especiales/Especiales"));
+const Buffet = lazy(() => import("../src/componentes/Administracion/Especiales/Buffet/Buffet"));
+const Especialidades = lazy(() => import("../src/componentes/Administracion/Especiales/Especialidades/Especialidades"));
 
-const Bebidas = lazy(() => import("./componentes/Administracion/Especiales/Bebidas/Bebidas"));
-const Calientes = lazy(() => import("./componentes/Administracion/Especiales/Bebidas/Calientes/Calientes"));
-const Heladas = lazy(() => import("./componentes/Administracion/Especiales/Bebidas/Heladas/Heladas"));
-const Gaseosas = lazy(() => import("./componentes/Administracion/Especiales/Bebidas/Gaseosas/Gaseosas"));
-const Vinos = lazy(() => import("./componentes/Administracion/Especiales/Bebidas/Vinos/Vinos"));
-const Licores = lazy(() => import("./componentes/Administracion/Especiales/Bebidas/Licores/Licores"));
+const Bebidas = lazy(() => import("../src/componentes/Administracion/Especiales/Bebidas/Bebidas"));
+const Calientes = lazy(() => import("../src/componentes/Administracion/Especiales/Bebidas/Calientes/Calientes"));
+const Heladas = lazy(() => import("../src/componentes/Administracion/Especiales/Bebidas/Heladas/Heladas"));
+const Gaseosas = lazy(() => import("../src/componentes/Administracion/Especiales/Bebidas/Gaseosas/Gaseosas"));
+const Vinos = lazy(() => import("../src/componentes/Administracion/Especiales/Bebidas/Vinos/Vinos"));
+const Licores = lazy(() => import("../src/componentes/Administracion/Especiales/Bebidas/Licores/Licores"));
 
 // REPORTES
-const Reportes = lazy(() => import("./componentes/Reportes/Reportes"));
-const Bitacoras = lazy(() => import("./componentes/Reportes/Bitacoras/Bitacoras"));
-const ReporteUsuarios = lazy(() => import("./componentes/Reportes/Usuarios/ReporteUsuarios"));
-const Facturas = lazy(() => import("./componentes/Reportes/Facturas/Facturas"));
+const Reportes = lazy(() => import("../src/componentes/Reportes/Reportes"));
+const Bitacoras = lazy(() => import("../src/componentes/Reportes/Bitacoras/Bitacoras"));
+const ReporteUsuarios = lazy(() => import("../src/componentes/Reportes/Usuarios/ReporteUsuarios"));
+const Facturas = lazy(() => import("../src/componentes/Reportes/Facturas/Facturas"));
 
 export function Rutas() {
     return(

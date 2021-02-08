@@ -2,7 +2,7 @@ import { React } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export default function BotonesFiltros({ limpiar, cancelar }){
+export default function BotonesInsertar({ limpiar, cancelar }){
     return(
         <div>
             <Button variant="outline-primary" type={"submit"}>Agregar</Button>{' '}

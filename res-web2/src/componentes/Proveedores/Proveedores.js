@@ -1,5 +1,5 @@
 import React from "react";
-import TemplateCard from "../Compartidos/TemplateCard";
+import TemplateCard from "../Compartidos/Cards/TemplateCard";
 import { Container, Row } from "react-bootstrap";
 import marcas from "../../img/Proveedores/marcas.png"
 import marcasWebp from "../../img/Proveedores/marcas.webp"

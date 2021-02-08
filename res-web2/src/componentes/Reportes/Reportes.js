@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
-import TemplateCard from "../Compartidos/TemplateCard";
+import TemplateCard from "../Compartidos/Cards/TemplateCard";
 import bitacora from "../../img/Reportes/bitacora.jpg";
 import bitacoraWebp from "../../img/Reportes/bitacora.webp";
 import clientes from "../../img/Reportes/clientes.jpg";

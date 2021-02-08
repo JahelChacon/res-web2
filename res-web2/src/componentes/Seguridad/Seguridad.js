@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap"
-import TemplateCard from "../Compartidos/TemplateCard";
+import TemplateCard from "../Compartidos/Cards/TemplateCard";
 import caja from "../../img/Seguridad/caja.png";
 import cajaWebp from "../../img/Seguridad/caja.webp";
 import consecutivos from "../../img/Seguridad/consecutivos.png";

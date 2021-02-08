@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
-import TemplateCard from "../Compartidos/TemplateCard";
+import TemplateCard from "../Compartidos/Cards/TemplateCard";
 import especiales from "../../img/Administracion/especiales.png"
 import especialesWebp from "../../img/Administracion/especiales.webp"
 import mesas from "../../img/Administracion/mesas.png"
