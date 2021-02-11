@@ -33,6 +33,7 @@ const Clientes = lazy(() => import("../src/componentes/Clientes/Clientes"));
 // PROVEEDORES
 const Proveedores = lazy(() => import("../src/componentes/Proveedores/Proveedores"));
 const Proveedores2 = lazy(() => import("../src/componentes/Proveedores/Proveedores/Proveedores2"));
+const ProveedoresInsertar = lazy(() => import("../src/componentes/Proveedores/Proveedores/Proveedores2Insertar"));
 const Marcas = lazy(() => import("../src/componentes/Proveedores/Marcas/Marcas"));
 const MarcasInsertar = lazy(() => import("../src/componentes/Proveedores/Marcas/MarcasInsertar"));
 
@@ -138,6 +139,9 @@ export function Rutas() {
                 </Route>
                 <Route path="/proveedores-2" exact>
                     <Proveedores2 />
+                </Route>
+                <Route path="/proveedores-2/insertar" exact>
+                    <ProveedoresInsertar />
                 </Route>
                 <Route path="/marcas" exact>
                     <Marcas />
