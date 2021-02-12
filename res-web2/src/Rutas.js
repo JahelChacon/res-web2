@@ -68,7 +68,7 @@ const Bitacoras = lazy(() => import("../src/componentes/Reportes/Bitacoras/Bitac
 const ReporteUsuarios = lazy(() => import("../src/componentes/Reportes/Usuarios/ReporteUsuarios"));
 const Facturas = lazy(() => import("../src/componentes/Reportes/Facturas/Facturas"));
 
-export function Rutas() {
+export function Rutas({usuario, token}) {
     return(
         <Suspense fallback={<div>Cargando</div>}>
             <Switch>
@@ -85,7 +85,7 @@ export function Rutas() {
 
                 {/* LOGIN */}
                 <Route path="/login" exact> 
-                    <Login />
+                    <Login usuario={usuario}/>
                 </Route>
 
                 {/* MENU */}
@@ -111,10 +111,10 @@ export function Rutas() {
                     <Roles />
                 </Route>
                 <Route path="/paises" exact>
-                    <Paises />
+                    <Paises token={token}/>
                 </Route>
                 <Route path="/paises/insertar" exact>
-                    <PaisesInsertar />
+                    <PaisesInsertar token={token}/>
                 </Route>
                 <Route path="/medidas" exact>
                     <UnidadMedida />
@@ -144,10 +144,10 @@ export function Rutas() {
                     <ProveedoresInsertar />
                 </Route>
                 <Route path="/marcas" exact>
-                    <Marcas />
+                    <Marcas token={token} />
                 </Route>
                 <Route path="/marcas/insertar" exact>
-                    <MarcasInsertar />
+                    <MarcasInsertar token={token}/>
                 </Route>
                 <Route path="/productos" exact>
                     <Productos />

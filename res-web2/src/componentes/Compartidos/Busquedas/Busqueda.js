@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { API_URL } from "../../../utils/API";
+import { makeRequest } from "../../../utils/API";
 import InputTexto from "../Inputs/InputTexto";
-import InputNacionalidad from "../Inputs/InputNacionalidad";
+import InputFromApi from "../Inputs/InputFromApi";
 import Filtro from "./Filtro";
 import Tabla from "./Tabla";
 import MensajeCargando from "../Mensajes/MensajeCargando";
@@ -13,14 +13,15 @@ export default function Busqueda({
     titulo,
     tabla,
     columnas,
-    filtros
+    filtros,
+    token
 }) {
     const [tablaData, setTablaData] = useState([]);
     const [cargando, setCargando] = useState(true);
     const [fallo, setFallo] = useState(false);
 
     useEffect(() => {
-        fetch(API_URL + '/' + tabla)
+        makeRequest('GET', '/' + tabla, null, token)
             .then(response => response.json())
             .then(data => {
                 setTablaData(data);
@@ -29,7 +30,7 @@ export default function Busqueda({
             .catch((error) => {
                 setFallo(true);
             });
-    }, [tabla]);
+    }, [tabla, token]);
 
     const onSubmit = (formData) => {
         console.log(formData)
@@ -56,8 +57,10 @@ export default function Busqueda({
                                         errors={errors} />
                                     : filtro.tipo === 'nacionalidad'
                                     &&
-                                    <InputNacionalidad
+                                    <InputFromApi
                                         key={index}
+                                        token={token}
+                                        tipo='paises'
                                         label={filtro.label}
                                         name={filtro.name}
                                         size={filtro.size}
@@ -69,7 +72,7 @@ export default function Busqueda({
                     </Row>
                 </Filtro>
                 <br></br>
-                <MensajeCargando cargando={cargando} />
+                <MensajeCargando cargando={cargando && !fallo} />
                 <MensajeError error={fallo} />
                 {
                     (!cargando && !fallo) &&
