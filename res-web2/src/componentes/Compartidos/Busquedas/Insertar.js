@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import InputTexto from "../../Compartidos/Inputs/InputTexto";
 import InputImagen from "../Inputs/ImputImagen";
-import InputNacionalidad from "../Inputs/InputNacionalidad";
+import InputFromApi from "../Inputs/InputFromApi";
 import BotonesInsertar from "../../Compartidos/Botones/BotonesInsertar";
 import ModalExito from "../Modales/ModalExito";
 
@@ -11,7 +11,8 @@ export default function Insertar({
     titulo,
     tabla,
     camposDerecha,
-    camposIzquierda
+    camposIzquierda,
+    token
 }) {
     const [mostrarExito, setMostrarExito] = useState(false);
 
@@ -52,12 +53,14 @@ export default function Insertar({
                                                         errors={errors} />
                                                     : campo.tipo === 'nacionalidad'
                                                         ?
-                                                        <InputNacionalidad
+                                                        <InputFromApi
                                                             key={index}
+                                                            token={token}
                                                             label={campo.label}
                                                             name={campo.name}
                                                             size={campo.size}
                                                             register={register}
+                                                            tipo='paises'
                                                             errors={errors} />
                                                         : campo.tipo === 'imagen'
                                                         &&
@@ -87,12 +90,14 @@ export default function Insertar({
                                                         errors={errors} />
                                                     : campo.tipo === 'nacionalidad'
                                                         ?
-                                                        <InputNacionalidad
+                                                        <InputFromApi
                                                             key={index}
+                                                            token={token}
                                                             label={campo.label}
                                                             name={campo.name}
                                                             size={campo.size}
                                                             register={register}
+                                                            tipo='paises'
                                                             errors={errors} />
                                                         : campo.tipo === 'imagen'
                                                         &&

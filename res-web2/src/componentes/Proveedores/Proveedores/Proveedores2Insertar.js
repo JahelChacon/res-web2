@@ -26,7 +26,7 @@ export default function Proveedores2Insertar() {
             
         ]
     };
-console.log(camposIzquierda);
+
     return (
         <Insertar
             titulo={"Insertar Proveedores"}

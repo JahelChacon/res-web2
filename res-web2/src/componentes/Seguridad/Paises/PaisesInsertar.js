@@ -2,7 +2,7 @@ import React from "react";
 import Insertar from "../../Compartidos/Busquedas/Insertar";
 import { TABLAS } from "../../../utils/utils";
 
-export default function PaisesInsertar() {
+export default function PaisesInsertar({ token }) {
     const camposDerecha = {
         titulo: 'Información de los paises',
         campos: [
@@ -17,6 +17,7 @@ export default function PaisesInsertar() {
             titulo={"Insertar Paises"}
             tabla={TABLAS.PAIS}
             camposDerecha={camposDerecha}
+            token={token}
         />
     )
 }

@@ -2,7 +2,7 @@ import React from "react";
 import Insertar from "../../Compartidos/Busquedas/Insertar";
 import { TABLAS } from "../../../utils/utils";
 
-export default function MarcasInsertar() {
+export default function MarcasInsertar({ token }) {
     const camposDerecha = {
         titulo: 'Información de la marca',
         campos: [
@@ -24,13 +24,14 @@ export default function MarcasInsertar() {
             { tipo: "imagen", label: "Foto de la Empresa", name: "fotoEmpresa", placeholder: "Foto de la Empresa", size: "grande" },
         ]
     };
-console.log(camposIzquierda);
+
     return (
         <Insertar
             titulo={"Insertar Marcas"}
             tabla={TABLAS.MARCA}
             camposDerecha={camposDerecha}
             camposIzquierda={camposIzquierda}
+            token={token}
         />
     )
 }

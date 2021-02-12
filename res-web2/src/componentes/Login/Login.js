@@ -1,11 +1,22 @@
 import React from "react";
+import { connect } from 'react-redux';
 import { useForm } from "react-hook-form";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { logIn } from '../../store/actions/user';
+import { Redirect } from "react-router-dom";
 
-
-export default function Login() {
+const Login = ({ signIn, usuario }) => {
     const { register, errors, handleSubmit, reset } = useForm();
-    const onSubmit = (formData) => console.log(formData);
+    const onSubmit = function (formData) {
+        signIn(formData.usuario, formData.contrasena);
+    };
+
+    if (usuario) {
+        if (usuario.administradorSistema) {
+            return <Redirect to="/" />;
+        }
+    }
+
     return(
         <Container> 
             <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
@@ -33,7 +44,7 @@ export default function Login() {
                         <div className={"form-group"}>
                         <input
                             type="password"
-                            name="password"
+                            name="contrasena"
                             className={"form-control"}
                             placeholder={"Contraseña"}
                             ref={register({
@@ -41,7 +52,7 @@ export default function Login() {
                                 maxLength: { value: 40, message: "El largo máximo es de 40 caracteres" }
                             })}
                         />
-                        {errors.password && (<div style={{color: "red", fontSize: "14px"}}>{errors.password.message}</div>)}
+                        {errors.contrasena && (<div style={{color: "red", fontSize: "14px"}}>{errors.contrasena.message}</div>)}
                         </div>
                     </Card.Body>
                     <Card.Footer style={{textAlign: "right"}}>
@@ -56,3 +67,9 @@ export default function Login() {
         </Container>
     )
 }
+
+const mapDispatchToProps = dispatch => ({
+    signIn: (usuario, contrasena) => dispatch(logIn(usuario, contrasena)),
+});
+  
+export default connect(null, mapDispatchToProps)(Login);
