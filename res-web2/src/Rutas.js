@@ -39,7 +39,9 @@ const MarcasInsertar = lazy(() => import("../src/componentes/Proveedores/Marcas/
 
 const Productos = lazy(() => import("../src/componentes/Proveedores/Productos/Productos"));
 const Comestibles = lazy(() => import("../src/componentes/Proveedores/Productos/Comestibles/Comestibles"));
+const ComestiblesInsertar = lazy(() => import("../src/componentes/Proveedores/Productos/Comestibles/ComestiblesInsertar"));
 const Desechables = lazy(() => import("../src/componentes/Proveedores/Productos/Desechables/Desechables"));
+const DesechablesInsertar = lazy(() => import("../src/componentes/Proveedores/Productos/Desechables/DesechablesInsertar"));
 const Limpieza = lazy(() => import("../src/componentes/Proveedores/Productos/Limpieza/Limpieza"));
 const Tecnologia = lazy(() => import("../src/componentes/Proveedores/Productos/Tecnologia/Tecnologia"));
 const Utensilios = lazy(() => import("../src/componentes/Proveedores/Productos/Utensilios/Utensilios"));
@@ -155,8 +157,14 @@ export function Rutas() {
                 <Route path="/comestibles" exact>
                     <Comestibles />
                 </Route>
+                <Route path="/comestibles/insertar" exact>
+                    <ComestiblesInsertar />
+                </Route>
                 <Route path="/desechables" exact>
                     <Desechables />
+                </Route>
+                <Route path="/desechables/insertar" exact>
+                    <DesechablesInsertar />
                 </Route>
                 <Route path="/limpieza" exact>
                     <Limpieza />
