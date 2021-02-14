@@ -15,11 +15,14 @@ import clientes from "../../img/Inicio/clientes.jpg"
 import clientesWebp from "../../img/Inicio/clientes.webp"
 import "./cssInicio.css";
 
-export default function Inicio() {
-    return(
+export default function Inicio({ usuario }) {
+    return (
         <Container fluid>
-            <h1>Bienvenidos al Restaurante</h1> 
-                <Row>
+            <h1>Bienvenidos al Restaurante</h1>
+            <Row>
+                {(usuario.administradorSistema ||
+                    usuario.administradorSeguridad ||
+                    usuario.administradorCuentas) &&
                     <TemplateCardInicio
                         titulo={"Seguridad"}
                         img={seguridad}
@@ -27,6 +30,8 @@ export default function Inicio() {
                         alt={"Seguridad"}
                         url={"/seguridad"}
                     ></TemplateCardInicio>
+                }
+                {usuario.administradorSistema &&
                     <TemplateCardInicio
                         titulo={"Restaurantes"}
                         img={restaurantes}
@@ -34,14 +39,18 @@ export default function Inicio() {
                         alt={"Restaurantes"}
                         url={"/restaurantes"}
                     ></TemplateCardInicio>
+                }
+                {usuario.administradorSistema &&
                     <TemplateCardInicio
                         titulo={"Clientes"}
                         img={clientes}
                         imgWebp={clientesWebp}
                         alt={"Clientes"}
                         url={"/clientes"}
-                    ></TemplateCardInicio> 
-                
+                    ></TemplateCardInicio>
+                }
+                {usuario.administradorSistema &&
+
                     <TemplateCardInicio
                         titulo={"Proveedores"}
                         img={proveedores}
@@ -49,6 +58,8 @@ export default function Inicio() {
                         alt={"Proveedores"}
                         url={"/proveedores"}
                     ></TemplateCardInicio>
+                }
+                {usuario.administradorSistema &&
                     <TemplateCardInicio
                         titulo={"Administración"}
                         img={administracion}
@@ -56,6 +67,10 @@ export default function Inicio() {
                         alt={"Administración"}
                         url={"/administracion"}
                     ></TemplateCardInicio>
+                }
+                {(usuario.administradorSistema ||
+                    usuario.administradorSeguridad ||
+                    usuario.administradorCuentas) &&
                     <TemplateCardInicio
                         titulo={"Reportes"}
                         img={reportes}
@@ -63,7 +78,8 @@ export default function Inicio() {
                         alt={"Reportes"}
                         url={"/reportes"}
                     ></TemplateCardInicio>
-                </Row>
+                }
+            </Row>
         </Container>
     )
 }

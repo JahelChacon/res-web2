@@ -1,6 +1,6 @@
 import { Route, Switch } from "react-router-dom";
 import React, { lazy, Suspense } from "react";
-
+import PrivateRoute from './PrivateRoute';
 
 // INICIO
 const Inicio = lazy(() => import("../src/componentes/Inicio/Inicio"));
@@ -70,170 +70,305 @@ const Bitacoras = lazy(() => import("../src/componentes/Reportes/Bitacoras/Bitac
 const ReporteUsuarios = lazy(() => import("../src/componentes/Reportes/Usuarios/ReporteUsuarios"));
 const Facturas = lazy(() => import("../src/componentes/Reportes/Facturas/Facturas"));
 
-export function Rutas({usuario, token}) {
-    return(
+export function Rutas({ usuario, token }) {
+    return (
         <Suspense fallback={<div>Cargando</div>}>
             <Switch>
 
                 {/* INICIO */}
-                <Route path="/" exact>
-                    <Inicio />
-                </Route>
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema || usuario.administradorSeguridad || usuario.administradorCuentas}
+                    component={Inicio}
+                    usuario={usuario}
+                    path="/"
+                    exact
+                />
 
                 {/* AYUDA */}
-                <Route path="/ayuda" exact>
-                    <Ayuda />
-                </Route>
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={Ayuda}
+                    path="/ayuda"
+                    exact
+                />
 
                 {/* LOGIN */}
-                <Route path="/login" exact> 
-                    <Login usuario={usuario}/>
+                <Route path="/login" exact>
+                    <Login usuario={usuario} />
                 </Route>
 
                 {/* MENU */}
-                <Route path="/menu" exact>
-                    <Menu />
-                </Route>
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={Menu}
+                    path="/menu"
+                    exact
+                />
 
 
                 {/* SEGURIDAD */}
-                <Route path="/seguridad" exact>
-                    <Seguridad />
-                </Route>
-                <Route path="/usuarios" exact>
-                    <Usuarios />
-                </Route>
-                <Route path="/cajas" exact>
-                    <Cajas />
-                </Route>
-                <Route path="/consecutivos" exact>
-                    <Consecutivos />
-                </Route>
-                <Route path="/roles" exact>
-                    <Roles />
-                </Route>
-                <Route path="/paises" exact>
-                    <Paises token={token}/>
-                </Route>
-                <Route path="/paises/insertar" exact>
-                    <PaisesInsertar token={token}/>
-                </Route>
-                <Route path="/medidas" exact>
-                    <UnidadMedida />
-                </Route>
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema || usuario.administradorSeguridad || usuario.administradorCuentas}
+                    component={Seguridad}
+                    usuario={usuario}
+                    path="/seguridad"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema || usuario.administradorSeguridad}
+                    component={Usuarios}
+                    path="/usuarios"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema || usuario.administradorSeguridad || usuario.administradorCuentas}
+                    component={Cajas}
+                    path="/cajas"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema || usuario.administradorSeguridad}
+                    component={Consecutivos}
+                    path="/consecutivos"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema || usuario.administradorSeguridad}
+                    component={Roles}
+                    path="/roles"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema || usuario.administradorSeguridad}
+                    component={Paises}
+                    token={token}
+                    path="/paises"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={PaisesInsertar || usuario.administradorSeguridad}
+                    token={token}
+                    path="/paises/insertar"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema || usuario.administradorSeguridad}
+                    component={UnidadMedida}
+                    path="/medidas"
+                    exact
+                />
 
 
                 {/* RESTAURANTES */}
-                <Route path="/restaurantes" exact>
-                    <Restaurantes />
-                </Route>
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={Restaurantes}
+                    path="/restaurantes"
+                    exact
+                />
 
 
                 {/* CLIENTES */}
-                <Route path="/clientes" exact>
-                    <Clientes />
-                </Route>
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={Clientes}
+                    path="/clientes"
+                    exact
+                />
 
 
                 {/* PROVEEDORES */}
-                <Route path="/proveedores" exact>
-                    <Proveedores />
-                </Route>
-                <Route path="/proveedores-2" exact>
-                    <Proveedores2 />
-                </Route>
-                <Route path="/proveedores-2/insertar" exact>
-                    <ProveedoresInsertar />
-                </Route>
-                <Route path="/marcas" exact>
-                    <Marcas token={token} />
-                </Route>
-                <Route path="/marcas/insertar" exact>
-                    <MarcasInsertar token={token}/>
-                </Route>
-                <Route path="/productos" exact>
-                    <Productos />
-                </Route>
-                <Route path="/comestibles" exact>
-                    <Comestibles />
-                </Route>
-                <Route path="/comestibles/insertar" exact>
-                    <ComestiblesInsertar />
-                </Route>
-                <Route path="/desechables" exact>
-                    <Desechables />
-                </Route>
-                <Route path="/desechables/insertar" exact>
-                    <DesechablesInsertar />
-                </Route>
-                <Route path="/limpieza" exact>
-                    <Limpieza />
-                </Route>
-                <Route path="/tecnologia" exact>
-                    <Tecnologia />
-                </Route>
-                <Route path="/utensilios" exact>
-                    <Utensilios />
-                </Route>
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={Proveedores}
+                    path="/proveedores"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={Proveedores2}
+                    path="/proveedores-2"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={ProveedoresInsertar}
+                    path="/proveedores-2/insertar"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={Marcas}
+                    token={token}
+                    path="/marcas"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={MarcasInsertar}
+                    token={token}
+                    path="/marcas/insertar"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={Productos}
+                    path="/productos"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={Comestibles}
+                    path="/comestibles"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={ComestiblesInsertar}
+                    path="/comestibles/insertar"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={Desechables}
+                    path="/desechables"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={DesechablesInsertar}
+                    path="/desechables/insertar"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={Limpieza}
+                    path="/limpieza"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={Tecnologia}
+                    path="/tecnologia"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={Utensilios}
+                    path="/utensilios"
+                    exact
+                />
 
-                
 
 
                 {/* ADMINISTRACION */}
-                <Route path="/administracion" exact>
-                    <Administracion />
-                </Route>
-                <Route path="/empleados" exact>
-                    <Empleados />
-                </Route>
-                <Route path="/especiales" exact>
-                    <Especiales />
-                </Route>
-                <Route path="/mesas" exact>
-                    <Mesas />
-                </Route>
-                <Route path="/puestos" exact>
-                    <Puestos />
-                </Route>
-                <Route path="/buffet" exact>
-                    <Buffet />
-                </Route>
-                <Route path="/especialidades" exact>
-                    <Especialidades />
-                </Route>
-                <Route path="/bebidas" exact>
-                    <Bebidas />
-                </Route>
-                <Route path="/bebidas-calientes" exact>
-                    <Calientes />
-                </Route>
-                <Route path="/bebidas-heladas" exact>
-                    <Heladas />
-                </Route>
-                <Route path="/gaseosas" exact>
-                    <Gaseosas />
-                </Route>
-                <Route path="/vinos" exact>
-                    <Vinos />
-                </Route>
-                <Route path="/licores" exact>
-                    <Licores />
-                </Route>
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={Administracion}
+                    path="/administracion"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={Empleados}
+                    path="/empleados"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={Especiales}
+                    path="/especiales"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={Mesas}
+                    path="/mesas"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={Puestos}
+                    path="/puestos"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={Buffet}
+                    path="/buffet"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={Especialidades}
+                    path="/especialidades"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={Bebidas}
+                    path="/bebidas"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={Calientes}
+                    path="/bebidas-calientes"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={Heladas}
+                    path="/bebidas-heladas"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={Gaseosas}
+                    path="/gaseosas"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={Vinos}
+                    path="/vinos"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={Licores}
+                    path="/licores"
+                    exact
+                />
 
 
                 {/* REPORTES */}
-                <Route path="/reportes" exact>
-                    <Reportes />
-                </Route>
-                <Route path="/bitacoras" exact>
-                    <Bitacoras />
-                </Route>
-                <Route path="/reporte-usuarios" exact>
-                    <ReporteUsuarios />
-                </Route>
-                <Route path="/facturas" exact>
-                    <Facturas />
-                </Route>
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema || usuario.administradorSeguridad || usuario.administradorCuentas}
+                    component={Reportes}
+                    usuario={usuario}
+                    path="/reportes"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema || usuario.administradorSeguridad}
+                    component={Bitacoras}
+                    path="/bitacoras"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={ReporteUsuarios}
+                    path="/reporte-usuarios"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema || usuario.administradorCuentas}
+                    component={Facturas}
+                    path="/facturas"
+                    exact
+                />
 
             </Switch>
 
