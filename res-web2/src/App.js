@@ -1,6 +1,6 @@
 
 import './App.css';
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { Rutas } from "./Rutas";
 import { Navbar, Nav, Button } from 'react-bootstrap';
@@ -24,23 +24,28 @@ function App({ usuarioLogueado, tokenUsuario, signOut }) {
         {usuario && <Link className="navbar-brand" to="/">Resturante</Link>}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto"></Nav>
-          <Nav>
-            {usuario && < Link className="nav-link" to="/Ayuda">Ayuda</Link>}
-            {usuario && < Link className="nav-link" to="/menu">Menú</Link>}
-            {
-              usuario
-                ?
-                <Button className="nav-link" variant="info" onClick={() => signOut()}>Logout</Button>
-                :
-                <Link className="nav-link" to="/login">Login</Link>
+          <Nav className="mr-auto">
+            {usuario.administradorSistema &&
+              <React.Fragment>
+                <Link className="nav-link" to="/Ayuda">Ayuda</Link>
+                <Link className="nav-link" to="/menu">Menú</Link>
+              </React.Fragment>
             }
           </Nav>
+          {usuario ?
+            <Nav>
+              <Navbar.Text className="mr-3 text-light">Usuario {usuario.nombre}</Navbar.Text>
+              <Button className="nav-link" variant="outline-secondary" onClick={() => signOut()}>Logout</Button>
+            </Nav>
+            :
+            <Nav>
+              <Link className="nav-link" to="/login">Login</Link>
+            </Nav>
+          }
         </Navbar.Collapse>
       </Navbar >
-
       <div className="container-fluid padding">
-        <Rutas usuario={usuario} token={token}/>
+        <Rutas usuario={usuario} token={token} />
       </div>
     </div >
   );

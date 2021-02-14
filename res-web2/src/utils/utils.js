@@ -5,3 +5,10 @@ export const TABLAS = {
     COMESTIBLES: "comestibles",
     DESECHABLES: "desechables",
 };
+
+export const ROLES = {
+    ADMIN: "Administrador",
+    SEGURIDAD: "Seguridad",
+    RESTAURANTE: "Restaurante",
+    CONTABILIDAD: "Contabilidad"
+};

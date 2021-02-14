@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { Spinner } from "react-bootstrap";
-import { makeRequest } from "../../../utils/API";
+import { makeRequest } from "../../../utils/api";
 import InputSelect from "./InputSelect";
 import MensajeError from "../Mensajes/MensajeError";
 
@@ -27,6 +27,7 @@ export default function InputFromApi({
             })
             .catch((error) => {
                 console.log('Error: ', error);
+                setFallo(true);
             });
     }, [tipo, token]);
 
