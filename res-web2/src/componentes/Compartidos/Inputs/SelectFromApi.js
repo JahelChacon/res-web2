@@ -4,14 +4,14 @@ import { makeRequest } from "../../../utils/api";
 import InputSelect from "./InputSelect";
 import MensajeError from "../Mensajes/MensajeError";
 
-export default function InputFromApi({
+export default function SelectFromApi({
     register,
     errors,
     label,
     name,
     size,
     required,
-    tipo,
+    tabla,
     token
 }) {
     const [lista, setLista] = useState([]);
@@ -19,7 +19,7 @@ export default function InputFromApi({
     const [fallo, setFallo] = useState(false);
 
     useEffect(() => {
-        makeRequest('GET', '/' + tipo, null, token)
+        makeRequest('GET', '/' + tabla, null, token)
             .then(response => response.json())
             .then(data => {
                 setLista(data);
@@ -29,7 +29,7 @@ export default function InputFromApi({
                 console.log('Error: ', error);
                 setFallo(true);
             });
-    }, [tipo, token]);
+    }, [tabla, token]);
 
     return (
         <Fragment>

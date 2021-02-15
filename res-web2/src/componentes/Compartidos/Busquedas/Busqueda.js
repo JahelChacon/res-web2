@@ -3,7 +3,8 @@ import { Container, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { makeRequest } from "../../../utils/api";
 import InputTexto from "../Inputs/InputTexto";
-import InputFromApi from "../Inputs/InputFromApi";
+import InputNumero from "../Inputs/InputNumero";
+import SelectFromApi from "../Inputs/SelectFromApi";
 import Filtro from "./Filtro";
 import Tabla from "./Tabla";
 import MensajeCargando from "../Mensajes/MensajeCargando";
@@ -55,18 +56,28 @@ export default function Busqueda({
                                         required={false}
                                         register={register}
                                         errors={errors} />
-                                    : filtro.tipo === 'nacionalidad'
-                                    &&
-                                    <InputFromApi
-                                        key={index}
-                                        token={token}
-                                        tipo='paises'
-                                        label={filtro.label}
-                                        name={filtro.name}
-                                        size={filtro.size}
-                                        required={false}
-                                        register={register}
-                                        errors={errors} />
+                                    : filtro.tipo === 'SelectFromApi'
+                                        ?
+                                        <SelectFromApi
+                                            key={index}
+                                            token={token}
+                                            tabla={filtro.tabla}
+                                            label={filtro.label}
+                                            name={filtro.name}
+                                            size={filtro.size}
+                                            required={false}
+                                            register={register}
+                                            errors={errors} />
+                                        : filtro.tipo === 'numero' &&
+                                        <InputNumero
+                                            key={index}
+                                            label={filtro.label}
+                                            name={filtro.name}
+                                            placeholder={filtro.placeholder}
+                                            size={filtro.size}
+                                            required={false}
+                                            register={register}
+                                            errors={errors} />
                             ))
                         }
                     </Row>

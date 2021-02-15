@@ -16,7 +16,7 @@ export default function Marcas({ token }) {
         { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "pequeno" },
         { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "pequeno" },
         { tipo: "texto", label: "Empresa", name: "empresa", placeholder: "Empresa", size: "pequeno" },
-        { tipo: "nacionalidad", label: "Nacionalidad", name: "nacionalidad", size: "pequeno" },
+        { tipo: "SelectFromApi", tabla:"paises" , label: "Nacionalidad", name: "nacionalidad", size: "pequeno" },
     ];
 
     return (
