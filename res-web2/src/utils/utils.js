@@ -4,6 +4,7 @@ export const TABLAS = {
     PROVEEDORES: 'proveedores-2',
     COMESTIBLES: "comestibles",
     DESECHABLES: "desechables",
+    MESAS: "mesas",
 };
 
 export const ROLES = {

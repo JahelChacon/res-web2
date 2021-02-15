@@ -4,11 +4,11 @@ import { TABLAS } from "../../../utils/utils";
 
 export default function MarcasInsertar({ token }) {
     const camposDerecha = {
-        titulo: 'Información de la marca',
+        titulo: 'Información de la Marca',
         campos: [
             { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "grande" },
             { tipo: "texto", label: "Nombre", name: "nombreMarca", placeholder: "Nombre", size: "grande" },
-            { tipo: "nacionalidad", label: "Nacionalidad", name: "nacionalidad", size: "grande" },
+            { tipo: "SelectFromApi", tabla:"paises" , label: "Nacionalidad", name: "nacionalidad", size: "grande" },
             { tipo: "texto", label: "Descripcion", name: "descripcionMarca", placeholder: "Descripcion", size: "grande" },
             { tipo: "imagen", label: "Foto de la Marca", name: "fotoMarca", placeholder: "Foto de la Marca", size: "grande" },
         ]

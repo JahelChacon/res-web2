@@ -51,6 +51,7 @@ const Administracion = lazy(() => import("../src/componentes/Administracion/Admi
 
 const Empleados = lazy(() => import("../src/componentes/Administracion/Empleados/Empleados"));
 const Mesas = lazy(() => import("../src/componentes/Administracion/Mesas/Mesas"));
+const MesasInsertar = lazy(() => import("../src/componentes/Administracion/Mesas/MesasInsertar"));
 const Puestos = lazy(() => import("../src/componentes/Administracion/Puestos/Puestos"));
 
 const Especiales = lazy(() => import("../src/componentes/Administracion/Especiales/Especiales"));
@@ -284,7 +285,15 @@ export function Rutas({ usuario, token }) {
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
                     component={Mesas}
+                    token={token}
                     path="/mesas"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={MesasInsertar}
+                    token={token}
+                    path="/mesas/insertar"
                     exact
                 />
                 <PrivateRoute
