@@ -31,9 +31,9 @@ const Restaurantes = lazy(() => import("../src/componentes/Restaurantes/Restaura
 const Clientes = lazy(() => import("../src/componentes/Clientes/Clientes"));
 
 // PROVEEDORES
-const Proveedores = lazy(() => import("../src/componentes/Proveedores/Proveedores"));
-const Proveedores2 = lazy(() => import("../src/componentes/Proveedores/Proveedores/Proveedores2"));
-const ProveedoresInsertar = lazy(() => import("../src/componentes/Proveedores/Proveedores/Proveedores2Insertar"));
+const ProveedoresInicio = lazy(() => import("./componentes/Proveedores/ProveedoresInicio"));
+const Proveedores = lazy(() => import("./componentes/Proveedores/Proveedores/Proveedores"));
+const ProveedoresInsertar = lazy(() => import("./componentes/Proveedores/Proveedores/ProveedoresInsertar"));
 const Marcas = lazy(() => import("../src/componentes/Proveedores/Marcas/Marcas"));
 const MarcasInsertar = lazy(() => import("../src/componentes/Proveedores/Marcas/MarcasInsertar"));
 
@@ -50,20 +50,29 @@ const Utensilios = lazy(() => import("../src/componentes/Proveedores/Productos/U
 const Administracion = lazy(() => import("../src/componentes/Administracion/Administracion"));
 
 const Empleados = lazy(() => import("../src/componentes/Administracion/Empleados/Empleados"));
+const EmpleadosInsertar = lazy(() => import("../src/componentes/Administracion/Empleados/EmpleadosInsertar"));
 const Mesas = lazy(() => import("../src/componentes/Administracion/Mesas/Mesas"));
 const MesasInsertar = lazy(() => import("../src/componentes/Administracion/Mesas/MesasInsertar"));
 const Puestos = lazy(() => import("../src/componentes/Administracion/Puestos/Puestos"));
+const PuestosInsertar = lazy(() => import("../src/componentes/Administracion/Puestos/PuestosInsertar"));
 
 const Especiales = lazy(() => import("../src/componentes/Administracion/Especiales/Especiales"));
 const Buffet = lazy(() => import("../src/componentes/Administracion/Especiales/Buffet/Buffet"));
+const BuffetInsertar = lazy(() => import("../src/componentes/Administracion/Especiales/Buffet/BuffetInsertar"));
 const Especialidades = lazy(() => import("../src/componentes/Administracion/Especiales/Especialidades/Especialidades"));
+const EspecialidadesInsertar = lazy(() => import("../src/componentes/Administracion/Especiales/Especialidades/EspecialidadesInsertar"));
 
 const Bebidas = lazy(() => import("../src/componentes/Administracion/Especiales/Bebidas/Bebidas"));
 const Calientes = lazy(() => import("../src/componentes/Administracion/Especiales/Bebidas/Calientes/Calientes"));
+const CalientesInsertar = lazy(() => import("../src/componentes/Administracion/Especiales/Bebidas/Calientes/CalientesInsertar"));
 const Heladas = lazy(() => import("../src/componentes/Administracion/Especiales/Bebidas/Heladas/Heladas"));
+const HeladasInsertar = lazy(() => import("../src/componentes/Administracion/Especiales/Bebidas/Heladas/HeladasInsertar"));
 const Gaseosas = lazy(() => import("../src/componentes/Administracion/Especiales/Bebidas/Gaseosas/Gaseosas"));
+const GaseosasInsertar = lazy(() => import("../src/componentes/Administracion/Especiales/Bebidas/Gaseosas/GaseosasInsertar"));
 const Vinos = lazy(() => import("../src/componentes/Administracion/Especiales/Bebidas/Vinos/Vinos"));
+const VinosInsertar = lazy(() => import("../src/componentes/Administracion/Especiales/Bebidas/Vinos/VinosInsertar"));
 const Licores = lazy(() => import("../src/componentes/Administracion/Especiales/Bebidas/Licores/Licores"));
+const LicoresInsertar = lazy(() => import("../src/componentes/Administracion/Especiales/Bebidas/Licores/LicoresInsertar"));
 
 // REPORTES
 const Reportes = lazy(() => import("../src/componentes/Reportes/Reportes"));
@@ -182,20 +191,20 @@ export function Rutas({ usuario, token }) {
                 {/* PROVEEDORES */}
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
+                    component={ProveedoresInicio}
+                    path="/proveedores-inicio"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
                     component={Proveedores}
                     path="/proveedores"
                     exact
                 />
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
-                    component={Proveedores2}
-                    path="/proveedores-2"
-                    exact
-                />
-                <PrivateRoute
-                    hasRole={usuario.administradorSistema}
                     component={ProveedoresInsertar}
-                    path="/proveedores-2/insertar"
+                    path="/proveedores/insertar"
                     exact
                 />
                 <PrivateRoute
@@ -273,7 +282,15 @@ export function Rutas({ usuario, token }) {
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
                     component={Empleados}
+                    token={token}
                     path="/empleados"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={EmpleadosInsertar}
+                    token={token}
+                    path="/empleados/insertar"
                     exact
                 />
                 <PrivateRoute
@@ -299,19 +316,43 @@ export function Rutas({ usuario, token }) {
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
                     component={Puestos}
+                    token={token}
                     path="/puestos"
                     exact
                 />
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
+                    component={PuestosInsertar}
+                    token={token}
+                    path="/puestos/insertar"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
                     component={Buffet}
+                    token={token}
                     path="/buffet"
                     exact
                 />
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
+                    component={BuffetInsertar}
+                    token={token}
+                    path="/buffet/insertar"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
                     component={Especialidades}
+                    token={token}
                     path="/especialidades"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={EspecialidadesInsertar}
+                    token={token}
+                    path="/especialidades/insertar"
                     exact
                 />
                 <PrivateRoute
@@ -323,31 +364,71 @@ export function Rutas({ usuario, token }) {
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
                     component={Calientes}
+                    token={token}
                     path="/bebidas-calientes"
                     exact
                 />
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
+                    component={CalientesInsertar}
+                    token={token}
+                    path="/bebidas-calientes/insertar"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
                     component={Heladas}
+                    token={token}
                     path="/bebidas-heladas"
                     exact
                 />
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
+                    component={HeladasInsertar}
+                    token={token}
+                    path="/bebidas-heladas/insertar"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
                     component={Gaseosas}
+                    token={token}
                     path="/gaseosas"
                     exact
                 />
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
+                    component={GaseosasInsertar}
+                    token={token}
+                    path="/gaseosas/insertar"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
                     component={Vinos}
+                    token={token}
                     path="/vinos"
                     exact
                 />
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
+                    component={VinosInsertar}
+                    token={token}
+                    path="/vinos/insertar"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
                     component={Licores}
+                    token={token}
                     path="/licores"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={LicoresInsertar}
+                    token={token}
+                    path="/licores/insertar"
                     exact
                 />
 

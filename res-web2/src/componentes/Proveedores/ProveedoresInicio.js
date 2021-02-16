@@ -8,7 +8,7 @@ import productosWebp from "../../img/Proveedores/productos.webp"
 import proveedores from "../../img/Proveedores/proveedores.png"
 import proveedoresWebp from "../../img/Proveedores/proveedores.webp"
 
-export default function Proveedores(){
+export default function ProveedoresInicio(){
     return(
         <Container> 
             <h2>Proveedores</h2>
@@ -32,7 +32,7 @@ export default function Proveedores(){
                     img={proveedores}
                     imgWebp={proveedoresWebp}
                     alt={"Proveedores"}
-                    url={"/proveedores-2"}
+                    url={"/proveedores"}
                 ></TemplateCard>
             </Row>
         </Container>
