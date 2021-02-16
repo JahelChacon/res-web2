@@ -8,7 +8,7 @@ export default function PaisesInsertar({ token }) {
         campos: [
             { tipo: "texto", label: "Código del País", name: "codigo", placeholder: "Código del País", size: "grande" },
             { tipo: "texto", label: "Nombre del País", name: "nombre", placeholder: "Nombre del País", size: "grande" },
-            { tipo: "imagen", label: "Bandera del País", name: "imagen", placeholder: "Bandera del País", size: "grande" },
+            { tipo: "imagen", label: "Bandera del País", name: "imagen", size: "grande" },
         ]
     };
 

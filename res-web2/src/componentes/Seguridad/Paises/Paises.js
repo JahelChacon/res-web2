@@ -11,7 +11,6 @@ export default function Paises({ token }) {
     const filtros = [
         { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "pequeno" },
         { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "pequeno" },
-        { tipo: "imagen", label: "Bandera", name: "imagen", size: "pequeno" },
     ];
 
     return (

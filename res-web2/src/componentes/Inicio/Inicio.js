@@ -56,7 +56,7 @@ export default function Inicio({ usuario }) {
                         img={proveedores}
                         imgWebp={proveedoresWebp}
                         alt={"Proveedores"}
-                        url={"/proveedores"}
+                        url={"/proveedores-inicio"}
                     ></TemplateCardInicio>
                 }
                 {usuario.administradorSistema &&
