@@ -17,6 +17,7 @@ const Menu = lazy(() => import("../src/componentes/Menu/Menu"));
 // SEGURIDAD
 const Seguridad = lazy(() => import("../src/componentes/Seguridad/Seguridad"));
 const Usuarios = lazy(() => import("../src/componentes/Seguridad/Usuarios/Usuarios"));
+const UsuariosInsertar = lazy(() => import("../src/componentes/Seguridad/Usuarios/UsuariosInsertar"));
 const Cajas = lazy(() => import("../src/componentes/Seguridad/Cajas/Cajas"));
 const Consecutivos = lazy(() => import("../src/componentes/Seguridad/Consecutivos/Consecutivos"));
 const Roles = lazy(() => import("../src/componentes/Seguridad/Roles/Roles"));
@@ -43,8 +44,11 @@ const ComestiblesInsertar = lazy(() => import("../src/componentes/Proveedores/Pr
 const Desechables = lazy(() => import("../src/componentes/Proveedores/Productos/Desechables/Desechables"));
 const DesechablesInsertar = lazy(() => import("../src/componentes/Proveedores/Productos/Desechables/DesechablesInsertar"));
 const Limpieza = lazy(() => import("../src/componentes/Proveedores/Productos/Limpieza/Limpieza"));
+const LimpiezaInsertar = lazy(() => import("../src/componentes/Proveedores/Productos/Limpieza/LimpiezaInsertar"));
 const Tecnologia = lazy(() => import("../src/componentes/Proveedores/Productos/Tecnologia/Tecnologia"));
+const TecnologiaInsertar = lazy(() => import("../src/componentes/Proveedores/Productos/Tecnologia/TecnologiaInsertar"));
 const Utensilios = lazy(() => import("../src/componentes/Proveedores/Productos/Utensilios/Utensilios"));
+const UtensiliosInsertar = lazy(() => import("../src/componentes/Proveedores/Productos/Utensilios/UtensiliosInsertar"));
 
 // ADMINISTRACION
 const Administracion = lazy(() => import("../src/componentes/Administracion/Administracion"));
@@ -128,6 +132,12 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema || usuario.administradorSeguridad}
                     component={Usuarios}
                     path="/usuarios"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema || usuario.administradorSeguridad}
+                    component={UsuariosInsertar}
+                    path="/usuarios/insertar"
                     exact
                 />
                 <PrivateRoute
@@ -259,14 +269,32 @@ export function Rutas({ usuario, token }) {
                 />
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
+                    component={LimpiezaInsertar}
+                    path="/limpieza/insertar"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
                     component={Tecnologia}
                     path="/tecnologia"
                     exact
                 />
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
+                    component={TecnologiaInsertar}
+                    path="/tecnologia/insertar"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
                     component={Utensilios}
                     path="/utensilios"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema}
+                    component={UtensiliosInsertar}
+                    path="/utensilios/insertar"
                     exact
                 />
 
