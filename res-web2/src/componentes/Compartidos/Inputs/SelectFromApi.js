@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { Spinner } from "react-bootstrap";
-import { makeRequest } from "../../../utils/api";
+import { makeRequest } from "../../../utils/API";
 import InputSelect from "./InputSelect";
 import MensajeError from "../Mensajes/MensajeError";
 

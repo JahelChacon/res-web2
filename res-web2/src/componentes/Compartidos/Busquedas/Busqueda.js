@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { makeRequest } from "../../../utils/api";
+import { makeRequest } from "../../../utils/API";
 import InputTexto from "../Inputs/InputTexto";
 import InputNumero from "../Inputs/InputNumero";
 import SelectFromApi from "../Inputs/SelectFromApi";
