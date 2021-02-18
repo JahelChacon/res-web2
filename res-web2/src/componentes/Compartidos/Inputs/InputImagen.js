@@ -1,7 +1,7 @@
 import React from "react";
 import { Col } from "react-bootstrap"
 
-export default function InputTexto({
+export default function InputImagen({
     label,
     name,
     register,

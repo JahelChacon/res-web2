@@ -14,7 +14,7 @@ export default function ModalExito({
             <Modal.Body>
                 <Container>
                     <div className="text-center"><img src={checkGreen} alt='Icono de éxito' style={{ height: "200px", width: "200px" }} /></div>
-                    <div className="text-center m-4"><strong style={{ 'font-size': '20px' }}>{texto}</strong></div>
+                    <div className="text-center m-4"><strong style={{ 'fontSize': '20px' }}>{texto}</strong></div>
                     <div className="text-center"><Button variant='secondary' onClick={close}>Cerrar</Button></div>
                 </Container>
             </Modal.Body>
