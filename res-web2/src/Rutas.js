@@ -19,6 +19,7 @@ const Seguridad = lazy(() => import("../src/componentes/Seguridad/Seguridad"));
 const Usuarios = lazy(() => import("../src/componentes/Seguridad/Usuarios/Usuarios"));
 const UsuariosInsertar = lazy(() => import("../src/componentes/Seguridad/Usuarios/UsuariosInsertar"));
 const Cajas = lazy(() => import("../src/componentes/Seguridad/Cajas/Cajas"));
+// const CajasInsertar = lazy(() => import("../src/componentes/Seguridad/Cajas/CajasInsertar"));
 const Consecutivos = lazy(() => import("../src/componentes/Seguridad/Consecutivos/Consecutivos"));
 const Roles = lazy(() => import("../src/componentes/Seguridad/Roles/Roles"));
 const Paises = lazy(() => import("../src/componentes/Seguridad/Paises/Paises"));
@@ -146,6 +147,12 @@ export function Rutas({ usuario, token }) {
                     path="/cajas"
                     exact
                 />
+                {/* <PrivateRoute
+                    hasRole={usuario.administradorSistema || usuario.administradorSeguridad || usuario.administradorCuentas}
+                    component={CajasInsertar}
+                    path="/cajas/insertar"
+                    exact
+                /> */}
                 <PrivateRoute
                     hasRole={usuario.administradorSistema || usuario.administradorSeguridad}
                     component={Consecutivos}

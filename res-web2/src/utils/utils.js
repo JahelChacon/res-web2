@@ -2,6 +2,7 @@ export const TABLAS = {
     MARCA: 'marcas',
     PAIS: 'paises',
     PROVEEDORES: 'proveedores',
+    CAJAS: 'cajas',
     COMESTIBLES: "comestibles",
     DESECHABLES: "desechables",
     MESAS: "mesas",
