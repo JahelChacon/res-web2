@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { makeRequest } from "../../../utils/api";
 import InputTexto from "../Inputs/InputTexto";
 import InputNumero from "../Inputs/InputNumero";
+import InputRadio from "../Inputs/InputRadio";
 import SelectFromApi from "../Inputs/SelectFromApi";
 import Filtro from "./Filtro";
 import Tabla from "./Tabla";
@@ -15,6 +16,7 @@ export default function Busqueda({
     tabla,
     columnas,
     filtros,
+    insertarURL,
     token
 }) {
     const [tablaData, setTablaData] = useState([]);
@@ -41,7 +43,7 @@ export default function Busqueda({
     return (
         <Container>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Filtro titulo={titulo} limpiar={reset} insertarURL={tabla + '/insertar'}>
+                <Filtro titulo={titulo} limpiar={reset} insertarURL={insertarURL ? insertarURL : tabla + '/insertar'}>
                     <Row>
                         {
                             filtros.length > 0 && filtros.map(((filtro, index) =>
@@ -68,16 +70,25 @@ export default function Busqueda({
                                             required={false}
                                             register={register}
                                             errors={errors} />
-                                        : filtro.tipo === 'numero' &&
-                                        <InputNumero
-                                            key={index}
-                                            label={filtro.label}
-                                            name={filtro.name}
-                                            placeholder={filtro.placeholder}
-                                            size={filtro.size}
-                                            required={false}
-                                            register={register}
-                                            errors={errors} />
+                                        : filtro.tipo === 'numero'
+                                            ?
+                                            <InputNumero
+                                                key={index}
+                                                label={filtro.label}
+                                                name={filtro.name}
+                                                placeholder={filtro.placeholder}
+                                                size={filtro.size}
+                                                required={false}
+                                                register={register}
+                                                errors={errors} />
+                                            : filtro.tipo === 'radio' &&
+                                            <InputRadio
+                                                key={index}
+                                                label={filtro.label}
+                                                name={filtro.name}
+                                                value={filtro.value}
+                                                size={filtro.size}
+                                                register={register} />
                             ))
                         }
                     </Row>

@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import InputTexto from "../../Compartidos/Inputs/InputTexto";
-import InputImagen from "../Inputs/ImputImagen";
+import InputImagen from "../Inputs/InputImagen";
+import InputRadio from "../Inputs/InputRadio";
 import InputNumero from "../Inputs/InputNumero";
 import SelectFromApi from "../Inputs/SelectFromApi";
 import BotonesInsertar from "../../Compartidos/Botones/BotonesInsertar";
@@ -13,6 +14,7 @@ export default function Insertar({
     tabla,
     camposDerecha,
     camposIzquierda,
+    cancelarURL,
     token
 }) {
     const [mostrarExito, setMostrarExito] = useState(false);
@@ -72,15 +74,24 @@ export default function Insertar({
                                                                 size={campo.size}
                                                                 register={register}
                                                                 errors={errors} />
-                                                            : campo.tipo === 'numero' &&
-                                                            <InputNumero
-                                                                key={index}
-                                                                label={campo.label}
-                                                                name={campo.name}
-                                                                placeholder={campo.placeholder}
-                                                                size={campo.size}
-                                                                register={register}
-                                                                errors={errors} />
+                                                            : campo.tipo === 'numero'
+                                                                ?
+                                                                <InputNumero
+                                                                    key={index}
+                                                                    label={campo.label}
+                                                                    name={campo.name}
+                                                                    placeholder={campo.placeholder}
+                                                                    size={campo.size}
+                                                                    register={register}
+                                                                    errors={errors} />
+                                                                : campo.tipo === 'radio' &&
+                                                                <InputRadio
+                                                                    key={index}
+                                                                    label={campo.label}
+                                                                    name={campo.name}
+                                                                    value={campo.value}
+                                                                    size={campo.size}
+                                                                    register={register} />
 
                                             ))
                                         }
@@ -119,22 +130,31 @@ export default function Insertar({
                                                                 size={campo.size}
                                                                 register={register}
                                                                 errors={errors} />
-                                                            : campo.tipo === 'numero' &&
-                                                            <InputNumero
-                                                                key={index}
-                                                                label={campo.label}
-                                                                name={campo.name}
-                                                                placeholder={campo.placeholder}
-                                                                size={campo.size}
-                                                                register={register}
-                                                                errors={errors} />
+                                                            : campo.tipo === 'numero'
+                                                                ?
+                                                                <InputNumero
+                                                                    key={index}
+                                                                    label={campo.label}
+                                                                    name={campo.name}
+                                                                    placeholder={campo.placeholder}
+                                                                    size={campo.size}
+                                                                    register={register}
+                                                                    errors={errors} />
+                                                                : campo.tipo === 'radio' &&
+                                                                <InputRadio
+                                                                    key={index}
+                                                                    label={campo.label}
+                                                                    name={campo.name}
+                                                                    value={campo.value}
+                                                                    size={campo.size}
+                                                                    register={register} />
                                             ))
                                         }
                                     </Col>
                                 </Row>
                             </Card.Body>
                             <Card.Footer style={{ textAlign: "right" }}>
-                                <BotonesInsertar limpiar={reset} cancelar={"/" + tabla} />
+                                <BotonesInsertar limpiar={reset} cancelar={cancelarURL ? cancelarURL : "/" + tabla} />
                             </Card.Footer>
                         </Card>
                     </Col>

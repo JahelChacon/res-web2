@@ -1,10 +1,36 @@
 import React from "react";
-import { Container } from "react-bootstrap";
+import Insertar from "../../../../Compartidos/Busquedas/Insertar";
+import { TABLAS } from "../../../../../utils/utils";
 
-export default function LicoresInsertar(){
+export default function LicoresInsertar({ token }) {
+    const camposDerecha = {
+        titulo: 'Información del Licor',
+        campos: [
+            { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "grande" },
+            { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "grande" },
+            { tipo: "texto", label: "Marca", name: "marca", placeholder: "Marca", size: "grande" },
+            { tipo: "texto", label: "Precio Unitario", name: "precioUnitario", placeholder: "Precio Unitario", size: "grande" },
+            { tipo: "texto", label: "Precio Botella", name: "precioBotella", placeholder: "Precio Botella", size: "grande" },
+        ]
+    };
+
+    const camposIzquierda = {
+        campos: [
+            { tipo: "SelectFromApi", tabla: "paises", label: "Nacionalidad", name: "nacionalidad", size: "grande" },
+            { tipo: "SelectFromApi", tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "grande" },
+            { tipo: "texto", label: "Cantidad", name: "cantidad", placeholder: "Cantidad", size: "grande" },
+            { tipo: "texto", label: "Descripción", name: "descripcion", placeholder: "Descripción", size: "grande" },
+            { tipo: "imagen", label: "Foto del Licor", name: "foto", size: "grande" },
+        ]
+    };
+
     return (
-        <Container>
-            <h2>Licores</h2>
-        </Container>
+        <Insertar
+            titulo={"Insertar Licor"}
+            tabla={TABLAS.LICOR}
+            camposDerecha={camposDerecha}
+            camposIzquierda={camposIzquierda}
+            token={token}
+        />
     )
 }

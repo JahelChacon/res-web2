@@ -1,10 +1,32 @@
 import React from "react";
-import { Container } from "react-bootstrap";
+import Insertar from "../../../Compartidos/Busquedas/Insertar";
+import { TABLAS } from "../../../../utils/utils";
 
-export default function BuffetInsertar(){
-    return(
-        <Container>
-            <h2>Buffet</h2>
-        </Container>
+export default function BuffetInsertar({ token }) {
+    const camposDerecha = {
+        titulo: 'Información del Buffet',
+        campos: [
+            { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "grande" },
+            { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "grande" },
+            { tipo: "texto", label: "Precio", name: "precio", placeholder: "Precio", size: "grande" },
+        ]
+    };
+
+    const camposIzquierda = {
+        campos: [
+            { tipo: "texto", label: "Tipo", name: "tipo", placeholder: "Tipo", size: "grande" }, // Viene de comestibles
+            { tipo: "texto", label: "Unidad De Medida", name: "unidadDeMedida", placeholder: "Unidad De Medida", size: "grande" },
+            { tipo: "imagen", label: "Foto del platillo", name: "foto", size: "grande" },
+        ]
+    };
+
+    return (
+        <Insertar
+            titulo={"Insertar Buffet"}
+            tabla={TABLAS.BUFFET}
+            camposDerecha={camposDerecha}
+            camposIzquierda={camposIzquierda}
+            token={token}
+        />
     )
 }
