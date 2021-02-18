@@ -16,7 +16,7 @@ export default function Buffet({ token }) {
         { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "pequeno" },
         { tipo: "texto", label: "Precio", name: "precio", placeholder: "Precio", size: "pequeno" },
         { tipo: "texto", label: "Tipo", name: "tipo", placeholder: "Tipo", size: "pequeno" },
-        { tipo: "SelectFromApi", tabla:"unidadesDeMedida" , label: "Unidad de Medida", name: "unidadDeMedida", size: "pequeno" },
+        { tipo: "texto", label: "Unidad De Medida", name: "unidadDeMedida", placeholder: "Unidad De Medida", size: "pequeno" },
     ];
 
     return (

@@ -15,7 +15,7 @@ export default function BuffetInsertar({ token }) {
     const camposIzquierda = {
         campos: [
             { tipo: "texto", label: "Tipo", name: "tipo", placeholder: "Tipo", size: "grande" }, // Viene de comestibles
-            { tipo: "SelectFromApi", tabla:"unidadesDeMedida" , label: "Unidad de Medida", name: "unidadDeMedida", size: "pequeno" },
+            { tipo: "texto", label: "Unidad De Medida", name: "unidadDeMedida", placeholder: "Unidad De Medida", size: "grande" },
             { tipo: "imagen", label: "Foto del platillo", name: "foto", size: "grande" },
         ]
     };
