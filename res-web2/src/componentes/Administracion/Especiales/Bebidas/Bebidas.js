@@ -11,13 +11,15 @@ import vinos from "../../../../img/Administracion/Especiales/Bebidas/vinos.png";
 import vinosWebp from "../../../../img/Administracion/Especiales/Bebidas/vinos.webp";
 import licores from "../../../../img/Administracion/Especiales/Bebidas/licores.png";
 import licoresWebp from "../../../../img/Administracion/Especiales/Bebidas/licores.webp";
+import BotonAtras from "../../../Compartidos/Botones/BotonAtras";
 
 
 export default function Bebidas(){
     return(
-        <Container>
-            <h2>Bebidas</h2>
-            <Row>
+        <Container className="text-left">
+            <BotonAtras url='especiales'/>
+            <h2 className="text-center">Bebidas</h2>
+            <Row className="text-center">
                 <TemplateCard
                     titulo={"Calientes"}
                     img={calientes}

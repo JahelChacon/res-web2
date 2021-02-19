@@ -13,13 +13,15 @@ import roles from "../../img/Seguridad/roles.png";
 import rolesWebp from "../../img/Seguridad/roles.webp";
 import usuarios from "../../img/Seguridad/usuarios.png";
 import usuariosWebp from "../../img/Seguridad/usuarios.webp";
+import BotonAtras from "../Compartidos/Botones/BotonAtras";
 
 
 export default function Seguridad({ usuario }) {
     return (
-        <Container>
-            <h2>Seguridad</h2>
-            <Row>
+        <Container className="text-left">
+            <BotonAtras/>
+            <h2 className="text-center">Seguridad</h2>
+            <Row className="text-center">
                 {(usuario.administradorSistema || usuario.administradorSeguridad) &&
                     <TemplateCard
                         titulo={"Usuarios"}

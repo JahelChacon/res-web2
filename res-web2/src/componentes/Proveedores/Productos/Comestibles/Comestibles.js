@@ -22,6 +22,7 @@ export default function Comestibles(){
             tabla={TABLAS.COMESTIBLES}
             columnas={columnas}
             filtros={filtros}
+            backURL="/productos"
         />
     )
 }

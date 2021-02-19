@@ -25,6 +25,7 @@ export default function Calientes({ token }) {
             filtros={filtros}
             insertarURL='/bebidas-calientes/insertar'
             token={token}
+            backURL="/bebidas"
         />
     )
 }

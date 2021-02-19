@@ -7,12 +7,14 @@ import productos from "../../img/Proveedores/productos.png"
 import productosWebp from "../../img/Proveedores/productos.webp"
 import proveedores from "../../img/Proveedores/proveedores.png"
 import proveedoresWebp from "../../img/Proveedores/proveedores.webp"
+import BotonAtras from "../Compartidos/Botones/BotonAtras";
 
 export default function ProveedoresInicio(){
     return(
-        <Container> 
-            <h2>Proveedores</h2>
-            <Row>
+        <Container className="text-left"> 
+            <BotonAtras/>
+            <h2 className="text-center">Proveedores</h2>
+            <Row className="text-center">
                 <TemplateCard
                     titulo={"Marcas"}
                     img={marcas}

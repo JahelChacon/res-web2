@@ -28,6 +28,7 @@ export default function Vinos({ token }) {
             columnas={columnas}
             filtros={filtros}
             token={token}
+            backURL="/bebidas"
         />
     )
 }

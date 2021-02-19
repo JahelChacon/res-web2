@@ -23,6 +23,7 @@ export default function Usuarios(){
             tabla={TABLAS.USUARIO}
             columnas={columnas}
             filtros={filtros}
+            backURL="/seguridad"
         />
     )
 }

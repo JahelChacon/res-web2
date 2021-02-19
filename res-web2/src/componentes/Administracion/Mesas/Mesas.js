@@ -26,6 +26,7 @@ export default function Mesas({ token }) {
             columnas={columnas}
             filtros={filtros}
             token={token}
+            backURL="/administracion"
         />
     )
 }

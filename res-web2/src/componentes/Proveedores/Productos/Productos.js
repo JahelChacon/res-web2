@@ -11,12 +11,14 @@ import tecnologia from "../../../img/Proveedores/Productos/tecnologia.png";
 import tecnologiaWebp from "../../../img/Proveedores/Productos/tecnologia.webp";
 import desechables from "../../../img/Proveedores/Productos/desechables.png";
 import desechablesWebp from "../../../img/Proveedores/Productos/desechables.webp";
+import BotonAtras from "../../Compartidos/Botones/BotonAtras";
 
 export default function Productos() {
     return(
-        <Container>
-            <h2>Productos</h2>
-            <Row>
+        <Container className="text-left">
+            <BotonAtras url='/proveedores-inicio'/>
+            <h2 className="text-center">Productos</h2>
+            <Row className="text-center">
                 <TemplateCard
                     titulo={"Comestibles"}
                     img={comestibles}

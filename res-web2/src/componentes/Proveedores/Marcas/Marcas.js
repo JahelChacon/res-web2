@@ -25,6 +25,7 @@ export default function Marcas({ token }) {
             tabla={TABLAS.MARCA}
             columnas={columnas}
             filtros={filtros}
+            backURL="/proveedores-inicio"
             token={token}
         />
     )

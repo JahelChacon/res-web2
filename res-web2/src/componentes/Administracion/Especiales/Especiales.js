@@ -7,13 +7,15 @@ import especialidades from "../../../img/Administracion/Especiales/especialidade
 import especialidadesWebp from "../../../img/Administracion/Especiales/especialidades.webp";
 import bebidas from "../../../img/Administracion/Especiales/bebidas.jpg";
 import bebidasWebp from "../../../img/Administracion/Especiales/bebidas.webp";
+import BotonAtras from "../../Compartidos/Botones/BotonAtras";
 
 
 export default function Especiales(){
     return(
-        <Container>
-            <h2>Especiales</h2>
-            <Row>
+        <Container className="text-left">
+             <BotonAtras url='/administracion'/>
+            <h2 className="text-center">Especiales</h2>
+            <Row className="text-center">
                 <TemplateCard
                     titulo={"Buffet"}
                     img={buffet}
