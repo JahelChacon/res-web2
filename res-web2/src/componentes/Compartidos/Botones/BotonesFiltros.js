@@ -12,8 +12,6 @@ export default function BotonesFiltros({ limpiar, insertarURL, inserta }){
                 <Link to={insertarURL} className="btn btn-outline-primary">Agregar</Link>{' '}
                 </>
             )}
-            <Link to={insertarURL} className="btn btn-outline-danger">Atrás</Link>{' '}
-            
         </div>
     )
 }

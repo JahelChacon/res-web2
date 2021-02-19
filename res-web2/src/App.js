@@ -3,7 +3,7 @@ import './App.css';
 import React from "react";
 import { Link } from 'react-router-dom';
 import { Rutas } from "./Rutas";
-import { Navbar, Nav, Button } from 'react-bootstrap';
+import { Navbar, Nav, Button, NavDropdown } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { logOut } from './store/actions/user';
 import "./css/css.css";
@@ -17,10 +17,34 @@ function App({ usuarioLogueado, tokenUsuario, signOut }) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            {(usuarioLogueado && usuarioLogueado.administradorSistema) &&
+            {(usuarioLogueado) &&
               <React.Fragment>
-                <Link className="nav-link" to="/Ayuda">Ayuda</Link>
-                <Link className="nav-link" to="/menu">Menú</Link>
+                <NavDropdown title="Sistema" id="basic-nav-dropdown">
+                  <NavDropdown.Item to="/informacion">Información</NavDropdown.Item>
+                </NavDropdown>
+                {
+                  !usuarioLogueado.administradorCuentas &&
+                  <NavDropdown title="Ayuda" id="basic-nav-dropdown">
+                    {
+                      usuarioLogueado.administradorSistema ?
+                        <NavDropdown.Item to="/reporte-sistema">Sistema</NavDropdown.Item>
+                        : usuarioLogueado.administradorSeguridad ?
+                          <NavDropdown.Item to="/reporte-reguridad">Seguridad</NavDropdown.Item>
+                          : usuarioLogueado.administradorRestaurante &&
+                          <React.Fragment>
+                            <NavDropdown.Item to="/reporte-restaurante">Resturante</NavDropdown.Item>
+                            <NavDropdown.Item to="/reporte-licor">Licor</NavDropdown.Item>
+                            <NavDropdown.Item to="/reporte-vinos">Vinos</NavDropdown.Item>
+                          </React.Fragment>
+                    }
+                  </NavDropdown>
+                }
+                {
+                  usuarioLogueado.administradorRestaurante && 
+                  <NavDropdown title="Procesos" id="basic-nav-dropdown">
+                    <NavDropdown.Item to="/reporte-clientes">Clientes</NavDropdown.Item>
+                  </NavDropdown>
+                }
               </React.Fragment>
             }
           </Nav>

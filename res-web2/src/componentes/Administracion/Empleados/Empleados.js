@@ -34,6 +34,7 @@ export default function Empleados({ token }) {
             columnas={columnas}
             filtros={filtros}
             token={token}
+            backURL="/administracion"
         />
     )
 }

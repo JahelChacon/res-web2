@@ -9,13 +9,15 @@ import empleados from "../../img/Administracion/empleados.jpg"
 import empleadosWebp from "../../img/Administracion/empleados.webp"
 import puestos from "../../img/Administracion/puestos.jpg"
 import puestosWebp from "../../img/Administracion/puestos.webp"
+import BotonAtras from "../Compartidos/Botones/BotonAtras";
 
 
 export default function Administracion(){
     return(
-        <Container>
-            <h2>Administración</h2>
-            <Row>
+        <Container className="text-left">
+            <BotonAtras/>
+            <h2 className="text-center">Administración</h2>
+            <Row className="text-center">
                 <TemplateCard
                     titulo={"Especiales"}
                     img={especiales}

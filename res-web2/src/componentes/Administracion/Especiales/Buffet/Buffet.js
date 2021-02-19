@@ -26,6 +26,7 @@ export default function Buffet({ token }) {
             columnas={columnas}
             filtros={filtros}
             token={token}
+            backURL="/especiales"
         />
     )
 }

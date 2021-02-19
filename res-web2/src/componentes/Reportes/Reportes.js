@@ -7,13 +7,15 @@ import clientes from "../../img/Reportes/clientes.jpg";
 import clientesWebp from "../../img/Reportes/clientes.webp";
 import facturas from "../../img/Reportes/facturas.png";
 import facturasWebp from "../../img/Reportes/facturas.webp";
+import BotonAtras from "../Compartidos/Botones/BotonAtras";
 
 
 export default function Reportes({ usuario }) {
     return (
-        <Container>
-            <h2>Reportes</h2>
-            <Row>
+        <Container className="text-left">
+            <BotonAtras/>
+            <h2 className="text-center">Reportes</h2>
+            <Row className="text-center">
                 {(usuario.administradorSistema ||
                     usuario.administradorSeguridad) &&
                     <TemplateCard

@@ -23,6 +23,7 @@ export default function Gaseosas({ token }) {
             filtros={filtros}
             insertarURL='/gaseosas/insertar'
             token={token}
+            backURL="/bebidas"
         />
     )
 }

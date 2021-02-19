@@ -22,6 +22,7 @@ export default function Utensilios(){
             tabla={TABLAS.UTENSILIO}
             columnas={columnas}
             filtros={filtros}
+            backURL="/productos"
         />
     )
 }

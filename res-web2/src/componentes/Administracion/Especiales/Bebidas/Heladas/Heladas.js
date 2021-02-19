@@ -25,6 +25,7 @@ export default function Heladas({ token }) {
             filtros={filtros}
             insertarURL='/bebidas-heladas/insertar'
             token={token}
+            backURL="/bebidas"
         />
     )
 }

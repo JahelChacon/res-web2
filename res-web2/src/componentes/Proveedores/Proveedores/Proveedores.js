@@ -29,6 +29,7 @@ export default function Proveedores(){
             tabla={TABLAS.PROVEEDORES}
             columnas={columnas}
             filtros={filtros}
+            backURL="/proveedores-inicio"
         />
     )
 }

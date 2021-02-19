@@ -22,6 +22,7 @@ export default function Limpieza(){
             tabla={TABLAS.LIMPIEZA}
             columnas={columnas}
             filtros={filtros}
+            backURL="/productos"
         />
     )
 }

@@ -20,6 +20,7 @@ export default function Paises({ token }) {
             columnas={columnas}
             filtros={filtros}
             token={token}
+            backURL="/seguridad"
         />
     )
 }

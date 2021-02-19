@@ -26,6 +26,7 @@ export default function Licores({ token }) {
             columnas={columnas}
             filtros={filtros}
             token={token}
+            backURL="/bebidas"
         />
     )
 }

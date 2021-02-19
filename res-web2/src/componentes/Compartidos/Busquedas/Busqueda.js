@@ -17,6 +17,7 @@ export default function Busqueda({
     columnas,
     filtros,
     insertarURL,
+    backURL,
     token
 }) {
     const [tablaData, setTablaData] = useState([]);
@@ -43,7 +44,7 @@ export default function Busqueda({
     return (
         <Container>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Filtro titulo={titulo} limpiar={reset} insertarURL={insertarURL ? insertarURL : tabla + '/insertar'}>
+                <Filtro backURL={backURL} titulo={titulo} limpiar={reset} insertarURL={insertarURL ? insertarURL : tabla + '/insertar'}>
                     <Row>
                         {
                             filtros.length > 0 && filtros.map(((filtro, index) =>

@@ -22,6 +22,7 @@ export default function Tecnologia(){
             tabla={TABLAS.TECNOLOGIA}
             columnas={columnas}
             filtros={filtros}
+            backURL="/productos"
         />
     )
 }

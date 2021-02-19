@@ -22,6 +22,7 @@ export default function Desechables(){
             tabla={TABLAS.DESECHABLES}
             columnas={columnas}
             filtros={filtros}
+            backURL="/productos"
         />
     )
 }

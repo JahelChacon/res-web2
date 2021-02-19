@@ -26,6 +26,7 @@ export default function Puestos({ token }) {
             columnas={columnas}
             filtros={filtros}
             token={token}
+            backURL="/administracion"
         />
     )
 }

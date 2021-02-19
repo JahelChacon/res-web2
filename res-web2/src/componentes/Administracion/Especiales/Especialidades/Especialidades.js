@@ -27,6 +27,7 @@ export default function Especialidades({ token }) {
             filtros={filtros}
             insertarURL='/especialidades/insertar'
             token={token}
+            backURL="/especiales"
         />
     )
 }

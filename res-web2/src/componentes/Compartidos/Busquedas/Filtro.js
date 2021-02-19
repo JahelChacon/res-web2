@@ -1,17 +1,20 @@
 import React from "react";
 import { Row, Col, Card } from "react-bootstrap";
 import BotonesFiltros from "../Botones/BotonesFiltros";
+import BotonAtras from "../Botones/BotonAtras";
 
 export default function Filtro({
     titulo,
     reset,
     insertarURL,
+    backURL,
     children
 }) {
     return (
         <Row>
-            <Col xl={12} lg={12} md={12} sm={12} xs={12}>
-                <Card>
+            <Col className="text-left" xl={12} lg={12} md={12} sm={12} xs={12}>
+                <BotonAtras url={backURL}/>
+                <Card className="text-center">
                     <Card.Header className="bg-primary text-white">
                         <h2>{titulo}</h2>
                     </Card.Header>
