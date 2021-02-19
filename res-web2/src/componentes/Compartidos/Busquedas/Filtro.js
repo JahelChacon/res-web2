@@ -8,6 +8,7 @@ export default function Filtro({
     reset,
     insertarURL,
     backURL,
+    filtrar,
     children
 }) {
     return (
@@ -25,7 +26,7 @@ export default function Filtro({
                         {children}
                     </Card.Body>
                     <Card.Footer style={{ textAlign: "right" }}>
-                        <BotonesFiltros limpiar={reset} insertarURL={insertarURL} inserta />
+                        <BotonesFiltros filtrar={filtrar} limpiar={reset} insertarURL={insertarURL} inserta />
                     </Card.Footer>
                 </Card>
             </Col>

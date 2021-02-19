@@ -18,8 +18,11 @@ export default function Busqueda({
     filtros,
     insertarURL,
     backURL,
+    editarTitulo,
+    editarCampos,
     token
 }) {
+    const { register, getValues, reset, errors } = useForm();
     const [tablaData, setTablaData] = useState([]);
     const [cargando, setCargando] = useState(true);
     const [fallo, setFallo] = useState(false);
@@ -36,15 +39,14 @@ export default function Busqueda({
             });
     }, [tabla, token]);
 
-    const onSubmit = (formData) => {
-        console.log(formData)
+    const onFiltrar = () => {
+        console.log('Filtrando: ', getValues());
     };
 
-    const { register, handleSubmit, reset, errors } = useForm();
     return (
         <Container>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <Filtro backURL={backURL} titulo={titulo} limpiar={reset} insertarURL={insertarURL ? insertarURL : tabla + '/insertar'}>
+            <form>
+                <Filtro filtrar={onFiltrar} backURL={backURL} titulo={titulo} limpiar={reset} insertarURL={insertarURL ? insertarURL : tabla + '/insertar'}>
                     <Row>
                         {
                             filtros.length > 0 && filtros.map(((filtro, index) =>
@@ -95,13 +97,18 @@ export default function Busqueda({
                     </Row>
                 </Filtro>
                 <br></br>
-                <MensajeCargando cargando={cargando && !fallo} />
-                <MensajeError error={fallo} />
-                {
-                    (!cargando && !fallo) &&
-                    <Tabla columnas={columnas} filas={tablaData} />
-                }
             </form>
+            <MensajeCargando cargando={cargando && !fallo} />
+            <MensajeError error={fallo} />
+            {
+                (!cargando && !fallo) &&
+                <Tabla
+                    editarCampos={editarCampos}
+                    editarTitulo={editarTitulo}
+                    token={token}
+                    columnas={columnas}
+                    filas={tablaData} />
+            }
         </Container>
     )
 }

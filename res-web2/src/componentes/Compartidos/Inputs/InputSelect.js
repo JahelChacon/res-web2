@@ -2,6 +2,7 @@ import React from "react";
 import { Col } from "react-bootstrap";
 
 export default function InputSelect({
+    value,
     label,
     name,
     children,
@@ -20,6 +21,7 @@ export default function InputSelect({
             <div className="form-group">
                 <label>{label}</label>
                 <select
+                    defaultValue={value}
                     name={name}
                     className="form-control"
                     ref={register({

@@ -13,6 +13,12 @@ export default function Paises({ token }) {
         { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "pequeno" },
     ];
 
+    const editarCampos = [
+        { tipo: "texto", disabled: true, label: "Código del País", name: "codigo", placeholder: "Código del País", size: "mediano" },
+        { tipo: "texto", label: "Nombre del País", name: "nombre", placeholder: "Nombre del País", size: "mediano" },
+        { tipo: "imagen", label: "Bandera del País", name: "imagen", size: "mediano" },
+    ];
+
     return (
         <Busqueda
             titulo={"Países"}
@@ -21,6 +27,8 @@ export default function Paises({ token }) {
             filtros={filtros}
             token={token}
             backURL="/seguridad"
+            editarTitulo='Editar País'
+            editarCampos={editarCampos}
         />
     )
 }

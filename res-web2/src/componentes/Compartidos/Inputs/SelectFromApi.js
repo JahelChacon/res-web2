@@ -5,6 +5,7 @@ import InputSelect from "./InputSelect";
 import MensajeError from "../Mensajes/MensajeError";
 
 export default function SelectFromApi({
+    value,
     register,
     errors,
     label,
@@ -38,7 +39,14 @@ export default function SelectFromApi({
                     ?
                     <Spinner animation="border" />
                     : !cargando && !fallo &&
-                    <InputSelect required={required} label={label} name={name} size={size} register={register} errors={errors}>
+                    <InputSelect
+                        value={value}
+                        required={required}
+                        label={label}
+                        name={name}
+                        size={size}
+                        register={register}
+                        errors={errors}>
                         {
                             lista.map(((pais, index) =>
                                 <option

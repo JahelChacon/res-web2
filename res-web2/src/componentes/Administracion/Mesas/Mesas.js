@@ -19,6 +19,14 @@ export default function Mesas({ token }) {
         { tipo: "SelectFromApi", tabla:"restaurantes" , label: "Restaurante", name: "restaurante", size: "pequeno" },
     ];
 
+    const editarCampos = [
+        { tipo: "texto", disabled: true, label: "Código", name: "codigo", placeholder: "Código", size: "mediano" },
+        { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "mediano" },
+        { tipo: "numero", label: "Numero", name: "numero", placeholder: "Numero", size: "mediano" },
+        { tipo: "numero", label: "Cantidad de Sillas", name: "sillas", placeholder: "Sillas", size: "mediano" },
+        { tipo: "SelectFromApi", tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "mediano" },
+    ];
+
     return (
         <Busqueda
             titulo={"Mesas"}
@@ -27,6 +35,8 @@ export default function Mesas({ token }) {
             filtros={filtros}
             token={token}
             backURL="/administracion"
+            editarTitulo='Editar Mesa'
+            editarCampos={editarCampos}
         />
     )
 }
