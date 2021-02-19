@@ -6,7 +6,7 @@ export default function EmpleadosInsertar({ token }) {
     const camposDerecha = {
         titulo: 'Información del Empleado',
         campos: [
-          { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "grande" },
+          { tipo: "texto", disabled:true, label: "Código", name: "codigo", placeholder: "Código", size: "grande" },
           { tipo: "texto", label: "Cedula", name: "cedula", placeholder: "Cedula", size: "grande" },
           { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "grande" },
           { tipo: "texto", label: "Primer Apellido", name: "primerApellido", placeholder: "Primer Apellido", size: "grande" },

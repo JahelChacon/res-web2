@@ -2,10 +2,10 @@ import { React } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export default function BotonesFiltros({ limpiar, insertarURL, inserta }){
+export default function BotonesFiltros({ filtrar, limpiar, insertarURL, inserta }){
     return(
         <div>
-            <Button variant="outline-success" type={"submit"}>Filtrar</Button>{' '}
+            <Button type="button" variant="outline-success" onClick={filtrar}>Filtrar</Button>{' '}
             <Button type="reset" variant="outline-warning" onClick={limpiar}>Limpiar</Button>{' '}
             {inserta && (
                 <>

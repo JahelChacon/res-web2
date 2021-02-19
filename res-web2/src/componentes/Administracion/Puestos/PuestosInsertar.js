@@ -6,7 +6,7 @@ export default function PuestosInsertar({ token }) {
     const camposDerecha = {
         titulo: 'Información del Puesto',
         campos: [
-            { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "grande" },
+            { tipo: "texto", disabled: true, label: "Código", name: "codigo", placeholder: "Código", size: "grande" },
             { tipo: "radio", label: "Interno", name: "trabajador", value: 'interno', size: "grande" },
             { tipo: "radio", label: "Externo", name: "trabajador", value: 'externo', size: "grande" },
         ]

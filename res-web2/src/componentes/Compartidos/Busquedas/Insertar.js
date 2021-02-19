@@ -19,19 +19,18 @@ export default function Insertar({
 }) {
     const [mostrarExito, setMostrarExito] = useState(false);
 
-    const onSubmit = (data) => {
-        console.log(data);
-        setMostrarExito(true);
-    };
+    // ***FALTA: Agregar campo de codigo de forma automatica
 
-    const cerrarModal = () => {
-        setMostrarExito(false);
+    const onAgregar = (data) => {
+        console.log('Agregando! ', data);
+        setMostrarExito(true);
+        // Agregar POST /delete
     };
 
     const { register, handleSubmit, reset, errors } = useForm();
     return (
         <Container>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onAgregar)}>
                 <Row>
                     <Col xl={12} md={12} sm={12} xs={12}>
                         <Card>
@@ -52,6 +51,7 @@ export default function Insertar({
                                                         name={campo.name}
                                                         placeholder={campo.placeholder}
                                                         size={campo.size}
+                                                        disabled={campo.disabled && campo.disabled}
                                                         register={register}
                                                         errors={errors} />
                                                     : campo.tipo === 'SelectFromApi'
@@ -108,6 +108,7 @@ export default function Insertar({
                                                         name={campo.name}
                                                         placeholder={campo.placeholder}
                                                         size={campo.size}
+                                                        disabled={campo.disabled && campo.disabled}
                                                         register={register}
                                                         errors={errors} />
                                                     : campo.tipo === 'SelectFromApi'
@@ -160,7 +161,7 @@ export default function Insertar({
                     </Col>
                 </Row>
             </form>
-            <ModalExito close={cerrarModal} show={mostrarExito} texto='Elemento insertado con éxito!' />
+            <ModalExito close={() => setMostrarExito(false)} show={mostrarExito} texto='Elemento insertado con éxito!' />
         </Container>
     )
 }
