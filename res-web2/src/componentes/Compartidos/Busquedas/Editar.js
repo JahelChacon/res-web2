@@ -46,6 +46,7 @@ export default function Editar({
                                                 <SelectFromApi
                                                     value={elemento[campo.name] && elemento[campo.name]}
                                                     key={index}
+                                                    texto={campo.texto && campo.texto}
                                                     token={token}
                                                     tabla={campo.tabla}
                                                     label={campo.label}

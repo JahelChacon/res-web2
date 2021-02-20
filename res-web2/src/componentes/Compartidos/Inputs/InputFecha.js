@@ -1,13 +1,16 @@
 import React from "react";
 import { Col } from "react-bootstrap"
 
-export default function InputImagen({
+export default function InputFecha({
+    value,
     label,
     name,
+    placeholder,
     register,
     errors,
     required = true,
-    size = 'grande'
+    size = 'grande',
+    disabled = false,
 }) {
     return (
         <Col
@@ -19,12 +22,14 @@ export default function InputImagen({
             <div className="form-group">
                 <label>{label}</label>
                 <input
-                    type="file"
-                    accept="image/x-png,image/gif,image/jpeg"
+                    defaultValue={value}
+                    disabled={disabled}
+                    type={"date"}
                     name={name}
-                    className="form-control-file"
-                    ref={register({
-                        required: required && "Port favor ingrese un valor",
+                    placeholder={placeholder}
+                    className="form-control"
+                    ref={register && register({
+                        required: required && "Por favor ingrese un valor",
                     })}
                 />
                 {errors[name] && (<div style={{ color: "red", fontSize: "14px" }}>{errors[name].message}</div>)}
