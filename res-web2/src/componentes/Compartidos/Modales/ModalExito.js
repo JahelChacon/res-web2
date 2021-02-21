@@ -9,6 +9,7 @@ export default function ModalExito({
 }) {
     return (
         <Modal
+            onHide={close}
             show={show}
             centered>
             <Modal.Body>

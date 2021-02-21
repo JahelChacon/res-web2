@@ -1,9 +1,11 @@
 import React from "react";
 import { Modal, Card, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { API_URL } from "../../../utils/api"
 import InputTexto from "../Inputs/InputTexto";
 import InputNumero from "../Inputs/InputNumero";
 import InputRadio from "../Inputs/InputRadio";
+import InputImagen from "../Inputs/InputImagen";
 import SelectFromApi from "../Inputs/SelectFromApi";
 import BotonesEditar from "../Botones/BotonesEditar";
 
@@ -18,7 +20,7 @@ export default function Editar({
 }) {
     const { register, reset, handleSubmit, errors } = useForm();
     return (
-        <Modal show={show} centered size="lg">
+        <Modal show={show} onHide={close} centered size="lg">
             <Modal.Body>
                 <form>
                     <Card>
@@ -65,14 +67,25 @@ export default function Editar({
                                                         size={campo.size}
                                                         register={register}
                                                         errors={errors} />
-                                                    : campo.tipo === 'radio' &&
-                                                    <InputRadio
-                                                        key={index}
-                                                        label={campo.label}
-                                                        name={campo.name}
-                                                        value={campo.value}
-                                                        size={campo.size}
-                                                        register={register} />
+                                                    : campo.tipo === 'radio'
+                                                        ?
+                                                        <InputRadio
+                                                            key={index}
+                                                            label={campo.label}
+                                                            name={campo.name}
+                                                            value={campo.value}
+                                                            size={campo.size}
+                                                            register={register} />
+                                                        : campo.tipo === 'imagen' &&
+                                                        <InputImagen
+                                                            key={index}
+                                                            value={API_URL + elemento[campo.name]}
+                                                            label={campo.label}
+                                                            name={campo.name}
+                                                            size={campo.size}
+                                                            required={false}
+                                                            register={register}
+                                                            errors={errors} />
                                     ))
                                 }
                             </Row>
