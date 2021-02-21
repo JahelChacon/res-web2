@@ -1,7 +1,7 @@
 import React from "react";
 import { Col } from "react-bootstrap"
 
-export default function InputNumero({
+export default function InputFecha({
     value,
     label,
     name,
@@ -24,7 +24,7 @@ export default function InputNumero({
                 <input
                     defaultValue={value}
                     disabled={disabled}
-                    type={"number"}
+                    type={"date"}
                     name={name}
                     placeholder={placeholder}
                     className="form-control"

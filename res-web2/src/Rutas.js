@@ -191,6 +191,7 @@ export function Rutas({ usuario, token }) {
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
                     component={Restaurantes}
+                    token={token}
                     path="/restaurantes"
                     exact
                 />
@@ -200,6 +201,7 @@ export function Rutas({ usuario, token }) {
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
                     component={Clientes}
+                    token={token}
                     path="/clientes"
                     exact
                 />
@@ -247,60 +249,70 @@ export function Rutas({ usuario, token }) {
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
                     component={Comestibles}
+                    token={token}
                     path="/comestibles"
                     exact
                 />
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
                     component={ComestiblesInsertar}
+                    token={token}
                     path="/comestibles/insertar"
                     exact
                 />
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
                     component={Desechables}
+                    token={token}
                     path="/desechables"
                     exact
                 />
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
                     component={DesechablesInsertar}
+                    token={token}
                     path="/desechables/insertar"
                     exact
                 />
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
                     component={Limpieza}
+                    token={token}
                     path="/limpieza"
                     exact
                 />
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
                     component={LimpiezaInsertar}
+                    token={token}
                     path="/limpieza/insertar"
                     exact
                 />
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
                     component={Tecnologia}
+                    token={token}
                     path="/tecnologia"
                     exact
                 />
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
                     component={TecnologiaInsertar}
+                    token={token}
                     path="/tecnologia/insertar"
                     exact
                 />
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
                     component={Utensilios}
+                    token={token}
                     path="/utensilios"
                     exact
                 />
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
                     component={UtensiliosInsertar}
+                    token={token}
                     path="/utensilios/insertar"
                     exact
                 />

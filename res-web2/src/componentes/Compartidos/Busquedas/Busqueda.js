@@ -5,6 +5,7 @@ import { makeRequest } from "../../../utils/API";
 import InputTexto from "../Inputs/InputTexto";
 import InputNumero from "../Inputs/InputNumero";
 import InputRadio from "../Inputs/InputRadio";
+import InputFecha from "../Inputs/InputFecha";
 import SelectFromApi from "../Inputs/SelectFromApi";
 import Filtro from "./Filtro";
 import Tabla from "./Tabla";
@@ -20,6 +21,7 @@ export default function Busqueda({
     backURL,
     editarTitulo,
     editarCampos,
+    soloBusqueda,
     token
 }) {
     const { register, getValues, reset, errors } = useForm();
@@ -46,7 +48,13 @@ export default function Busqueda({
     return (
         <Container>
             <form>
-                <Filtro filtrar={onFiltrar} backURL={backURL} titulo={titulo} limpiar={reset} insertarURL={insertarURL ? insertarURL : tabla + '/insertar'}>
+                <Filtro
+                    soloBusqueda={soloBusqueda}
+                    filtrar={onFiltrar}
+                    backURL={backURL}
+                    titulo={titulo}
+                    limpiar={reset}
+                    insertarURL={insertarURL ? insertarURL : tabla + '/insertar'}>
                     <Row>
                         {
                             filtros.length > 0 && filtros.map(((filtro, index) =>
@@ -84,14 +92,24 @@ export default function Busqueda({
                                                 required={false}
                                                 register={register}
                                                 errors={errors} />
-                                            : filtro.tipo === 'radio' &&
-                                            <InputRadio
-                                                key={index}
-                                                label={filtro.label}
-                                                name={filtro.name}
-                                                value={filtro.value}
-                                                size={filtro.size}
-                                                register={register} />
+                                            : filtro.tipo === 'radio'
+                                                ?
+                                                <InputRadio
+                                                    key={index}
+                                                    label={filtro.label}
+                                                    name={filtro.name}
+                                                    value={filtro.value}
+                                                    size={filtro.size}
+                                                    register={register} />
+                                                : filtro.tipo === 'fecha' &&
+                                                <InputFecha
+                                                    key={index}
+                                                    label={filtro.label}
+                                                    name={filtro.name}
+                                                    size={filtro.size}
+                                                    required={false}
+                                                    register={register}
+                                                    errors={errors} />
                             ))
                         }
                     </Row>
@@ -103,6 +121,7 @@ export default function Busqueda({
             {
                 (!cargando && !fallo) &&
                 <Tabla
+                    soloBusqueda={soloBusqueda}
                     editarCampos={editarCampos}
                     editarTitulo={editarTitulo}
                     token={token}

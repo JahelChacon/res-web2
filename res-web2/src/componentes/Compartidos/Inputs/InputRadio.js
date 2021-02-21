@@ -11,7 +11,7 @@ export default function InputRadio({
 }) {
     return (
         <Col
-            xl={size === 'grande' ? 12 : size === 'mediano' ? 6 : 4}
+            xl={size === 'grande' ? 12 : size === 'mediano' ? 6 : size === 'pequeno' ? 4 : 3}
             lg={size === 'grande' ? 12 : size === 'mediano' ? 6 : 4}
             md={size === 'grande' ? 12 : 6}
             sm={12}

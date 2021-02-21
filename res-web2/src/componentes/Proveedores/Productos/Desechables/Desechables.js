@@ -2,7 +2,7 @@ import React from "react";
 import Busqueda from "../../../Compartidos/Busquedas/Busqueda";
 import { TABLAS } from "../../../../utils/utils";
 
-export default function Desechables(){
+export default function Desechables({ token }){
     const columnas = [
         { text: "Codigo", dataField: "codigo" },
         { text: "Nombre", dataField: "nombre" },
@@ -13,7 +13,7 @@ export default function Desechables(){
     const filtros = [
         { tipo: "texto", label: "Código del empaque", name: "codigo", placeholder: "Código", size: "pequeno" },
         { tipo: "texto", label: "Nombre del empaque", name: "nombre", placeholder: "Nombre", size: "pequeno" },
-        { tipo: "texto", label: "Nombre del Restaurante", name: "restaurante", placeholder: "Restaurante", size: "pequeno" },
+        { tipo: "SelectFromApi", tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "pequeno" },
     ];
 
     return (
@@ -22,6 +22,7 @@ export default function Desechables(){
             tabla={TABLAS.DESECHABLES}
             columnas={columnas}
             filtros={filtros}
+            token={token}
             backURL="/productos"
         />
     )

@@ -2,13 +2,13 @@ import React from "react";
 import Insertar from "../../../Compartidos/Busquedas/Insertar";
 import { TABLAS } from "../../../../utils/utils";
 
-export default function LimpiezaInsertar(){
+export default function LimpiezaInsertar({ token }){
     const camposDerecha = {
         titulo: 'Información de los artículos',
         campos: [
             { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "grande" },
             { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "grande" },
-            { tipo: "texto", label: "Cantidad", name: "marca", placeholder: "Cantidad", size: "grande" },
+            { tipo: "numero", label: "Cantidad", name: "marca", placeholder: "Cantidad", size: "grande" },
             { tipo: "texto", label: "Tipo", name: "tipo", placeholder: "Tipo", size: "grande" },
             { tipo: "texto", label: "Cantidad de Medida", name: "cantidadMedida", placeholder: "Cantidad de Medida", size: "grande" },
         ]
@@ -17,8 +17,8 @@ export default function LimpiezaInsertar(){
     const camposIzquierda = {
         titulo: '',
         campos: [
-            { tipo: "texto", label: "Restaurante", name: "restaurante", placeholder: "Restaurante", size: "grande" },
-            { tipo: "texto", label: "Marca", name: "marca", placeholder: "Marca", size: "grande" },
+            { tipo: "SelectFromApi", tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "grande" },
+            { tipo: "SelectFromApi", tabla: "marcas", label: "Marca", name: "marca", size: "grande" },
             { tipo: "texto", label: "Descripción", name: "descripcion", placeholder: "Descripción", size: "grande" },
             { tipo: "texto", label: "Unidad de Medida", name: "unidadMedida", placeholder: "Unidad de Medida", size: "grande" },
         ]
@@ -29,6 +29,7 @@ export default function LimpiezaInsertar(){
             tabla={TABLAS.LIMPIEZA}
             camposDerecha={camposDerecha}
             camposIzquierda={camposIzquierda}
+            token={token}
         />
     )
 }

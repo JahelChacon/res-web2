@@ -2,7 +2,7 @@ import React from "react";
 import Busqueda from "../../../Compartidos/Busquedas/Busqueda";
 import { TABLAS } from "../../../../utils/utils";
 
-export default function Limpieza(){
+export default function Limpieza({ token }){
     const columnas = [
         { text: "Codigo", dataField: "codigo" },
         { text: "Nombre", dataField: "nombre" },
@@ -13,7 +13,7 @@ export default function Limpieza(){
     const filtros = [
         { tipo: "texto", label: "Código del artículo", name: "codigo", placeholder: "Código del artículo", size: "pequeno" },
         { tipo: "texto", label: "Nombre del artículo", name: "nombre", placeholder: "Nombre del artículo", size: "pequeno" },
-        { tipo: "texto", label: "Nombre del Restaurante", name: "restaurante", placeholder: "Nombre del Restaurante", size: "pequeno" },
+        { tipo: "SelectFromApi", tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "pequeno" },
     ];
 
     return (
@@ -22,6 +22,7 @@ export default function Limpieza(){
             tabla={TABLAS.LIMPIEZA}
             columnas={columnas}
             filtros={filtros}
+            token={token}
             backURL="/productos"
         />
     )
