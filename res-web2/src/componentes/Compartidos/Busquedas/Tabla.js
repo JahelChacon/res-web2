@@ -11,7 +11,8 @@ export default function Tabla({
     filas,
     token,
     editarTitulo,
-    editarCampos
+    editarCampos,
+    soloBusqueda
 }) {
     const [filaSeleccionada, setFila] = useState(false);
     const [mostrarEditar, setMostrarEditar] = useState(false);
@@ -41,10 +42,12 @@ export default function Tabla({
 
     return (
         <React.Fragment>
-            <Container className="text-left bg-light border p-3">
-                <Button className="mr-1" disabled={!filaSeleccionada} onClick={onEliminar} variant='outline-dark' type={"button"}>Eliminar</Button>
-                <Button disabled={!filaSeleccionada} onClick={() => setMostrarEditar(true)} variant='outline-info' type={"button"}>Editar</Button>
-            </Container>
+            { !soloBusqueda &&
+                <Container className="text-left bg-light border p-3">
+                    <Button className="mr-1" disabled={!filaSeleccionada} onClick={onEliminar} variant='outline-dark' type={"button"}>Eliminar</Button>
+                    <Button disabled={!filaSeleccionada} onClick={() => setMostrarEditar(true)} variant='outline-info' type={"button"}>Editar</Button>
+                </Container>
+            }
             <Row>
                 <Col xl={12} lg={12} md={12} sm={12} xs={12}>
                     {filas && <BootstrapTable
@@ -58,16 +61,20 @@ export default function Tabla({
                     }
                 </Col>
             </Row>
-            <Editar
-                titulo={editarTitulo}
-                editar={onEditar}
-                token={token}
-                close={() => setMostrarEditar(false)}
-                show={mostrarEditar}
-                elemento={filaSeleccionada}
-                campos={editarCampos} />
-            <ModalExito close={() => setExitoEditar(false)} show={exitoEditar} texto='Elemento Editado con éxito!' />
-            <ModalExito close={() => setExitoEliminar(false)} show={exitoEliminar} texto='Elemento Eliminado con éxito!' />
+            { !soloBusqueda &&
+                <React.Fragment>
+                    <Editar
+                        titulo={editarTitulo}
+                        editar={onEditar}
+                        token={token}
+                        close={() => setMostrarEditar(false)}
+                        show={mostrarEditar}
+                        elemento={filaSeleccionada}
+                        campos={editarCampos} />
+                    <ModalExito close={() => setExitoEditar(false)} show={exitoEditar} texto='Elemento Editado con éxito!' />
+                    <ModalExito close={() => setExitoEliminar(false)} show={exitoEliminar} texto='Elemento Eliminado con éxito!' />
+                </React.Fragment>
+            }
         </React.Fragment>
     )
 }

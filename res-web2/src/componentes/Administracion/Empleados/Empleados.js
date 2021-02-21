@@ -37,8 +37,8 @@ export default function Empleados({ token }) {
         { tipo: "texto", label: "Telefono 2", name: "telefono2", placeholder: "Telefono 2", size: "mediano" },
         { tipo: "texto", label: "Puesto", name: "puesto", placeholder: "Puesto", size: "mediano" },
         { tipo: "SelectFromApi", tabla: "paises", label: "Nacionalidad", name: "nacionalidad", size: "mediano" },
-        { tipo: "imagen", label: "Foto del Empleado", name: "foto", size: "mediano" },
         { tipo: "SelectFromApi", tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "mediano" },
+        { tipo: "imagen", label: "Foto del Empleado", name: "foto", size: "mediano" },
     ];
 
     return (
