@@ -1,4 +1,4 @@
-import { makeRequest } from '../../utils/api';
+import { makeRequest } from '../../utils/API';
 
 export const LOG_IN = 'LOG_IN';
 export const GET_TOKEN = 'GET_TOKEN';
