@@ -1,6 +1,7 @@
 import { Route, Switch } from "react-router-dom";
 import React, { lazy, Suspense } from "react";
 import PrivateRoute from './PrivateRoute';
+import RolesInsertar from "./componentes/Seguridad/Roles/RolesInsertar";
 
 // INICIO
 const Inicio = lazy(() => import("../src/componentes/Inicio/Inicio"));
@@ -22,9 +23,11 @@ const Cajas = lazy(() => import("../src/componentes/Seguridad/Cajas/Cajas"));
 // const CajasInsertar = lazy(() => import("../src/componentes/Seguridad/Cajas/CajasInsertar"));
 const Consecutivos = lazy(() => import("../src/componentes/Seguridad/Consecutivos/Consecutivos"));
 const Roles = lazy(() => import("../src/componentes/Seguridad/Roles/Roles"));
+const RolesIsertar = lazy(() => import("../src/componentes/Seguridad/Roles/RolesInsertar"));
 const Paises = lazy(() => import("../src/componentes/Seguridad/Paises/Paises"));
 const PaisesInsertar = lazy(() => import("../src/componentes/Seguridad/Paises/PaisesInsertar"));
 const UnidadMedida = lazy(() => import("../src/componentes/Seguridad/UnidadMedida/UnidadMedida"));
+const UnidadMedidaInsertar = lazy(() => import("../src/componentes/Seguridad/UnidadMedida/UnidadMedidaInsertar"));
 
 // RESTAURANTES
 const Restaurantes = lazy(() => import("../src/componentes/Restaurantes/Restaurantes"));
@@ -167,6 +170,12 @@ export function Rutas({ usuario, token }) {
                 />
                 <PrivateRoute
                     hasRole={usuario.administradorSistema || usuario.administradorSeguridad}
+                    component={RolesInsertar}
+                    path="/roles/insertar"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema || usuario.administradorSeguridad}
                     component={Paises}
                     token={token}
                     path="/paises"
@@ -183,6 +192,12 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema || usuario.administradorSeguridad}
                     component={UnidadMedida}
                     path="/medidas"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorSistema || usuario.administradorSeguridad}
+                    component={UnidadMedidaInsertar}
+                    path="/medidas/insertar"
                     exact
                 />
 

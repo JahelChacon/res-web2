@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, Card, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { API_URL } from "../../../utils/api"
+import { API_URL } from "../../../utils/API"
 import InputTexto from "../Inputs/InputTexto";
 import InputNumero from "../Inputs/InputNumero";
 import InputRadio from "../Inputs/InputRadio";

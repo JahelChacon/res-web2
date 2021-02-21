@@ -1,10 +1,34 @@
 import React from "react";
-import { Container } from "react-bootstrap";
+import Busqueda from "../../Compartidos/Busquedas/Busqueda";
+import { TABLAS } from "../../../utils/utils";
 
-export default function UnidadMedida(){
-    return(
-        <Container>
-            <h2>Unidades de Medida</h2>
-        </Container>
+export default function UnidadMedida({ token }){
+    const columnas = [
+        { text: "Codigo", dataField: "codigo" },
+        { text: "Nombre del Rol", dataField: "nombre" },
+    ];
+
+    const filtros = [
+        { tipo: "texto", label: "Código de Rol", name: "codigo", placeholder: "Código de Rol", size: "pequeno" },
+        { tipo: "texto", label: "Nombre de Rol", name: "nombre", placeholder: "Nombre de Rol", size: "pequeno" },
+    ];
+
+    const editarCampos = [
+        { tipo: "texto", disabled: true, label: "Código del Rol", name: "codigo", placeholder: "Código del Rol", size: "mediano" },
+        { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "mediano" },
+        { tipo: "texto", label: "Descripción", name: "descripcion", placeholder: "Descripción", size: "mediano" },
+    ];
+
+    return (
+        <Busqueda
+            titulo={"Unidades de Medida"}
+            tabla={TABLAS.UNIDAD_DE_MEDIDA}
+            columnas={columnas}
+            filtros={filtros}
+            token={token}
+            backURL="/seguridad"
+            editarTitulo='Editar Unidad de Medida'
+            editarCampos={editarCampos}
+        />
     )
 }
