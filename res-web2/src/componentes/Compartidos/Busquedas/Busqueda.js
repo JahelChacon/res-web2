@@ -30,6 +30,7 @@ export default function Busqueda({
     const [fallo, setFallo] = useState(false);
 
     useEffect(() => {
+        // ty catch
         makeRequest('GET', '/' + tabla, null, token)
             .then(response => response.json())
             .then(data => {

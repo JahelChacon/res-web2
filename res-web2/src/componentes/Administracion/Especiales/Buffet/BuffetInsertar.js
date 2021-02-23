@@ -8,7 +8,7 @@ export default function BuffetInsertar({ token }) {
         campos: [
             { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "grande" },
             { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "grande" },
-            { tipo: "texto", label: "Precio", name: "precio", placeholder: "Precio", size: "grande" },
+            { tipo: "numero", label: "Precio", name: "precio", placeholder: "Precio", size: "grande" },
         ]
     };
 

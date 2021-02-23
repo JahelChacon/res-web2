@@ -14,7 +14,7 @@ export const TABLAS = {
     CLIENTE: "clientes",
     CONSECUTIVO: "consecutivos",
     EMPLEADO: "empleados",
-    ESPECIAL: "especiales",
+    ESPECIALIDAD: "especialidades",
     FACTURA: "facturas",
     LICOR: "licores",
     LIMPIEZA: "limpieza",

@@ -12,11 +12,10 @@ export default function Puestos({ token }) {
     ];
 
     const filtros = [
-        { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "pequeno" },
-        { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "pequeno" },
-        { tipo: "texto", label: "Rol", name: "rol", placeholder: "Rol", size: "pequeno" },
-        { tipo: "radio", label: "Interno", name: "trabajador", value: 'interno', size: "pequeno" },
-        { tipo: "radio", label: "Externo", name: "trabajador", value: 'externo', size: "pequeno" },
+        { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "mediano" },
+        { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "mediano" },
+        { tipo: "radio", label: "Interno", name: "trabajador", value: 'interno', size: "x-pequeno" },
+        { tipo: "radio", label: "Externo", name: "trabajador", value: 'externo', size: "x-pequeno" },
     ];
 
     const editarCampos = [
