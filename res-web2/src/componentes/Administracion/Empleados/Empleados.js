@@ -17,13 +17,9 @@ export default function Empleados({ token }) {
 
     const filtros = [
         { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "pequeno" },
-        { tipo: "texto", label: "Cedula", name: "cedula", placeholder: "Cedula", size: "pequeno" },
         { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "pequeno" },
         { tipo: "texto", label: "Primer Apellido", name: "primerApellido", placeholder: "Primer Apellido", size: "pequeno" },
         { tipo: "texto", label: "Segundo Apellido", name: "segundoAppelido", placeholder: "Segundo Apellido", size: "pequeno" },
-        { tipo: "texto", label: "Telefono 1", name: "telefono1", placeholder: "Telefono 1", size: "pequeno" },
-        { tipo: "texto", label: "Telefono 2", name: "telefono2", placeholder: "Telefono 2", size: "pequeno" },
-        { tipo: "texto", label: "Puesto", name: "puesto", placeholder: "Puesto", size: "pequeno" },
         { tipo: "SelectFromApi", tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "pequeno" },
     ];
 

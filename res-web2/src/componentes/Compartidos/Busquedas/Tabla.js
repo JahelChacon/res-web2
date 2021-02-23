@@ -14,7 +14,7 @@ export default function Tabla({
     editarCampos,
     soloBusqueda
 }) {
-    const [filaSeleccionada, setFila] = useState(false);
+    const [filaSeleccionada, setfilaSeleccionada] = useState(false);
     const [mostrarEditar, setMostrarEditar] = useState(false);
     const [exitoEditar, setExitoEditar] = useState(false);
     const [exitoEliminar, setExitoEliminar] = useState(false);
@@ -23,7 +23,7 @@ export default function Tabla({
         mode: 'radio',
         clickToSelect: true,
         onSelect: (row) => {
-            setFila(row);
+            setfilaSeleccionada(row);
         },
     };
 

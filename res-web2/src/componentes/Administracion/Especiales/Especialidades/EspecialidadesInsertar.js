@@ -14,7 +14,7 @@ export default function EspecialidadesInsertar({ token }) {
 
     const camposIzquierda = {
         campos: [
-            { tipo: "texto", label: "Precio", name: "precio", placeholder: "Precio", size: "grande" },
+            { tipo: "numero", label: "Precio", name: "precio", placeholder: "Precio", size: "grande" },
             { tipo: "texto", label: "Detalle", name: "detalle", placeholder: "Detalle", size: "grande" },
             { tipo: "imagen", label: "Foto del Especial", name: "foto", size: "grande" },
         ]
@@ -23,7 +23,7 @@ export default function EspecialidadesInsertar({ token }) {
     return (
         <Insertar
             titulo={"Insertar especialidad"}
-            tabla={TABLAS.ESPECIAL}
+            tabla={TABLAS.ESPECIALIDAD}
             camposDerecha={camposDerecha}
             camposIzquierda={camposIzquierda}
             cancelarURL='/especialidades'

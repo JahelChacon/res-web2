@@ -13,8 +13,17 @@ export default function Heladas({ token }) {
     const filtros = [
         { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "pequeno" },
         { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "pequeno" },
-        { tipo: "texto", label: "Precio", name: "precio", placeholder: "Precio", size: "pequeno" },
         { tipo: "SelectFromApi", tabla:"restaurantes" , label: "Restaurante", name: "restaurante", size: "pequeno" },
+    ];
+
+    const editarCampos = [
+        { tipo: "texto", disabled: true, label: "Código", name: "codigo", placeholder: "Código", size: "mediano" },
+        { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "mediano" },
+        { tipo: "texto", label: "Ingredientes", name: "ingredientes", placeholder: "Ingredientes", size: "mediano" },
+        { tipo: "numero", label: "Precio", name: "precio", placeholder: "Precio", size: "mediano" },
+        { tipo: "SelectFromApi", tabla:"restaurantes" , label: "Restaurante", name: "restaurante", size: "mediano" },
+        { tipo: "texto", label: "Descripción", name: "descripcion", placeholder: "Descripción", size: "mediano" },
+        { tipo: "imagen", label: "foto de la Bebida", name: "foto", size: "mediano" },
     ];
 
     return (
@@ -26,6 +35,8 @@ export default function Heladas({ token }) {
             insertarURL='/bebidas-heladas/insertar'
             token={token}
             backURL="/bebidas"
+            editarTitulo='Editar Bebida Helada'
+            editarCampos={editarCampos}
         />
     )
 }

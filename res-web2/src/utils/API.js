@@ -12,3 +12,4 @@ export async function makeRequest (requestType, path, data, token) {
   });
   return await request;
 }
+
