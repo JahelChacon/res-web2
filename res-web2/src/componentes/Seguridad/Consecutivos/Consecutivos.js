@@ -24,6 +24,7 @@ export default function Consecutivos(){
             tabla={TABLAS.CONSECUTIVO}
             columnas={columnas}
             filtros={filtros}
+            backURL="/seguridad"
         />
     )
 }

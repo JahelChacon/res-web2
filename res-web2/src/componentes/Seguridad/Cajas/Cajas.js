@@ -26,6 +26,7 @@ export default function Cajas(){
             tabla={TABLAS.CAJAS}
             columnas={columnas}
             filtros={filtros}
+            backURL="/seguridad"
         />
     )
 }
