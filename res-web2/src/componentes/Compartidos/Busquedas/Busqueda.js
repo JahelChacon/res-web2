@@ -6,6 +6,8 @@ import InputTexto from "../Inputs/InputTexto";
 import InputNumero from "../Inputs/InputNumero";
 import InputRadio from "../Inputs/InputRadio";
 import InputFecha from "../Inputs/InputFecha";
+import InputCheckbox from "../Inputs/InputCheckbox";
+import InputPassword from "../Inputs/InputPassword";
 import SelectFromApi from "../Inputs/SelectFromApi";
 import Filtro from "./Filtro";
 import Tabla from "./Tabla";
@@ -22,6 +24,7 @@ export default function Busqueda({
     editarTitulo,
     editarCampos,
     soloBusqueda,
+    soloEditar,
     token
 }) {
     const { register, getValues, reset, errors } = useForm();
@@ -50,6 +53,7 @@ export default function Busqueda({
         <Container>
             <form>
                 <Filtro
+                    soloEditar={soloEditar}
                     soloBusqueda={soloBusqueda}
                     filtrar={onFiltrar}
                     backURL={backURL}
@@ -102,15 +106,35 @@ export default function Busqueda({
                                                     value={filtro.value}
                                                     size={filtro.size}
                                                     register={register} />
-                                                : filtro.tipo === 'fecha' &&
-                                                <InputFecha
-                                                    key={index}
-                                                    label={filtro.label}
-                                                    name={filtro.name}
-                                                    size={filtro.size}
-                                                    required={false}
-                                                    register={register}
-                                                    errors={errors} />
+                                                : filtro.tipo === 'fecha'
+                                                    ?
+                                                    <InputFecha
+                                                        key={index}
+                                                        label={filtro.label}
+                                                        name={filtro.name}
+                                                        size={filtro.size}
+                                                        required={false}
+                                                        register={register}
+                                                        errors={errors} />
+                                                    : filtro.tipo === 'checkbox'
+                                                        ?
+                                                        <InputCheckbox
+                                                            key={index}
+                                                            label={filtro.label}
+                                                            name={filtro.name}
+                                                            value={filtro.value}
+                                                            size={filtro.size}
+                                                            register={register} />
+                                                        : filtro.tipo === 'password' &&
+                                                        <InputPassword
+                                                            key={index}
+                                                            label={filtro.label}
+                                                            name={filtro.name}
+                                                            placeholder={filtro.placeholder}
+                                                            size={filtro.size}
+                                                            required={false}
+                                                            register={register}
+                                                            errors={errors} />
                             ))
                         }
                     </Row>

@@ -2,20 +2,28 @@ import React from "react";
 import Busqueda from "../../Compartidos/Busquedas/Busqueda";
 import { TABLAS } from "../../../utils/utils";
 
-export default function Consecutivos(){
+export default function Consecutivos({ token }){
     const columnas = [
         { text: "Codigo", dataField: "codigo" },
-        { text: "Fecha de Registro", dataField: "fechaRegistro" },
         { text: "Descripción", dataField: "descripcion" },
-        { text: "Entrada de Dinero", dataField: "entradaDinero" },
-        { text: "Apertura de Caja", dataField: "aperturaCaja" },
-        { text: "Cierre de Caja", dataField: "cierreCaja" },
-        { text: "Restaurante", dataField: "restaurante" },
+        { text: "Colección", dataField: "tabla" },
+        { text: "Valor", dataField: "valor" },
+        { text: "Tiene Prefijo", dataField: "tienePrefijo" },
+        { text: "Prefijo", dataField: "prefijo" },
     ];
 
     const filtros = [
-        { tipo: "texto", label: "Código del Consecutivo", name: "codigo", placeholder: "Código del Consecutivo", size: "pequeno" },
-        { tipo: "texto", label: "Descripción del Consecutivo", name: "descripcion", placeholder: "Descripción del Consecutivo", size: "pequeno" },
+        { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "pequeno" },
+        { tipo: "texto", label: "Descripción", name: "descripcion", placeholder: "Descripción", size: "pequeno" },
+    ];
+
+    const editarCampos = [
+        { tipo: "texto", disabled: true, label: "Código", name: "codigo", placeholder: "Código", size: "mediano" },
+        { tipo: "texto", label: "Descripción", name: "descripcion", placeholder: "Descripción", size: "mediano" },
+        { tipo: "texto", label: "Colección", name: "tabla", placeholder: "Colección", size: "mediano" },
+        { tipo: "texto", disabled: true, label: "Valor", name: "valor", placeholder: "Valor", size: "mediano" },
+        { tipo: "texto", label: "Prefijo", name: "prefijo", placeholder: "Prefijo", size: "mediano" },
+        { tipo: "checkbox", label: "Tiene Prefijo", name: "tienePrefijo", size: "mediano" },
     ];
 
     return (
@@ -24,7 +32,11 @@ export default function Consecutivos(){
             tabla={TABLAS.CONSECUTIVO}
             columnas={columnas}
             filtros={filtros}
+            token={token}
             backURL="/seguridad"
+            editarTitulo='Editar Consecutivo'
+            editarCampos={editarCampos}
+            soloEditar={true}
         />
     )
 }

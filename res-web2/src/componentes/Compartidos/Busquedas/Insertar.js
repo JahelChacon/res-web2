@@ -5,6 +5,8 @@ import InputTexto from "../../Compartidos/Inputs/InputTexto";
 import InputImagen from "../Inputs/InputImagen";
 import InputRadio from "../Inputs/InputRadio";
 import InputNumero from "../Inputs/InputNumero";
+import InputCheckbox from "../Inputs/InputCheckbox";
+import InputPassword from "../Inputs/InputPassword";
 import SelectFromApi from "../Inputs/SelectFromApi";
 import BotonesInsertar from "../../Compartidos/Botones/BotonesInsertar";
 import ModalExito from "../Modales/ModalExito";
@@ -84,15 +86,34 @@ export default function Insertar({
                                                                     size={campo.size}
                                                                     register={register}
                                                                     errors={errors} />
-                                                                : campo.tipo === 'radio' &&
-                                                                <InputRadio
-                                                                    key={index}
-                                                                    label={campo.label}
-                                                                    name={campo.name}
-                                                                    value={campo.value}
-                                                                    size={campo.size}
-                                                                    register={register} />
-
+                                                                : campo.tipo === 'radio'
+                                                                    ?
+                                                                    <InputRadio
+                                                                        key={index}
+                                                                        label={campo.label}
+                                                                        name={campo.name}
+                                                                        value={campo.value}
+                                                                        size={campo.size}
+                                                                        register={register} />
+                                                                    : campo.tipo === 'checkbox'
+                                                                        ?
+                                                                        <InputCheckbox
+                                                                            key={index}
+                                                                            label={campo.label}
+                                                                            name={campo.name}
+                                                                            value={campo.value}
+                                                                            size={campo.size}
+                                                                            register={register} />
+                                                                        : campo.tipo === 'password' &&
+                                                                        <InputPassword
+                                                                            key={index}
+                                                                            label={campo.label}
+                                                                            name={campo.name}
+                                                                            placeholder={campo.placeholder}
+                                                                            size={campo.size}
+                                                                            required={false}
+                                                                            register={register}
+                                                                            errors={errors} />
                                             ))
                                         }
                                     </Col>
@@ -141,14 +162,34 @@ export default function Insertar({
                                                                     size={campo.size}
                                                                     register={register}
                                                                     errors={errors} />
-                                                                : campo.tipo === 'radio' &&
-                                                                <InputRadio
-                                                                    key={index}
-                                                                    label={campo.label}
-                                                                    name={campo.name}
-                                                                    value={campo.value}
-                                                                    size={campo.size}
-                                                                    register={register} />
+                                                                : campo.tipo === 'radio'
+                                                                    ?
+                                                                    <InputRadio
+                                                                        key={index}
+                                                                        label={campo.label}
+                                                                        name={campo.name}
+                                                                        value={campo.value}
+                                                                        size={campo.size}
+                                                                        register={register} />
+                                                                    : campo.tipo === 'checkbox'
+                                                                        ?
+                                                                        <InputCheckbox
+                                                                            key={index}
+                                                                            label={campo.label}
+                                                                            name={campo.name}
+                                                                            value={campo.value}
+                                                                            size={campo.size}
+                                                                            register={register} />
+                                                                        : campo.tipo === 'password' &&
+                                                                        <InputPassword
+                                                                            key={index}
+                                                                            label={campo.label}
+                                                                            name={campo.name}
+                                                                            placeholder={campo.placeholder}
+                                                                            size={campo.size}
+                                                                            required={false}
+                                                                            register={register}
+                                                                            errors={errors} />
                                             ))
                                         }
                                     </Col>

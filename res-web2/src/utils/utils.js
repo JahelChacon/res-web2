@@ -23,7 +23,7 @@ export const TABLAS = {
     RESTAURANTE: "restaurantes",
     ROL: "roles",
     TECNOLOGIA: "tecnologia",
-    UNIDAD_DE_MEDIDA: "medidas",
+    UNIDAD_DE_MEDIDA: "unidadesDeMedida",
     UTENSILIO: "utensilios",
     VINO: "vinos",
     USUARIO: "usuarios",

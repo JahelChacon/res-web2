@@ -16,6 +16,16 @@ export default function Buffet({ token }) {
         { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "pequeno" },
     ];
 
+    const editarCampos = [
+        { tipo: "texto", disabled: true, label: "Código", name: "codigo", placeholder: "Código", size: "mediano" },
+        { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "mediano" },
+        { tipo: "numero", label: "Precio", name: "precio", placeholder: "Precio", size: "mediano" },
+        { tipo: "texto", label: "Tipo", name: "tipo", placeholder: "Tipo", size: "mediano" },
+        { tipo: "SelectFromApi", tabla: "unidadesDeMedida", label: "Unidad De Medida", name: "unidadDeMedida", size: "mediano" },
+        { tipo: "imagen", label: "Foto del platillo", name: "foto", size: "mediano" },
+    ];
+
+
     return (
         <Busqueda
             titulo={"Buffet"}
@@ -24,6 +34,8 @@ export default function Buffet({ token }) {
             filtros={filtros}
             token={token}
             backURL="/especiales"
+            editarTitulo='Editar Buffet'
+            editarCampos={editarCampos}
         />
     )
 }

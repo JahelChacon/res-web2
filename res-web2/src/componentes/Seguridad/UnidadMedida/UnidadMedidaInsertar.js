@@ -9,17 +9,14 @@ export default function UnidadMedidaInsertar({ token }) {
             { tipo: "texto", disabled: true, label: "Código", name: "codigo", placeholder: "Código", size: "grande" },
             { tipo: "texto", label: "Unidad", name: "unidad", placeholder: "Nombre", size: "grande" },
             { tipo: "texto", label: "Escala", name: "escala", placeholder: "Descripción", size: "grande" },
-            { tipo: "texto", label: "Símbolo", name: "simbolo", placeholder: "Símbolo", size: "grande" },
-            { tipo: "texto", label: "Detalle", name: "detalle", placeholder: "Detalle", size: "grande" },
-            
         ]
     };
 
     const camposIzquierda = {
-        titulo: '',
         campos: [
             { tipo: "texto", label: "Símbolo", name: "simbolo", placeholder: "Símbolo", size: "grande" },
             { tipo: "texto", label: "Simbología", name: "simbologia", placeholder: "Simbología", size: "grande" },
+            { tipo: "texto", label: "Detalle", name: "detalle", placeholder: "Detalle", size: "grande" },
         ]
     };
 
@@ -29,6 +26,7 @@ export default function UnidadMedidaInsertar({ token }) {
             tabla={TABLAS.UNIDAD_DE_MEDIDA}
             camposDerecha={camposDerecha}
             camposIzquierda={camposIzquierda}
+            cancelarURL='/medidas'
             token={token}
         />
     )
