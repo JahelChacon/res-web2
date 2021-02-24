@@ -6,6 +6,8 @@ import InputTexto from "../Inputs/InputTexto";
 import InputNumero from "../Inputs/InputNumero";
 import InputRadio from "../Inputs/InputRadio";
 import InputImagen from "../Inputs/InputImagen";
+import InputCheckbox from "../Inputs/InputCheckbox";
+import InputPassword from "../Inputs/InputPassword";
 import SelectFromApi from "../Inputs/SelectFromApi";
 import BotonesEditar from "../Botones/BotonesEditar";
 
@@ -76,16 +78,36 @@ export default function Editar({
                                                             value={campo.value}
                                                             size={campo.size}
                                                             register={register} />
-                                                        : campo.tipo === 'imagen' &&
-                                                        <InputImagen
-                                                            key={index}
-                                                            value={API_URL + elemento[campo.name]}
-                                                            label={campo.label}
-                                                            name={campo.name}
-                                                            size={campo.size}
-                                                            required={false}
-                                                            register={register}
-                                                            errors={errors} />
+                                                        : campo.tipo === 'imagen'
+                                                            ?
+                                                            <InputImagen
+                                                                key={index}
+                                                                value={API_URL + elemento[campo.name]}
+                                                                label={campo.label}
+                                                                name={campo.name}
+                                                                size={campo.size}
+                                                                required={false}
+                                                                register={register}
+                                                                errors={errors} />
+                                                            : campo.tipo === 'checkbox'
+                                                                ?
+                                                                <InputCheckbox
+                                                                    key={index}
+                                                                    label={campo.label}
+                                                                    name={campo.name}
+                                                                    value={campo.value}
+                                                                    size={campo.size}
+                                                                    register={register} />
+                                                                : campo.tipo === 'password' &&
+                                                                <InputPassword
+                                                                    key={index}
+                                                                    label={campo.label}
+                                                                    name={campo.name}
+                                                                    placeholder={campo.placeholder}
+                                                                    size={campo.size}
+                                                                    required={false}
+                                                                    register={register}
+                                                                    errors={errors} />
                                     ))
                                 }
                             </Row>

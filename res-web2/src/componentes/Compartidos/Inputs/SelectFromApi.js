@@ -49,11 +49,11 @@ export default function SelectFromApi({
                         errors={errors}>
                         {
                             lista.map(((elemento, index) =>
-                            // *** Falta: Arreglar nombre del campo dinamico
+                                // *** Falta: Arreglar nombre del campo dinamico
                                 <option
                                     key={index}
-                                    value={elemento.nombre ? elemento.nombre : elemento.nombreMarca ? elemento.nombreMarca : ''}>
-                                    {elemento.nombre ? elemento.nombre : elemento.nombreMarca ? elemento.nombreMarca : ''}
+                                    value={elemento.nombre ? elemento.nombre : elemento.nombreMarca ? elemento.nombreMarca : elemento.unidad ? elemento.unidad : ''}>
+                                    {elemento.nombre ? elemento.nombre : elemento.nombreMarca ? elemento.nombreMarca : elemento.unidad ? elemento.unidad : ''}
                                 </option>
                             ))
                         }
