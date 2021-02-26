@@ -16,6 +16,18 @@ export default function Comestibles({ token }){
         { tipo: "SelectFromApi", tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "pequeno" },
     ];
 
+    const editarCampos = [
+        { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "mediano" },
+        { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "mediano" },
+        { tipo: "numero", label: "Cantidad", name: "cantidad", placeholder: "Cantidad", size: "mediano" },
+        { tipo: "texto", label: "Tipo", name: "tipo", placeholder: "Tipo", size: "mediano" },
+        { tipo: "SelectFromApi", tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "mediano" },
+        { tipo: "SelectFromApi", tabla: "marcas", label: "Marca", name: "marca", size: "mediano" },
+        { tipo: "texto", label: "Clase", name: "clase", placeholder: "Clase", size: "mediano" },
+        { tipo: "texto", label: "Linea", name: "linea", placeholder: "Linea", size: "mediano" },
+        { tipo: "SelectFromApi", tabla: "unidadesDeMedida", label: "Unidad de Medida", name: "unidadDeMedida", size: "mediano" },
+    ];
+
     return (
         <Busqueda
             titulo={"Comestibles"}
@@ -24,6 +36,8 @@ export default function Comestibles({ token }){
             columnas={columnas}
             filtros={filtros}
             backURL="/productos"
+            editarTitulo='Editar Comestible'
+            editarCampos={editarCampos}
         />
     )
 }

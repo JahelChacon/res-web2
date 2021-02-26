@@ -11,9 +11,16 @@ export default function Desechables({ token }){
     ];
 
     const filtros = [
-        { tipo: "texto", label: "Código del empaque", name: "codigo", placeholder: "Código", size: "pequeno" },
-        { tipo: "texto", label: "Nombre del empaque", name: "nombre", placeholder: "Nombre", size: "pequeno" },
+        { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "pequeno" },
+        { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "pequeno" },
         { tipo: "SelectFromApi", tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "pequeno" },
+    ];
+
+    const editarCampos = [
+        { tipo: "texto", disabled: true, label: "Código", name: "codigo", placeholder: "Código", size: "mediano" },
+        { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "mediano" },
+        { tipo: "numero", label: "Cantidad", name: "cantidad", placeholder: "Cantidad", size: "mediano" },
+        { tipo: "SelectFromApi", tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "mediano" },
     ];
 
     return (
@@ -24,6 +31,8 @@ export default function Desechables({ token }){
             filtros={filtros}
             token={token}
             backURL="/productos"
+            editarTitulo='Editar Desechable'
+            editarCampos={editarCampos}
         />
     )
 }

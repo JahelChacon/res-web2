@@ -9,8 +9,8 @@ export default function ComestiblesInsertar({ token }){
             { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "grande" },
             { tipo: "numero", label: "Cantidad", name: "cantidad", placeholder: "Cantidad", size: "grande" },
             { tipo: "SelectFromApi", tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "grande" },
-            { tipo: "texto", label: "Clase de comestible", name: "claseComestible", placeholder: "Clase de comestible", size: "grande" },
-            { tipo: "texto", label: "Unidad de medida", name: "unidadMedida", placeholder: "Unidad de medida", size: "grande" },
+            { tipo: "texto", label: "Clase", name: "clase", placeholder: "Clase", size: "grande" },
+            { tipo: "SelectFromApi", tabla: "unidadesDeMedida", label: "Unidad de Medida", name: "unidadDeMedida", size: "grande" },
         ]
     };
 
@@ -18,9 +18,9 @@ export default function ComestiblesInsertar({ token }){
         titulo: '',
         campos: [
             { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "grande" },
-            { tipo: "texto", label: "Tipo de comestible", name: "tipoComestible", placeholder: "Tipo de comestible", size: "grande" },
+            { tipo: "texto", label: "Tipo", name: "tipo", placeholder: "Tipo", size: "grande" },
             { tipo: "SelectFromApi", tabla: "marcas", label: "Marca", name: "marca", size: "grande" },
-            { tipo: "texto", label: "Línea de comestible", name: "lineaComestible", placeholder: "Línea de comestible", size: "grande" },
+            { tipo: "texto", label: "Línea", name: "linea", placeholder: "Línea", size: "grande" },
         ]
     };
 console.log(camposIzquierda);
