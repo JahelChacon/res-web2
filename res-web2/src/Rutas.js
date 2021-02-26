@@ -1,7 +1,6 @@
 import { Route, Switch } from "react-router-dom";
 import React, { lazy, Suspense } from "react";
 import PrivateRoute from './PrivateRoute';
-import RolesInsertar from "./componentes/Seguridad/Roles/RolesInsertar";
 
 // INICIO
 const Inicio = lazy(() => import("../src/componentes/Inicio/Inicio"));
@@ -23,7 +22,7 @@ const Cajas = lazy(() => import("../src/componentes/Seguridad/Cajas/Cajas"));
 // const CajasInsertar = lazy(() => import("../src/componentes/Seguridad/Cajas/CajasInsertar"));
 const Consecutivos = lazy(() => import("../src/componentes/Seguridad/Consecutivos/Consecutivos"));
 const Roles = lazy(() => import("../src/componentes/Seguridad/Roles/Roles"));
-const RolesIsertar = lazy(() => import("../src/componentes/Seguridad/Roles/RolesInsertar"));
+const RolesInsertar = lazy(() => import("../src/componentes/Seguridad/Roles/RolesInsertar"));
 const Paises = lazy(() => import("../src/componentes/Seguridad/Paises/Paises"));
 const PaisesInsertar = lazy(() => import("../src/componentes/Seguridad/Paises/PaisesInsertar"));
 const UnidadMedida = lazy(() => import("../src/componentes/Seguridad/UnidadMedida/UnidadMedida"));
