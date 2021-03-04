@@ -9,6 +9,7 @@ import InputFecha from "../Inputs/InputFecha";
 import InputCheckbox from "../Inputs/InputCheckbox";
 import InputPassword from "../Inputs/InputPassword";
 import SelectFromApi from "../Inputs/SelectFromApi";
+import SelectProductos from "../Inputs/SelectProductos";
 import Filtro from "./Filtro";
 import Tabla from "./Tabla";
 import MensajeCargando from "../Mensajes/MensajeCargando";
@@ -27,7 +28,7 @@ export default function Busqueda({
     soloEditar,
     token
 }) {
-    const { register, getValues, reset, errors } = useForm();
+    const { control, register, getValues, reset, errors } = useForm();
     const [tablaData, setTablaData] = useState([]);
     const [cargando, setCargando] = useState(true);
     const [fallo, setFallo] = useState(false);
@@ -125,16 +126,25 @@ export default function Busqueda({
                                                             value={filtro.value}
                                                             size={filtro.size}
                                                             register={register} />
-                                                        : filtro.tipo === 'password' &&
-                                                        <InputPassword
-                                                            key={index}
-                                                            label={filtro.label}
-                                                            name={filtro.name}
-                                                            placeholder={filtro.placeholder}
-                                                            size={filtro.size}
-                                                            required={false}
-                                                            register={register}
-                                                            errors={errors} />
+                                                        : filtro.tipo === 'password'
+                                                            ?
+                                                            <InputPassword
+                                                                key={index}
+                                                                label={filtro.label}
+                                                                name={filtro.name}
+                                                                placeholder={filtro.placeholder}
+                                                                size={filtro.size}
+                                                                required={false}
+                                                                register={register}
+                                                                errors={errors} />
+                                                            : filtro.tipo === 'SelectProductos' &&
+                                                            <SelectProductos
+                                                                key={index}
+                                                                label={filtro.label}
+                                                                name={filtro.name}
+                                                                size={filtro.size}
+                                                                control={control}
+                                                                token={token} />
                             ))
                         }
                     </Row>
