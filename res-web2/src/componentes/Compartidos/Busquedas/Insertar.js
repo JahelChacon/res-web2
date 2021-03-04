@@ -7,6 +7,7 @@ import InputRadio from "../Inputs/InputRadio";
 import InputNumero from "../Inputs/InputNumero";
 import InputCheckbox from "../Inputs/InputCheckbox";
 import InputPassword from "../Inputs/InputPassword";
+import SelectProductos from "../Inputs/SelectProductos";
 import SelectFromApi from "../Inputs/SelectFromApi";
 import BotonesInsertar from "../../Compartidos/Botones/BotonesInsertar";
 import ModalExito from "../Modales/ModalExito";
@@ -29,7 +30,7 @@ export default function Insertar({
         // Agregar POST /delete
     };
 
-    const { register, handleSubmit, reset, errors } = useForm();
+    const { control, register, handleSubmit, reset, errors } = useForm();
     return (
         <Container>
             <form onSubmit={handleSubmit(onAgregar)}>
@@ -104,16 +105,25 @@ export default function Insertar({
                                                                             value={campo.value}
                                                                             size={campo.size}
                                                                             register={register} />
-                                                                        : campo.tipo === 'password' &&
-                                                                        <InputPassword
-                                                                            key={index}
-                                                                            label={campo.label}
-                                                                            name={campo.name}
-                                                                            placeholder={campo.placeholder}
-                                                                            size={campo.size}
-                                                                            required={false}
-                                                                            register={register}
-                                                                            errors={errors} />
+                                                                        : campo.tipo === 'password'
+                                                                            ?
+                                                                            <InputPassword
+                                                                                key={index}
+                                                                                label={campo.label}
+                                                                                name={campo.name}
+                                                                                placeholder={campo.placeholder}
+                                                                                size={campo.size}
+                                                                                required={false}
+                                                                                register={register}
+                                                                                errors={errors} />
+                                                                            : campo.tipo === 'SelectProductos' &&
+                                                                            <SelectProductos
+                                                                                key={index}
+                                                                                label={campo.label}
+                                                                                name={campo.name}
+                                                                                size={campo.size}
+                                                                                control={control}
+                                                                                token={token} />
                                             ))
                                         }
                                     </Col>
@@ -180,16 +190,25 @@ export default function Insertar({
                                                                             value={campo.value}
                                                                             size={campo.size}
                                                                             register={register} />
-                                                                        : campo.tipo === 'password' &&
-                                                                        <InputPassword
-                                                                            key={index}
-                                                                            label={campo.label}
-                                                                            name={campo.name}
-                                                                            placeholder={campo.placeholder}
-                                                                            size={campo.size}
-                                                                            required={false}
-                                                                            register={register}
-                                                                            errors={errors} />
+                                                                        : campo.tipo === 'password'
+                                                                            ?
+                                                                            <InputPassword
+                                                                                key={index}
+                                                                                label={campo.label}
+                                                                                name={campo.name}
+                                                                                placeholder={campo.placeholder}
+                                                                                size={campo.size}
+                                                                                required={false}
+                                                                                register={register}
+                                                                                errors={errors} />
+                                                                            : campo.tipo === 'SelectProductos' &&
+                                                                            <SelectProductos
+                                                                                key={index}
+                                                                                label={campo.label}
+                                                                                name={campo.name}
+                                                                                size={campo.size}
+                                                                                control={control}
+                                                                                token={token} />
                                             ))
                                         }
                                     </Col>

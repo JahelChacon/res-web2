@@ -6,7 +6,7 @@ export default function Clientes({ token }) {
     const columnas = [
         { text: "Codigo", dataField: "codigo" },
         { text: "Nombre", dataField: "nombre" },
-        { text: "Monto Pagado", dataField: "monto" },
+        { text: "Monto Pagado", dataField: "montoPago" },
         { text: "Detalle", dataField: "detalle" },
         { text: "Fecha", dataField: "fecha" },
         { text: "Reservación", dataField: "reservacion" },

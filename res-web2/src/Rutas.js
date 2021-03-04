@@ -19,7 +19,6 @@ const Seguridad = lazy(() => import("../src/componentes/Seguridad/Seguridad"));
 const Usuarios = lazy(() => import("../src/componentes/Seguridad/Usuarios/Usuarios"));
 const UsuariosInsertar = lazy(() => import("../src/componentes/Seguridad/Usuarios/UsuariosInsertar"));
 const Cajas = lazy(() => import("../src/componentes/Seguridad/Cajas/Cajas"));
-// const CajasInsertar = lazy(() => import("../src/componentes/Seguridad/Cajas/CajasInsertar"));
 const Consecutivos = lazy(() => import("../src/componentes/Seguridad/Consecutivos/Consecutivos"));
 const Roles = lazy(() => import("../src/componentes/Seguridad/Roles/Roles"));
 const RolesInsertar = lazy(() => import("../src/componentes/Seguridad/Roles/RolesInsertar"));
@@ -147,15 +146,10 @@ export function Rutas({ usuario, token }) {
                 <PrivateRoute
                     hasRole={usuario.administradorSistema || usuario.administradorSeguridad || usuario.administradorCuentas}
                     component={Cajas}
+                    token={token}
                     path="/cajas"
                     exact
                 />
-                {/* <PrivateRoute
-                    hasRole={usuario.administradorSistema || usuario.administradorSeguridad || usuario.administradorCuentas}
-                    component={CajasInsertar}
-                    path="/cajas/insertar"
-                    exact
-                /> */}
                 <PrivateRoute
                     hasRole={usuario.administradorSistema || usuario.administradorSeguridad}
                     component={Consecutivos}
@@ -236,12 +230,14 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={Proveedores}
                     path="/proveedores"
+                    token={token}
                     exact
                 />
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
                     component={ProveedoresInsertar}
                     path="/proveedores/insertar"
+                    token={token}
                     exact
                 />
                 <PrivateRoute

@@ -22,6 +22,8 @@ export default function Tabla({
     const selectRow = {
         mode: 'radio',
         clickToSelect: true,
+        bgColor: !soloBusqueda && '#969696',
+        hideSelectColumn: soloBusqueda,
         onSelect: (row) => {
             setfilaSeleccionada(row);
         },
@@ -33,11 +35,9 @@ export default function Tabla({
         // Agregar POST /delete
     };
 
-    const onEditar = () => {
-        console.log('Editandooo!', filaSeleccionada);
+    const onFinalizarEditar = () => {
         setMostrarEditar(false);
         setExitoEditar(true);
-        // Agregar POST /update
     };
 
     return (
@@ -65,7 +65,7 @@ export default function Tabla({
                 <React.Fragment>
                     <Editar
                         titulo={editarTitulo}
-                        editar={onEditar}
+                        finalizarEditar={onFinalizarEditar}
                         token={token}
                         close={() => setMostrarEditar(false)}
                         show={mostrarEditar}

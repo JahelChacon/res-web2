@@ -11,9 +11,21 @@ export default function Limpieza({ token }){
     ];
 
     const filtros = [
-        { tipo: "texto", label: "Código del artículo", name: "codigo", placeholder: "Código del artículo", size: "pequeno" },
-        { tipo: "texto", label: "Nombre del artículo", name: "nombre", placeholder: "Nombre del artículo", size: "pequeno" },
+        { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "pequeno" },
+        { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "pequeno" },
         { tipo: "SelectFromApi", tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "pequeno" },
+    ];
+
+    const editarCampos = [
+        { tipo: "texto", disabled: true, label: "Código", name: "codigo", placeholder: "Código", size: "mediano" },
+        { tipo: "SelectFromApi", tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "mediano" },
+        { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "mediano" },
+        { tipo: "SelectFromApi", tabla: "marcas", label: "Marca", name: "marca", size: "mediano" },
+        { tipo: "numero", label: "Cantidad", name: "cantidad", placeholder: "Cantidad", size: "mediano" },
+        { tipo: "texto", label: "Descripción", name: "descripcion", placeholder: "Descripción", size: "mediano" },
+        { tipo: "texto", label: "Tipo", name: "tipo", placeholder: "Tipo", size: "mediano" },
+        { tipo: "numero", label: "Cantidad de Medida", name: "cantidadMedida", placeholder: "Cantidad de Medida", size: "mediano" },
+        { tipo: "SelectFromApi", tabla: "unidadesDeMedida", label: "Unidad de Medida", name: "unidadDeMedida", size: "mediano" },
     ];
 
     return (
@@ -24,6 +36,8 @@ export default function Limpieza({ token }){
             filtros={filtros}
             token={token}
             backURL="/productos"
+            editarTitulo='Editar Artículo de Limpieza'
+            editarCampos={editarCampos}
         />
     )
 }

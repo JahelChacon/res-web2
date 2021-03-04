@@ -8,6 +8,8 @@ import InputRadio from "../Inputs/InputRadio";
 import InputImagen from "../Inputs/InputImagen";
 import InputCheckbox from "../Inputs/InputCheckbox";
 import InputPassword from "../Inputs/InputPassword";
+import InputFecha from "../Inputs/InputFecha";
+import SelectProductos from "../Inputs/SelectProductos";
 import SelectFromApi from "../Inputs/SelectFromApi";
 import BotonesEditar from "../Botones/BotonesEditar";
 
@@ -17,10 +19,17 @@ export default function Editar({
     token,
     campos,
     titulo,
-    elemento,
-    editar
+    finalizarEditar,
+    elemento
 }) {
-    const { register, reset, handleSubmit, errors } = useForm();
+    const { control, getValues, register, reset, handleSubmit, errors } = useForm();
+
+    const onEditar = () => {
+        console.log('Editandooo! Nuevos valores:', getValues());
+        finalizarEditar();
+        // Agregar POST /update
+    };
+
     return (
         <Modal show={show} onHide={close} centered size="lg">
             <Modal.Body>
@@ -98,22 +107,41 @@ export default function Editar({
                                                                     value={campo.value}
                                                                     size={campo.size}
                                                                     register={register} />
-                                                                : campo.tipo === 'password' &&
-                                                                <InputPassword
-                                                                    key={index}
-                                                                    label={campo.label}
-                                                                    name={campo.name}
-                                                                    placeholder={campo.placeholder}
-                                                                    size={campo.size}
-                                                                    required={false}
-                                                                    register={register}
-                                                                    errors={errors} />
+                                                                : campo.tipo === 'password'
+                                                                    ?
+                                                                    <InputPassword
+                                                                        key={index}
+                                                                        label={campo.label}
+                                                                        name={campo.name}
+                                                                        placeholder={campo.placeholder}
+                                                                        size={campo.size}
+                                                                        required={false}
+                                                                        register={register}
+                                                                        errors={errors} />
+                                                                    : campo.tipo === 'fecha'
+                                                                        ?
+                                                                        <InputFecha
+                                                                            key={index}
+                                                                            label={campo.label}
+                                                                            name={campo.name}
+                                                                            size={campo.size}
+                                                                            required={false}
+                                                                            register={register}
+                                                                            errors={errors} />
+                                                                        : campo.tipo === 'SelectProductos' &&
+                                                                        <SelectProductos
+                                                                            key={index}
+                                                                            label={campo.label}
+                                                                            name={campo.name}
+                                                                            size={campo.size}
+                                                                            control={control}
+                                                                            token={token} />
                                     ))
                                 }
                             </Row>
                         </Card.Body>
                         <footer>
-                            <BotonesEditar editar={handleSubmit(editar)} cerrar={close} limpiar={reset} />
+                            <BotonesEditar editar={handleSubmit(onEditar)} cerrar={close} limpiar={reset} />
                         </footer>
                     </Card>
                 </form>
