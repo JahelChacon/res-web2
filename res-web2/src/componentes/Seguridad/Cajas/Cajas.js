@@ -17,8 +17,8 @@ export default function Cajas({ token }){
         { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "pequeno" },
         { tipo: "fecha", label: "Fecha", name: "fecha", size: "pequeno" },
         { tipo: "SelectFromApi", tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "pequeno" },
-        { tipo: "radio", label: "Apertura de caja", name: "caja", value: 'aperturaCaja', size: "pequeno" },
-        { tipo: "radio", label: "Cierre de caja", name: "caja", value: 'cierreCaja', size: "pequeno" },
+        { tipo: "checkbox", label: "Apertura de caja", name: "aperturaCaja", size: "pequeno" },
+        { tipo: "checkbox", label: "Cierre de caja", name: "cierreCaja", size: "pequeno" },
     ];
 
     const editarCampos = [
@@ -26,8 +26,8 @@ export default function Cajas({ token }){
         { tipo: "fecha", label: "Fecha", name: "fecha", size: "mediano" },
         { tipo: "texto", label: "Descripción", name: "descripcion", placeholder: "Descripción", size: "mediano" },
         { tipo: "numero", label: "Entrada de Dinero", name: "dineroRecibido", placeholder: "Entrada de Dinero", size: "mediano" },
-        { tipo: "radio", label: "Apertura de caja", name: "caja", value: 'aperturaCaja', size: "mediano" },
-        { tipo: "radio", label: "Cierre de caja", name: "caja", value: 'cierreCaja', size: "mediano" },
+        { tipo: "checkbox", label: "Apertura de caja", name: "aperturaCaja", size: "mediano" },
+        { tipo: "checkbox", label: "Cierre de caja", name: "cierreCaja", size: "mediano" },
         { tipo: "SelectFromApi", tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "mediano" },
     ];
 

@@ -28,6 +28,7 @@ export default function EspecialidadesInsertar({ token }) {
             camposIzquierda={camposIzquierda}
             cancelarURL='/especialidades'
             token={token}
+            isFormData={true}
         />
     )
 }

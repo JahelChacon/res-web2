@@ -32,6 +32,7 @@ export default function VinosInsertar({ token }) {
             camposDerecha={camposDerecha}
             camposIzquierda={camposIzquierda}
             token={token}
+            isFormData={true}
         />
     )
 }

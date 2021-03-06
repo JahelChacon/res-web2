@@ -36,6 +36,7 @@ export default function Buffet({ token }) {
             backURL="/especiales"
             editarTitulo='Editar Buffet'
             editarCampos={editarCampos}
+            isFormData={true}
         />
     )
 }

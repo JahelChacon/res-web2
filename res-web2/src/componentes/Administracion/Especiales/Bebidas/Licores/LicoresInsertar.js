@@ -31,6 +31,7 @@ export default function LicoresInsertar({ token }) {
             camposDerecha={camposDerecha}
             camposIzquierda={camposIzquierda}
             token={token}
+            isFormData={true}
         />
     )
 }

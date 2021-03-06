@@ -20,7 +20,7 @@ export default function SelectFromApi({
     const [fallo, setFallo] = useState(false);
 
     useEffect(() => {
-        makeRequest('GET', '/' + tabla, null, token)
+        makeRequest('GET', '/' + tabla, token)
             .then(response => response.json())
             .then(data => {
                 setLista(data);
@@ -37,7 +37,9 @@ export default function SelectFromApi({
             {
                 cargando && !fallo
                     ?
-                    <Spinner animation="border" />
+                    <div className="ml-4">
+                        <Spinner animation="border" />
+                    </div>
                     : !cargando && !fallo &&
                     <InputSelect
                         value={value}

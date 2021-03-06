@@ -32,6 +32,7 @@ export default function MarcasInsertar({ token }) {
             camposDerecha={camposDerecha}
             camposIzquierda={camposIzquierda}
             token={token}
+            isFormData={true}
         />
     )
 }

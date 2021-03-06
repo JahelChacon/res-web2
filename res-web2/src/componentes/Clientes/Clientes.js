@@ -22,8 +22,8 @@ export default function Clientes({ token }) {
         { tipo: "fecha", label: "Fecha - Final", name: "fechaInicio", size: "x-pequeno" },
         { tipo: "fecha", label: "Fecha Reservación - Inicio", name: "fechaInicio", size: "x-pequeno" },
         { tipo: "fecha", label: "Fecha Reservación - Final", name: "fechaInicio", size: "x-pequeno" },
-        { tipo: "radio", label: "Barra", name: "barra", value: 'barra', size: "x-pequeno" },
-        { tipo: "radio", label: "Reservación", name: "reservacion", value: 'reservacion', size: "x-pequeno" },
+        { tipo: "checkbox", label: "Barra", name: "barra", size: "mediano" },
+        { tipo: "checkbox", label: "Reservación", name: "reservacion", size: "mediano" },
     ];
 
     return (

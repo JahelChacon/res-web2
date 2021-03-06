@@ -14,15 +14,15 @@ export default function Puestos({ token }) {
     const filtros = [
         { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "mediano" },
         { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "mediano" },
-        { tipo: "radio", label: "Interno", name: "trabajador", value: 'interno', size: "x-pequeno" },
-        { tipo: "radio", label: "Externo", name: "trabajador", value: 'externo', size: "x-pequeno" },
+        { tipo: "checkbox", label: "Interno", name: "interno", size: "x-pequeno" },
+        { tipo: "checkbox", label: "Externo", name: "externo", size: "x-pequeno" },
     ];
 
     const editarCampos = [
         { tipo: "texto", disabled: true, label: "Código", name: "codigo", placeholder: "Código", size: "mediano" },
         { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "mediano" },
-        { tipo: "radio", label: "Interno", name: "trabajador", value: 'interno', size: "mediano" },
-        { tipo: "radio", label: "Externo", name: "trabajador", value: 'externo', size: "mediano" },
+        { tipo: "checkbox", label: "Interno", name: "interno", size: "mediano" },
+        { tipo: "checkbox", label: "Externo", name: "externo", size: "mediano" },
         { tipo: "SelectFromApi", tabla: "roles", label: "Rol", name: "rol", size: "mediano" },
     ];
 

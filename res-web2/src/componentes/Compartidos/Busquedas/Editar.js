@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import { Spinner } from "react-bootstrap";
 import { Modal, Card, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { API_URL } from "../../../utils/API"
+import { makeRequest } from "../../../utils/API";
 import InputTexto from "../Inputs/InputTexto";
 import InputNumero from "../Inputs/InputNumero";
 import InputRadio from "../Inputs/InputRadio";
@@ -14,20 +16,46 @@ import SelectFromApi from "../Inputs/SelectFromApi";
 import BotonesEditar from "../Botones/BotonesEditar";
 
 export default function Editar({
+    tabla,
     show,
     close,
     token,
     campos,
     titulo,
     finalizarEditar,
-    elemento
+    falloEditar,
+    elemento,
+    isFormData
 }) {
-    const { control, getValues, register, reset, handleSubmit, errors } = useForm();
+    const { control, register, reset, handleSubmit, errors } = useForm();
+    const [editando, setEditando] = useState(false);
 
-    const onEditar = () => {
-        console.log('Editandooo! Nuevos valores:', getValues());
-        finalizarEditar();
-        // Agregar POST /update
+    const onEditar = (form) => {
+        setEditando(true);
+        let formData = null;
+        let objectData = !isFormData ? form : null;
+        if (isFormData) {
+            formData = new FormData();
+            Object.keys(form).forEach(function (key) {
+                const value = form[key];
+                if (value instanceof FileList) {
+                    formData.append(key, value[0]);
+                } else if (value instanceof Array) {
+                    formData.append(key, JSON.stringify(value))
+                } else {
+                    formData.append(key, value);
+                }
+            });
+        }
+        makeRequest('POST', `/${tabla}/update/${elemento._id}`, token, objectData, formData)
+            .then(response => {
+                if (response.status === 200) {
+                    finalizarEditar();
+                } else {
+                    falloEditar();
+                }
+                setEditando(false);
+            })
     };
 
     return (
@@ -104,7 +132,7 @@ export default function Editar({
                                                                     key={index}
                                                                     label={campo.label}
                                                                     name={campo.name}
-                                                                    value={campo.value}
+                                                                    value={elemento[campo.name] && elemento[campo.name]}
                                                                     size={campo.size}
                                                                     register={register} />
                                                                 : campo.tipo === 'password'
@@ -130,6 +158,7 @@ export default function Editar({
                                                                             errors={errors} />
                                                                         : campo.tipo === 'SelectProductos' &&
                                                                         <SelectProductos
+                                                                            value={elemento.productos && JSON.parse(elemento.productos)}
                                                                             key={index}
                                                                             label={campo.label}
                                                                             name={campo.name}
@@ -141,7 +170,13 @@ export default function Editar({
                             </Row>
                         </Card.Body>
                         <footer>
-                            <BotonesEditar editar={handleSubmit(onEditar)} cerrar={close} limpiar={reset} />
+                            {editando ?
+                                <div className="ml-4">
+                                    <Spinner animation="border" />
+                                </div>
+                                :
+                                <BotonesEditar editar={handleSubmit(onEditar)} cerrar={close} limpiar={reset} />
+                            }
                         </footer>
                     </Card>
                 </form>

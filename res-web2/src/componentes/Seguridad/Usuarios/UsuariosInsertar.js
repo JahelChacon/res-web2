@@ -22,10 +22,10 @@ export default function UsuariosInsertar() {
             { tipo: "password", label: "Contraseña", name: "contrasena", placeholder: "Contraseña", size: "grande" },
             { tipo: "password", label: "Confirmar Contraseña", name: "contrasenaConfirmar", placeholder: "Confirmar Contraseña", size: "grande" },
             { tipo: "texto", label: "Login", name: "login", placeholder: "Login", size: "grande" },
-            { tipo: "radio", label: "Administrador de Sistema", name: "privilejios", value: 'administradorSistema', size: "grande" },
-            { tipo: "radio", label: "Administrador de Seguridad", name: "privilejios", value: 'administradorSeguridad', size: "grande" },
-            { tipo: "radio", label: "Administrador de Restaurante", name: "privilejios", value: 'administradorRestaurante', size: "grande" },
-            { tipo: "radio", label: "Administrador de Cuentas", name: "privilejios", value: 'administradorCuentas', size: "grande" },
+            { tipo: "checkbox", label: "Administrador de Sistema", name: "privilejios", size: "grande" },
+            { tipo: "checkbox", label: "Administrador de Seguridad", name: "privilejios", size: "grande" },
+            { tipo: "checkbox", label: "Administrador de Restaurante", name: "privilejios", size: "grande" },
+            { tipo: "checkbox", label: "Administrador de Cuentas", name: "privilejios", size: "grande" },
         ]
     };
     return (

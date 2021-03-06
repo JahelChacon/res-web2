@@ -47,6 +47,7 @@ export default function Empleados({ token }) {
             backURL="/administracion"
             editarTitulo='Editar Empleado'
             editarCampos={editarCampos}
+            isFormData={true}
         />
     )
 }

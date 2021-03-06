@@ -29,6 +29,7 @@ export default function HeladasInsertar({ token }) {
             camposIzquierda={camposIzquierda}
             cancelarURL='/bebidas-heladas'
             token={token}
+            isFormData={true}
         />
     )
 }

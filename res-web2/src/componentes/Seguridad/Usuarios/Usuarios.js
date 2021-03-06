@@ -21,10 +21,10 @@ export default function Usuarios({ token }){
         { tipo: "texto", label: "Código del usuario", name: "codigo", placeholder: "Código del usuario", size: "pequeno" },
         { tipo: "texto", label: "Nombre del usuario", name: "nombre", placeholder: "Nombre del usuario", size: "pequeno" },
         { tipo: "texto", label: "Nickname", name: "login", placeholder: "Nickname", size: "pequeno" },
-        { tipo: "radio", label: "Administrador de Sistema", name: "privilejios", value: 'administradorSistema', size: "pequeno" },
-        { tipo: "radio", label: "Administrador de Seguridad", name: "privilejios", value: 'administradorSeguridad', size: "pequeno" },
-        { tipo: "radio", label: "Administrador de Restaurante", name: "privilejios", value: 'administradorRestaurante', size: "pequeno" },
-        { tipo: "radio", label: "Administrador de Cuentas", name: "privilejios", value: 'administradorCuentas', size: "pequeno" },
+        { tipo: "checkbox", label: "Administrador de Sistema", name: "privilejios", size: "pequeno" },
+        { tipo: "checkbox", label: "Administrador de Seguridad", name: "privilejios", size: "pequeno" },
+        { tipo: "checkbox", label: "Administrador de Restaurante", name: "privilejios", size: "pequeno" },
+        { tipo: "checkbox", label: "Administrador de Cuentas", name: "privilejios", size: "pequeno" },
     ];
 
     const editarCampos = [
@@ -38,10 +38,10 @@ export default function Usuarios({ token }){
         { tipo: "checkbox", label: "Cambio de Contraseña", name: "cambioContrasena", size: "grande" },
         { tipo: "password", label: "Contrasena", name: "contrasena", placeholder: "Contrasena", size: "grande" },
         { tipo: "password", label: "Confirmar Contrasena", name: "contrasenaConfirmar", placeholder: "Confirmar Contrasena", size: "grande" },
-        { tipo: "radio", label: "Administrador de Sistema", name: "privilejios", value: 'administradorSistema', size: "mediano" },
-        { tipo: "radio", label: "Administrador de Seguridad", name: "privilejios", value: 'administradorSeguridad', size: "mediano" },
-        { tipo: "radio", label: "Administrador de Restaurante", name: "privilejios", value: 'administradorRestaurante', size: "mediano" },
-        { tipo: "radio", label: "Administrador de Cuentas", name: "privilejios", value: 'administradorCuentas', size: "mediano" },
+        { tipo: "checkbox", label: "Administrador de Sistema", name: "privilejios", size: "mediano" },
+        { tipo: "checkbox", label: "Administrador de Seguridad", name: "privilejios", size: "mediano" },
+        { tipo: "checkbox", label: "Administrador de Restaurante", name: "privilejios", size: "mediano" },
+        { tipo: "checkbox", label: "Administrador de Cuentas", name: "privilejios", size: "mediano" },
     ];
 
 

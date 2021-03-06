@@ -43,6 +43,7 @@ export default function Licores({ token }) {
             backURL="/bebidas"
             editarTitulo='Editar Licor'
             editarCampos={editarCampos}
+            isFormData={true}
         />
     )
 }

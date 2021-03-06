@@ -46,6 +46,7 @@ export default function Proveedores({ token }){
             backURL="/proveedores-inicio"
             editarTitulo='Editar Proveedor'
             editarCampos={editarCampos}
+            isFormData={true}
         />
     )
 }

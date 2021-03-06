@@ -37,6 +37,7 @@ export default function Calientes({ token }) {
             backURL="/bebidas"
             editarTitulo='Editar Bebida Caliente'
             editarCampos={editarCampos}
+            isFormData={true}
         />
     )
 }
