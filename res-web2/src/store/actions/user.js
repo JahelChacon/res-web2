@@ -11,7 +11,7 @@ export const logIn = (usuario, contrasena) => async dispatch => {
         login: usuario,
         contrasena: contrasena
       };
-      const response = await makeRequest('POST', '/usuarios/login', data);
+      const response = await makeRequest('POST', '/usuarios/login', null, data);
       const responseData = await response.json();
       dispatch({ type: GET_TOKEN, payload: responseData.token });
       dispatch({ type: LOG_IN, payload: responseData.usuario });

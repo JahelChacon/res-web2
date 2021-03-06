@@ -29,6 +29,7 @@ export default function Paises({ token }) {
             backURL="/seguridad"
             editarTitulo='Editar País'
             editarCampos={editarCampos}
+            isFormData={true}
         />
     )
 }

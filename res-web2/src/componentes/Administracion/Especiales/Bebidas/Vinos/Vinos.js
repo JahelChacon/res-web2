@@ -46,6 +46,7 @@ export default function Vinos({ token }) {
             backURL="/bebidas"
             editarTitulo='Editar Vino'
             editarCampos={editarCampos}
+            isFormData={true}
         />
     )
 }

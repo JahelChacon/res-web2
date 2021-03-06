@@ -6,7 +6,7 @@ export default function CalientesInsertar({ token }) {
     const camposDerecha = {
         titulo: 'Información de la Bebida Caliente',
         campos: [
-            { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "grande" },
+            { tipo: "texto", disabled: true, label: "Código", name: "codigo", placeholder: "Código", size: "grande" },
             { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "grande" },
             { tipo: "texto", label: "Ingredientes", name: "ingredientes", placeholder: "Ingredientes", size: "grande" },
             { tipo: "numero", label: "Precio", name: "precio", placeholder: "Precio", size: "grande" },
@@ -29,6 +29,7 @@ export default function CalientesInsertar({ token }) {
             camposIzquierda={camposIzquierda}
             cancelarURL='/bebidas-calientes'
             token={token}
+            isFormData={true}
         />
     )
 }

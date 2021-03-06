@@ -34,6 +34,7 @@ export default function ProveedoresInsertar({ token }) {
             camposDerecha={camposDerecha}
             camposIzquierda={camposIzquierda}
             token={token}
+            isFormData={true}
         />
     )
 }

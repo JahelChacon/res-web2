@@ -7,8 +7,8 @@ export default function PuestosInsertar({ token }) {
         titulo: 'Información del Puesto',
         campos: [
             { tipo: "texto", disabled: true, label: "Código", name: "codigo", placeholder: "Código", size: "grande" },
-            { tipo: "radio", label: "Interno", name: "trabajador", value: 'interno', size: "grande" },
-            { tipo: "radio", label: "Externo", name: "trabajador", value: 'externo', size: "grande" },
+            { tipo: "checkbox", label: "Interno", name: "interno", size: "grande" },
+            { tipo: "checkbox", label: "Externo", name: "externo", size: "grande" },
         ]
     };
 

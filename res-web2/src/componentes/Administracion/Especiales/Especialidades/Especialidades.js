@@ -36,6 +36,7 @@ export default function Especialidades({ token }) {
             backURL="/especiales"
             editarTitulo='Editar Especialidad'
             editarCampos={editarCampos}
+            isFormData={true}
         />
     )
 }

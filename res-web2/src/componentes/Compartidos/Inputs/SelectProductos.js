@@ -7,6 +7,7 @@ import MensajeError from "../Mensajes/MensajeError";
 import Select from 'react-select'
 
 export default function SelectProductos({
+    value,
     label,
     name,
     size,
@@ -20,13 +21,13 @@ export default function SelectProductos({
     // ***FALTA: Mensajes de error
 
     useEffect(() => {
-        makeRequest('GET', '/productos', null, token)
+        makeRequest('GET', '/productos', token)
             .then(response => response.json())
             .then(data => {
-                const productosOptions = data.map( producto => ({
+                const productosOptions = data.map(producto => ({
                     value: producto._id,
                     label: producto.nombre
-                }) );
+                }));
                 setProductos(productosOptions);
                 setCargando(false);
             })
@@ -41,7 +42,9 @@ export default function SelectProductos({
             {
                 cargando && !fallo
                     ?
-                    <Spinner animation="border" />
+                    <div className="ml-4">
+                        <Spinner animation="border" />
+                    </div>
                     : !cargando && !fallo &&
                     <Col
                         xl={size === 'grande' ? 12 : size === 'mediano' ? 6 : size === 'pequeno' ? 4 : 3}
@@ -58,7 +61,7 @@ export default function SelectProductos({
                                 control={control}
                                 options={productos}
                                 isMulti={true}
-                                defaultValue={false}
+                                defaultValue={value}
                                 rules={{ required: true }}
                                 as={Select}
                             />

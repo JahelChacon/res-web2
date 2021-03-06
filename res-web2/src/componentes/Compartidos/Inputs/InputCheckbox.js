@@ -20,7 +20,7 @@ export default function InputCheckbox({
                 <Form.Check
                     type="checkbox"
                     name={name}
-                    value={value}
+                    defaultChecked={value}
                     className="form-control"
                     label={label}
                     ref={register()}

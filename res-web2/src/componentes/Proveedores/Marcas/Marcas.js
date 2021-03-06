@@ -42,6 +42,7 @@ export default function Marcas({ token }) {
             token={token}
             editarTitulo='Editar Marca'
             editarCampos={editarCampos}
+            isFormData={true}
         />
     )
 }

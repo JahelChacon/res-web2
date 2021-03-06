@@ -37,6 +37,7 @@ export default function Heladas({ token }) {
             backURL="/bebidas"
             editarTitulo='Editar Bebida Helada'
             editarCampos={editarCampos}
+            isFormData={true}
         />
     )
 }

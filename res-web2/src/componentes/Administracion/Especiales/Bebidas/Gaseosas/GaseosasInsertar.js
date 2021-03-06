@@ -31,6 +31,7 @@ export default function GaseosasInsertar({ token }) {
             camposIzquierda={camposIzquierda}
             cancelarURL='/gaseosas'
             token={token}
+            isFormData={true}
         />
     )
 }

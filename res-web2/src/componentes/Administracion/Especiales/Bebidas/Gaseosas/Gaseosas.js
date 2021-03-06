@@ -39,6 +39,7 @@ export default function Gaseosas({ token }) {
             backURL="/bebidas"
             editarTitulo='Editar Bebida Gaseosa'
             editarCampos={editarCampos}
+            isFormData={true}
         />
     )
 }

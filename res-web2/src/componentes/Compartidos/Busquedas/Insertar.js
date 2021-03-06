@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Container, Row, Col, Card } from "react-bootstrap";
+import { makeRequest } from "../../../utils/API";
+import { Spinner } from "react-bootstrap";
 import InputTexto from "../../Compartidos/Inputs/InputTexto";
 import InputImagen from "../Inputs/InputImagen";
 import InputRadio from "../Inputs/InputRadio";
@@ -11,6 +13,7 @@ import SelectProductos from "../Inputs/SelectProductos";
 import SelectFromApi from "../Inputs/SelectFromApi";
 import BotonesInsertar from "../../Compartidos/Botones/BotonesInsertar";
 import ModalExito from "../Modales/ModalExito";
+import ModalError from "../Modales/ModalError";
 
 export default function Insertar({
     titulo,
@@ -18,19 +21,45 @@ export default function Insertar({
     camposDerecha,
     camposIzquierda,
     cancelarURL,
-    token
+    token,
+    isFormData
 }) {
+    const { control, register, handleSubmit, reset, errors } = useForm();
     const [mostrarExito, setMostrarExito] = useState(false);
+    const [mostrarFallo, setMostrarFallo] = useState(false);
+    const [insertando, setInsertando] = useState(false);
 
     // ***FALTA: Agregar campo de codigo de forma automatica
 
-    const onAgregar = (data) => {
-        console.log('Agregando! ', data);
-        setMostrarExito(true);
-        // Agregar POST /delete
+    const onAgregar = (form) => {
+        setInsertando(true);
+        let formData = null;
+        let objectData = !isFormData ? form : null;
+        if (isFormData) {
+            formData = new FormData();
+            Object.keys(form).forEach(function (key) {
+                const value = form[key];
+                if (value instanceof FileList) {
+                    formData.append(key, value[0]);
+                } else if (value instanceof Array) {
+                    formData.append(key, JSON.stringify(value))
+                } else {
+                    formData.append(key, value);
+                }
+            });
+        }
+        makeRequest('POST', `/${tabla}/add`, token, objectData, formData)
+            .then(response => {
+                if (response.status === 200) {
+                    setMostrarExito(true);
+                    reset();
+                } else {
+                    setMostrarFallo(true);
+                }
+                setInsertando(false);
+            })
     };
 
-    const { control, register, handleSubmit, reset, errors } = useForm();
     return (
         <Container>
             <form onSubmit={handleSubmit(onAgregar)}>
@@ -56,6 +85,7 @@ export default function Insertar({
                                                         size={campo.size}
                                                         disabled={campo.disabled && campo.disabled}
                                                         register={register}
+                                                        required={campo.name === 'codigo' ? false : true}
                                                         errors={errors} />
                                                     : campo.tipo === 'SelectFromApi'
                                                         ?
@@ -215,13 +245,21 @@ export default function Insertar({
                                 </Row>
                             </Card.Body>
                             <Card.Footer style={{ textAlign: "right" }}>
-                                <BotonesInsertar limpiar={reset} cancelar={cancelarURL ? cancelarURL : "/" + tabla} />
+                                {
+                                    insertando ?
+                                        <div className="mr-4">
+                                            <Spinner animation="border" />
+                                        </div>
+                                        :
+                                        <BotonesInsertar limpiar={reset} cancelar={cancelarURL ? cancelarURL : "/" + tabla} />
+                                }
                             </Card.Footer>
                         </Card>
                     </Col>
                 </Row>
             </form>
-            <ModalExito close={() => setMostrarExito(false)} show={mostrarExito} texto='Elemento insertado con éxito!' />
+            <ModalExito close={() => setMostrarExito(false)} show={mostrarExito} texto='Elemento Insertado con éxito!' />
+            <ModalError close={() => setMostrarFallo(false)} show={mostrarFallo} texto='Ocurrió un error al Insertar el elemento. Por favor, intente de nuevo.' />
         </Container>
     )
 }

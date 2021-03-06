@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Container, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { makeRequest } from "../../../utils/API";
 import InputTexto from "../Inputs/InputTexto";
 import InputNumero from "../Inputs/InputNumero";
 import InputRadio from "../Inputs/InputRadio";
@@ -12,8 +11,6 @@ import SelectFromApi from "../Inputs/SelectFromApi";
 import SelectProductos from "../Inputs/SelectProductos";
 import Filtro from "./Filtro";
 import Tabla from "./Tabla";
-import MensajeCargando from "../Mensajes/MensajeCargando";
-import MensajeError from "../Mensajes/MensajeError";
 
 export default function Busqueda({
     titulo,
@@ -26,28 +23,14 @@ export default function Busqueda({
     editarCampos,
     soloBusqueda,
     soloEditar,
+    isFormData,
     token
 }) {
-    const { control, register, getValues, reset, errors } = useForm();
-    const [tablaData, setTablaData] = useState([]);
-    const [cargando, setCargando] = useState(true);
-    const [fallo, setFallo] = useState(false);
+    const { control, register, handleSubmit, reset, errors } = useForm();
+    const [camposFiltro, setcamposFiltro] = useState(false);
 
-    useEffect(() => {
-        // ty catch
-        makeRequest('GET', '/' + tabla, null, token)
-            .then(response => response.json())
-            .then(data => {
-                setTablaData(data);
-                setCargando(false);
-            })
-            .catch((error) => {
-                setFallo(true);
-            });
-    }, [tabla, token]);
-
-    const onFiltrar = () => {
-        console.log('Filtrando: ', getValues());
+    const onFiltrar = (form) => {
+        setcamposFiltro(form);
     };
 
     return (
@@ -56,7 +39,7 @@ export default function Busqueda({
                 <Filtro
                     soloEditar={soloEditar}
                     soloBusqueda={soloBusqueda}
-                    filtrar={onFiltrar}
+                    filtrar={handleSubmit(onFiltrar)}
                     backURL={backURL}
                     titulo={titulo}
                     limpiar={reset}
@@ -151,18 +134,15 @@ export default function Busqueda({
                 </Filtro>
                 <br></br>
             </form>
-            <MensajeCargando cargando={cargando && !fallo} />
-            <MensajeError error={fallo} />
-            {
-                (!cargando && !fallo) &&
-                <Tabla
-                    soloBusqueda={soloBusqueda}
-                    editarCampos={editarCampos}
-                    editarTitulo={editarTitulo}
-                    token={token}
-                    columnas={columnas}
-                    filas={tablaData} />
-            }
+            <Tabla
+                isFormData={isFormData}
+                soloBusqueda={soloBusqueda}
+                editarCampos={editarCampos}
+                editarTitulo={editarTitulo}
+                token={token}
+                columnas={columnas}
+                filtros={camposFiltro}
+                tabla={tabla}/>
         </Container>
     )
 }

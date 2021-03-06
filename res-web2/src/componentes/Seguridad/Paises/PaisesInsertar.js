@@ -18,6 +18,7 @@ export default function PaisesInsertar({ token }) {
             tabla={TABLAS.PAIS}
             camposDerecha={camposDerecha}
             token={token}
+            isFormData={true}
         />
     )
 }
