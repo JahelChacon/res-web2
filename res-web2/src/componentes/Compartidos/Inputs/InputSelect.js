@@ -8,6 +8,7 @@ export default function InputSelect({
     children,
     register,
     errors,
+    disabled,
     required = true,
     size = 'grande'
 }) {
@@ -21,12 +22,14 @@ export default function InputSelect({
             <div className="form-group">
                 <label>{label}</label>
                 <select
+                    disabled={disabled}
                     defaultValue={value}
                     name={name}
                     className="form-control"
                     ref={register({
                         required: required && "Port favor ingrese un valor",
                     })}>
+                    <option key="default" value="">Select</option>
                     {children}
                 </select>
                 {errors[name] && (<div style={{ color: "red", fontSize: "14px" }}>{errors[name].message}</div>)}

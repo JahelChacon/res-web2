@@ -41,6 +41,7 @@ export default function Usuarios({ token }){
         { tipo: "checkbox", label: "Administrador de Sistema", name: "privilejios", size: "mediano" },
         { tipo: "checkbox", label: "Administrador de Seguridad", name: "privilejios", size: "mediano" },
         { tipo: "checkbox", label: "Administrador de Restaurante", name: "privilejios", size: "mediano" },
+        { tipo: "SelectFromApi", tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "mediano" },
         { tipo: "checkbox", label: "Administrador de Cuentas", name: "privilejios", size: "mediano" },
     ];
 

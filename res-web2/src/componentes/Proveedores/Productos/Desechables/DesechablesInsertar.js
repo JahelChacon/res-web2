@@ -18,7 +18,7 @@ export default function DesechablesInsertar({ token }){
             { tipo: "SelectFromApi", tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "grande" },
         ]
     };
-console.log(camposIzquierda);
+
     return (
         <Insertar
             titulo={"Insertar Desechable"}

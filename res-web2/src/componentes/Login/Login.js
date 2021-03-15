@@ -16,6 +16,8 @@ const Login = ({ signIn, usuario }) => {
             usuario.administradorCuentas ||
             usuario.administradorSeguridad) {
             return <Redirect to="/" />;
+        } else if (usuario.administradorRestaurante) {
+            return <Redirect to="apertura-caja" />;
         }
     }
 

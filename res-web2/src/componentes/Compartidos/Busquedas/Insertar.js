@@ -12,8 +12,8 @@ import InputPassword from "../Inputs/InputPassword";
 import SelectProductos from "../Inputs/SelectProductos";
 import SelectFromApi from "../Inputs/SelectFromApi";
 import BotonesInsertar from "../../Compartidos/Botones/BotonesInsertar";
-import ModalExito from "../Modales/ModalExito";
-import ModalError from "../Modales/ModalError";
+import ModalExito from "../Mensajes/ModalExito";
+import ModalError from "../Mensajes/ModalError";
 
 export default function Insertar({
     titulo,

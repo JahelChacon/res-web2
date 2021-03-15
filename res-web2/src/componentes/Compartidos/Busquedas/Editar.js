@@ -22,7 +22,7 @@ export default function Editar({
     token,
     campos,
     titulo,
-    finalizarEditar,
+    exitoEditar,
     falloEditar,
     elemento,
     isFormData
@@ -50,7 +50,7 @@ export default function Editar({
         makeRequest('POST', `/${tabla}/update/${elemento._id}`, token, objectData, formData)
             .then(response => {
                 if (response.status === 200) {
-                    finalizarEditar();
+                    exitoEditar();
                 } else {
                     falloEditar();
                 }

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { makeRequest } from "../../../utils/API";
 import InputTexto from "../Inputs/InputTexto";
 import InputNumero from "../Inputs/InputNumero";
 import InputRadio from "../Inputs/InputRadio";
@@ -11,6 +12,9 @@ import SelectFromApi from "../Inputs/SelectFromApi";
 import SelectProductos from "../Inputs/SelectProductos";
 import Filtro from "./Filtro";
 import Tabla from "./Tabla";
+import MensajeCargando from "../Mensajes/MensajeCargando";
+import MensajeError from "../Mensajes/MensajeError";
+import MensajeExito from "../Mensajes/MensajeExito";
 
 export default function Busqueda({
     titulo,
@@ -27,11 +31,48 @@ export default function Busqueda({
     token
 }) {
     const { control, register, handleSubmit, reset, errors } = useForm();
-    const [camposFiltro, setcamposFiltro] = useState(false);
+    const [tablaData, setTablaData] = useState([]);
+    const [dataFiltrada, setDataFiltrada] = useState([]);
+    const [cargando, setCargando] = useState(true);
+    const [falloTabla, setFalloTabla] = useState(false);
+    const [exitoFiltro, setExitoFiltro] = useState(false);
 
-    const onFiltrar = (form) => {
-        setcamposFiltro(form);
+    const onFiltrar = (filtros) => {
+        const data = tablaData.filter(function (item) {
+            for (var key in filtros) {
+                if (filtros[key] !== "" && item[key] !== filtros[key]) {
+                    return false;
+                }
+            }
+            return true;
+        });
+        setDataFiltrada(data);
+        setExitoFiltro(true);
     };
+
+    const cargarTabla = () => {
+        // ** Falta: ty catch
+        setCargando(true);
+        makeRequest('GET', '/' + tabla, token)
+            .then(response => response.json())
+            .then(data => {
+                setTablaData(data);
+                setCargando(false);
+            })
+            .catch(() => {
+                setFalloTabla(true);
+            });
+    };
+
+    const limpiarFiltros = () => {
+        setDataFiltrada([]);
+        reset();
+        if (exitoFiltro) {
+            setExitoFiltro(false);
+        }
+    };
+
+    useEffect(cargarTabla, [tabla, token]);
 
     return (
         <Container>
@@ -42,7 +83,7 @@ export default function Busqueda({
                     filtrar={handleSubmit(onFiltrar)}
                     backURL={backURL}
                     titulo={titulo}
-                    limpiar={reset}
+                    limpiar={limpiarFiltros}
                     insertarURL={insertarURL ? insertarURL : tabla + '/insertar'}>
                     <Row>
                         {
@@ -132,17 +173,25 @@ export default function Busqueda({
                         }
                     </Row>
                 </Filtro>
+                {exitoFiltro && <MensajeExito texto="Filtros aplicados con éxito!"></MensajeExito>}
                 <br></br>
             </form>
-            <Tabla
-                isFormData={isFormData}
-                soloBusqueda={soloBusqueda}
-                editarCampos={editarCampos}
-                editarTitulo={editarTitulo}
-                token={token}
-                columnas={columnas}
-                filtros={camposFiltro}
-                tabla={tabla}/>
+
+            <MensajeCargando cargando={cargando && !falloTabla} />
+            <MensajeError error={falloTabla} />
+            {
+                (!cargando && !falloTabla) &&
+                <Tabla
+                    isFormData={isFormData}
+                    soloBusqueda={soloBusqueda}
+                    editarCampos={editarCampos}
+                    editarTitulo={editarTitulo}
+                    token={token}
+                    tablaData={dataFiltrada.length > 0 ? dataFiltrada : tablaData}
+                    cargarTabla={cargarTabla}
+                    columnas={columnas}
+                    tabla={tabla} />
+            }
         </Container>
     )
 }

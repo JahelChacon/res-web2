@@ -86,6 +86,14 @@ const Bitacoras = lazy(() => import("../src/componentes/Reportes/Bitacoras/Bitac
 const ReporteUsuarios = lazy(() => import("../src/componentes/Reportes/Usuarios/ReporteUsuarios"));
 const Facturas = lazy(() => import("../src/componentes/Reportes/Facturas/Facturas"));
 
+// RESTAURANTES CHEF
+const AperturaCaja = lazy(() => import("../src/componentes/RestaurantesChef/AperturaCaja"));
+const PiccolaStella = lazy(() => import("../src/componentes/RestaurantesChef/PiccolaStella"));
+const TurinAnivo = lazy(() => import("../src/componentes/RestaurantesChef/TurinAnivo"));
+const NotteDiFuoco = lazy(() => import("../src/componentes/RestaurantesChef/NotteDiFuoco"));
+const ProcesosMesas = lazy(() => import("../src/componentes/RestaurantesChef/ProcesosMesas"));
+const ProcesosBarras = lazy(() => import("../src/componentes/RestaurantesChef/ProcesosBarras"));
+
 export function Rutas({ usuario, token }) {
     return (
         <Suspense fallback={<div>Cargando</div>}>
@@ -140,6 +148,7 @@ export function Rutas({ usuario, token }) {
                 <PrivateRoute
                     hasRole={usuario.administradorSistema || usuario.administradorSeguridad}
                     component={UsuariosInsertar}
+                    token={token}
                     path="/usuarios/insertar"
                     exact
                 />
@@ -518,6 +527,51 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema || usuario.administradorCuentas}
                     component={Facturas}
                     path="/facturas"
+                    exact
+                />
+
+                {/* RESTAURANTES CHEF */}
+                <PrivateRoute
+                    hasRole={usuario.administradorRestaurante}
+                    component={AperturaCaja}
+                    token={token}
+                    usuario={usuario}
+                    path="/apertura-caja"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorRestaurante}
+                    component={PiccolaStella}
+                    token={token}
+                    path="/piccola-stella"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorRestaurante}
+                    component={TurinAnivo}
+                    token={token}
+                    path="/turin-anivo"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorRestaurante}
+                    component={NotteDiFuoco}
+                    token={token}
+                    path="/notte-di-fuoco"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorRestaurante}
+                    component={ProcesosMesas}
+                    token={token}
+                    path="/procesos-mesas"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorRestaurante}
+                    component={ProcesosBarras}
+                    token={token}
+                    path="/procesos-barras"
                     exact
                 />
 

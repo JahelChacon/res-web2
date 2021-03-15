@@ -2,7 +2,7 @@ import React from "react";
 import Insertar from "../../Compartidos/Busquedas/Insertar";
 import { TABLAS } from "../../../utils/utils";
 
-export default function UsuariosInsertar() {
+export default function UsuariosInsertar({ token }) {
     const camposDerecha = {
         titulo: 'Datos Personales del Usuario',
         campos: [
@@ -25,6 +25,7 @@ export default function UsuariosInsertar() {
             { tipo: "checkbox", label: "Administrador de Sistema", name: "privilejios", size: "grande" },
             { tipo: "checkbox", label: "Administrador de Seguridad", name: "privilejios", size: "grande" },
             { tipo: "checkbox", label: "Administrador de Restaurante", name: "privilejios", size: "grande" },
+            { tipo: "SelectFromApi", tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "mediano" },
             { tipo: "checkbox", label: "Administrador de Cuentas", name: "privilejios", size: "grande" },
         ]
     };
@@ -34,6 +35,7 @@ export default function UsuariosInsertar() {
             tabla={TABLAS.USUARIO}
             camposDerecha={camposDerecha}
             camposIzquierda={camposIzquierda}
+            token={token}
         />
     )
 }

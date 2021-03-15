@@ -5,7 +5,7 @@ import BotonAtras from "../Botones/BotonAtras";
 
 export default function Filtro({
     titulo,
-    reset,
+    limpiar,
     insertarURL,
     backURL,
     filtrar,
@@ -28,7 +28,7 @@ export default function Filtro({
                         {children}
                     </Card.Body>
                     <Card.Footer style={{ textAlign: "right" }}>
-                        <BotonesFiltros filtrar={filtrar} limpiar={reset} insertarURL={insertarURL} inserta={!soloBusqueda && !soloEditar} />
+                        <BotonesFiltros filtrar={filtrar} limpiar={limpiar} insertarURL={insertarURL} inserta={!soloBusqueda && !soloEditar} />
                     </Card.Footer>
                 </Card>
             </Col>
