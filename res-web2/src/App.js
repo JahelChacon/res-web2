@@ -42,7 +42,8 @@ function App({ usuarioLogueado, tokenUsuario, signOut }) {
                 {
                   usuarioLogueado.administradorRestaurante && 
                   <NavDropdown title="Procesos" id="basic-nav-dropdown">
-                    <NavDropdown.Item to="/reporte-clientes">Clientes</NavDropdown.Item>
+                    <Link to="procesos-mesas" className="dropdown-item">Mesas</Link>
+                    <Link to="procesos-barras" className="dropdown-item">Barras</Link>
                   </NavDropdown>
                 }
               </React.Fragment>

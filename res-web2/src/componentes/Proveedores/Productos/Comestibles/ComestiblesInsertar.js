@@ -23,7 +23,7 @@ export default function ComestiblesInsertar({ token }){
             { tipo: "texto", label: "Línea", name: "linea", placeholder: "Línea", size: "grande" },
         ]
     };
-console.log(camposIzquierda);
+
     return (
         <Insertar
             titulo={"Insertar Comestible"}

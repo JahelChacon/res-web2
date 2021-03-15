@@ -12,6 +12,7 @@ export default function SelectFromApi({
     name,
     size,
     required,
+    disabled,
     tabla,
     token
 }) {
@@ -44,6 +45,7 @@ export default function SelectFromApi({
                     <InputSelect
                         value={value}
                         required={required}
+                        disabled={disabled}
                         label={label}
                         name={name}
                         size={size}
