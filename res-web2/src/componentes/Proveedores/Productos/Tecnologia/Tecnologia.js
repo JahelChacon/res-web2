@@ -22,6 +22,7 @@ export default function Tecnologia({ token }){
         { tipo: "SelectFromApi", tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "mediano" },
         { tipo: "SelectFromApi", tabla: "marcas", label: "Marca", name: "marca", size: "mediano" },
         { tipo: "numero", label: "Cantidad", name: "cantidad", placeholder: "Cantidad", size: "mediano" },
+        { tipo: "numero", label: "Precio", name: "precio", placeholder: "Precio", size: "mediano" },
         { tipo: "texto", label: "Descripción", name: "descripcion", placeholder: "Descripción", size: "mediano" },
     ];
 

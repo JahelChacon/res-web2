@@ -6,7 +6,7 @@ export default function LicoresInsertar({ token }) {
     const camposDerecha = {
         titulo: 'Información del Licor',
         campos: [
-            { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "grande" },
+            { tipo: "texto", disabled: true, label: "Código", name: "codigo", placeholder: "Código", size: "grande" },
             { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "grande" },
             { tipo: "SelectFromApi", tabla:"marcas" , label: "Marca", name: "marca", size: "grande" },
             { tipo: "numero", label: "Precio Unitario", name: "precioUnitario", placeholder: "Precio Unitario", size: "grande" },

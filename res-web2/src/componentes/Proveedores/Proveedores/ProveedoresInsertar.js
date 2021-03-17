@@ -8,7 +8,7 @@ export default function ProveedoresInsertar({ token }) {
         campos: [
             { tipo: "texto", disabled: true, label: "Código", name: "codigo", placeholder: "Código", size: "grande" },
             { tipo: "texto", label: "Cédula", name: "cedula", placeholder: "Nombre", size: "grande" },
-            { tipo: "texto", label: "Fecha de Ingreso", name: "fechaIngreso", placeholder: "Fecha de Ingreso", size: "grande" },
+            { tipo: "fecha", label: "Fecha de Ingreso", name: "fechaIngreso", size: "grande" },
             { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "grande" },
             { tipo: "texto", label: "Primer Apellido", name: "segundoApellido", placeholder: "Primer Apellido", size: "grande" },
             { tipo: "texto", label: "Segundo Apellido", name: "primerApellido", placeholder: "Segundo Apellido", size: "grande" },

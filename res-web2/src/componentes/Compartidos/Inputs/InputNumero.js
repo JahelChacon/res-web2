@@ -11,6 +11,7 @@ export default function InputNumero({
     required = true,
     size = 'grande',
     disabled = false,
+    readOnly = false,
 }) {
     return (
         <Col
@@ -24,6 +25,7 @@ export default function InputNumero({
                 <input
                     defaultValue={value}
                     disabled={disabled}
+                    readOnly={readOnly}
                     type={"number"}
                     name={name}
                     placeholder={placeholder}

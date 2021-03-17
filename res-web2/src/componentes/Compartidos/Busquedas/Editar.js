@@ -11,6 +11,7 @@ import InputImagen from "../Inputs/InputImagen";
 import InputCheckbox from "../Inputs/InputCheckbox";
 import InputPassword from "../Inputs/InputPassword";
 import InputFecha from "../Inputs/InputFecha";
+import EditPassword from "../Inputs/EditPassword";
 import SelectProductos from "../Inputs/SelectProductos";
 import SelectFromApi from "../Inputs/SelectFromApi";
 import BotonesEditar from "../Botones/BotonesEditar";
@@ -34,6 +35,21 @@ export default function Editar({
         setEditando(true);
         let formData = null;
         let objectData = !isFormData ? form : null;
+        Object.keys(form).forEach(function (key) {
+            // Formatea las fechas a MM/DD/YYY
+            if (key === 'fechaIngreso' || key === 'fecha') {
+                const fecha = new Date(form[key]);
+                const fechaFormateada = [fecha.getMonth() + 1, fecha.getDate() + 1, fecha.getFullYear()].join('/');
+                form[key] = fechaFormateada;
+            }
+
+            // Cambio de contraseña
+            if (key === 'cambioContrasena' && !form[key]) {
+                form.contrasena = "";
+            }
+        });
+
+        // Crear form data si es necesario
         if (isFormData) {
             formData = new FormData();
             Object.keys(form).forEach(function (key) {
@@ -80,7 +96,9 @@ export default function Editar({
                                                 placeholder={campo.placeholder}
                                                 size={campo.size}
                                                 disabled={campo.disabled && campo.disabled}
+                                                readOnly={campo.readOnly}
                                                 register={register}
+                                                required={campo.required}
                                                 errors={errors} />
                                             : campo.tipo === 'SelectFromApi'
                                                 ?
@@ -93,6 +111,7 @@ export default function Editar({
                                                     label={campo.label}
                                                     name={campo.name}
                                                     size={campo.size}
+                                                    required={campo.required}
                                                     register={register}
                                                     errors={errors} />
                                                 : campo.tipo === 'numero'
@@ -104,6 +123,7 @@ export default function Editar({
                                                         name={campo.name}
                                                         placeholder={campo.placeholder}
                                                         size={campo.size}
+                                                        readOnly={campo.readOnly}
                                                         register={register}
                                                         errors={errors} />
                                                     : campo.tipo === 'radio'
@@ -150,21 +170,30 @@ export default function Editar({
                                                                         ?
                                                                         <InputFecha
                                                                             key={index}
+                                                                            value={elemento[campo.name] && elemento[campo.name]}
                                                                             label={campo.label}
                                                                             name={campo.name}
                                                                             size={campo.size}
                                                                             required={false}
                                                                             register={register}
                                                                             errors={errors} />
-                                                                        : campo.tipo === 'SelectProductos' &&
-                                                                        <SelectProductos
-                                                                            value={elemento.productos && JSON.parse(elemento.productos)}
-                                                                            key={index}
-                                                                            label={campo.label}
-                                                                            name={campo.name}
-                                                                            size={campo.size}
-                                                                            control={control}
-                                                                            token={token} />
+                                                                        : campo.tipo === 'SelectProductos'
+                                                                            ?
+                                                                            <SelectProductos
+                                                                                value={elemento.productos && JSON.parse(elemento.productos)}
+                                                                                key={index}
+                                                                                label={campo.label}
+                                                                                name={campo.name}
+                                                                                size={campo.size}
+                                                                                control={control}
+                                                                                token={token} />
+                                                                            : campo.tipo === 'EditPassword' &&
+                                                                            <EditPassword
+                                                                                key={index}
+                                                                                name={campo.name}
+                                                                                size={campo.size}
+                                                                                register={register}
+                                                                                errors={errors} />
                                     ))
                                 }
                             </Row>

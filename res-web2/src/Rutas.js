@@ -176,6 +176,7 @@ export function Rutas({ usuario, token }) {
                 <PrivateRoute
                     hasRole={usuario.administradorSistema || usuario.administradorSeguridad}
                     component={RolesInsertar}
+                    token={token}
                     path="/roles/insertar"
                     exact
                 />
@@ -203,6 +204,7 @@ export function Rutas({ usuario, token }) {
                 <PrivateRoute
                     hasRole={usuario.administradorSistema || usuario.administradorSeguridad}
                     component={UnidadMedidaInsertar}
+                    token={token}
                     path="/medidas/insertar"
                     exact
                 />

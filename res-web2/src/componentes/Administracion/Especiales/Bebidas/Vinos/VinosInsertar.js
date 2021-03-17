@@ -6,7 +6,7 @@ export default function VinosInsertar({ token }) {
     const camposDerecha = {
         titulo: 'Información del Vino',
         campos: [
-            { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "grande" },
+            { tipo: "texto", disabled: true, label: "Código", name: "codigo", placeholder: "Código", size: "grande" },
             { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "grande" },
             { tipo: "SelectFromApi", tabla:"marcas" , label: "Marca", name: "marca", size: "grande" },
             { tipo: "SelectFromApi", tabla: "paises", label: "Nacionalidad", name: "nacionalidad", size: "grande" },
@@ -17,7 +17,7 @@ export default function VinosInsertar({ token }) {
 
     const camposIzquierda = {
         campos: [
-            { tipo: "texto", label: "Año", name: "año", placeholder: "Año", size: "grande" },
+            { tipo: "texto", label: "Año", name: "cosecha", placeholder: "Año", size: "grande" },
             { tipo: "SelectFromApi", tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "grande" },
             { tipo: "numero", label: "Cantidad", name: "cantidad", placeholder: "Cantidad", size: "grande" },
             { tipo: "texto", label: "Descripción", name: "descripcion", placeholder: "Descripción", size: "grande" },

@@ -11,6 +11,7 @@ export default function InputPassword({
     required = true,
     size = 'grande',
     disabled = false,
+    onChange
 }) {
     return (
         <Col
@@ -28,6 +29,7 @@ export default function InputPassword({
                     name={name}
                     placeholder={placeholder}
                     className="form-control"
+                    onChange={onChange}
                     ref={register && register({
                         required: required && "Por favor ingrese un valor",
                     })}

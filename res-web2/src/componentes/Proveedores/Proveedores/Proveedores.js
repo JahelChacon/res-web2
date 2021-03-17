@@ -23,7 +23,7 @@ export default function Proveedores({ token }){
     const editarCampos = [
         { tipo: "texto", disabled: true, label: "Código", name: "codigo", placeholder: "Código", size: "mediano" },
         { tipo: "texto", label: "Cédula", name: "cedula", placeholder: "Nombre", size: "mediano" },
-        { tipo: "texto", label: "Fecha de Ingreso", name: "fechaIngreso", placeholder: "Fecha de Ingreso", size: "mediano" },
+        { tipo: "fecha", label: "Fecha de Ingreso", name: "fechaIngreso", size: "mediano" },
         { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "mediano" },
         { tipo: "texto", label: "Primer Apellido", name: "segundoApellido", placeholder: "Primer Apellido", size: "mediano" },
         { tipo: "texto", label: "Segundo Apellido", name: "primerApellido", placeholder: "Segundo Apellido", size: "mediano" },

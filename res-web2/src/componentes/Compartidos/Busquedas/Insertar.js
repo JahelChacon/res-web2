@@ -9,6 +9,8 @@ import InputRadio from "../Inputs/InputRadio";
 import InputNumero from "../Inputs/InputNumero";
 import InputCheckbox from "../Inputs/InputCheckbox";
 import InputPassword from "../Inputs/InputPassword";
+import InputFecha from "../Inputs/InputFecha";
+import InsertarPassword from "../Inputs/InsertarPassword";
 import SelectProductos from "../Inputs/SelectProductos";
 import SelectFromApi from "../Inputs/SelectFromApi";
 import BotonesInsertar from "../../Compartidos/Botones/BotonesInsertar";
@@ -35,6 +37,17 @@ export default function Insertar({
         setInsertando(true);
         let formData = null;
         let objectData = !isFormData ? form : null;
+
+        // Formatea las fechas a MM/DD/YYY
+        Object.keys(form).forEach(function (key) {
+            if (key === 'fechaIngreso' || key === 'fecha') {
+                const fecha = new Date(form[key]);
+                const fechaFormateada = [fecha.getMonth() + 1, fecha.getDate() + 1, fecha.getFullYear()].join('/');
+                form[key] = fechaFormateada;
+            }
+        });
+
+        // Crear form data si es necesario
         if (isFormData) {
             formData = new FormData();
             Object.keys(form).forEach(function (key) {
@@ -97,6 +110,7 @@ export default function Insertar({
                                                             size={campo.size}
                                                             register={register}
                                                             tabla={campo.tabla}
+                                                            required={campo.required}
                                                             errors={errors} />
                                                         : campo.tipo === 'imagen'
                                                             ?
@@ -146,14 +160,31 @@ export default function Insertar({
                                                                                 required={false}
                                                                                 register={register}
                                                                                 errors={errors} />
-                                                                            : campo.tipo === 'SelectProductos' &&
-                                                                            <SelectProductos
-                                                                                key={index}
-                                                                                label={campo.label}
-                                                                                name={campo.name}
-                                                                                size={campo.size}
-                                                                                control={control}
-                                                                                token={token} />
+                                                                            : campo.tipo === 'SelectProductos'
+                                                                                ?
+                                                                                <SelectProductos
+                                                                                    key={index}
+                                                                                    label={campo.label}
+                                                                                    name={campo.name}
+                                                                                    size={campo.size}
+                                                                                    control={control}
+                                                                                    token={token} />
+                                                                                : campo.tipo === 'fecha'
+                                                                                    ?
+                                                                                    <InputFecha
+                                                                                        key={index}
+                                                                                        label={campo.label}
+                                                                                        name={campo.name}
+                                                                                        size={campo.size}
+                                                                                        register={register}
+                                                                                        errors={errors} />
+                                                                                    : campo.tipo === 'InsertarPassword' &&
+                                                                                    <InsertarPassword
+                                                                                        key={index}
+                                                                                        name={campo.name}
+                                                                                        size={campo.size}
+                                                                                        register={register}
+                                                                                        errors={errors} />
                                             ))
                                         }
                                     </Col>
@@ -181,6 +212,7 @@ export default function Insertar({
                                                             name={campo.name}
                                                             size={campo.size}
                                                             register={register}
+                                                            required={campo.required}
                                                             tabla={campo.tabla}
                                                             errors={errors} />
                                                         : campo.tipo === 'imagen'
@@ -231,14 +263,22 @@ export default function Insertar({
                                                                                 required={false}
                                                                                 register={register}
                                                                                 errors={errors} />
-                                                                            : campo.tipo === 'SelectProductos' &&
-                                                                            <SelectProductos
-                                                                                key={index}
-                                                                                label={campo.label}
-                                                                                name={campo.name}
-                                                                                size={campo.size}
-                                                                                control={control}
-                                                                                token={token} />
+                                                                            : campo.tipo === 'SelectProductos'
+                                                                                ?
+                                                                                <SelectProductos
+                                                                                    key={index}
+                                                                                    label={campo.label}
+                                                                                    name={campo.name}
+                                                                                    size={campo.size}
+                                                                                    control={control}
+                                                                                    token={token} />
+                                                                                : campo.tipo === 'InsertarPassword' &&
+                                                                                <InsertarPassword
+                                                                                    key={index}
+                                                                                    name={campo.name}
+                                                                                    size={campo.size}
+                                                                                    register={register}
+                                                                                    errors={errors} />
                                             ))
                                         }
                                     </Col>

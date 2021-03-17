@@ -19,14 +19,13 @@ export default function UsuariosInsertar({ token }) {
     const camposIzquierda = {
         titulo: 'Datos Técnicos del Usuario',
         campos: [
-            { tipo: "password", label: "Contraseña", name: "contrasena", placeholder: "Contraseña", size: "grande" },
-            { tipo: "password", label: "Confirmar Contraseña", name: "contrasenaConfirmar", placeholder: "Confirmar Contraseña", size: "grande" },
+            { tipo: "InsertarPassword", name: "contrasena", size: "grande" },
             { tipo: "texto", label: "Login", name: "login", placeholder: "Login", size: "grande" },
-            { tipo: "checkbox", label: "Administrador de Sistema", name: "privilejios", size: "grande" },
-            { tipo: "checkbox", label: "Administrador de Seguridad", name: "privilejios", size: "grande" },
-            { tipo: "checkbox", label: "Administrador de Restaurante", name: "privilejios", size: "grande" },
-            { tipo: "SelectFromApi", tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "mediano" },
-            { tipo: "checkbox", label: "Administrador de Cuentas", name: "privilejios", size: "grande" },
+            { tipo: "checkbox", label: "Administrador de Sistema", name: "administradorSistema", size: "grande" },
+            { tipo: "checkbox", label: "Administrador de Seguridad", name: "administradorSeguridad", size: "grande" },
+            { tipo: "checkbox", label: "Administrador de Restaurante", name: "administradorRestaurante", size: "grande" },
+            { tipo: "SelectFromApi", required: false, tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "mediano" },
+            { tipo: "checkbox", label: "Administrador de Cuentas", name: "administradorCuentas", size: "grande" },
         ]
     };
     return (

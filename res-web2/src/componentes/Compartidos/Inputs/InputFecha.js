@@ -12,6 +12,9 @@ export default function InputFecha({
     size = 'grande',
     disabled = false,
 }) {
+    const fecha = new Date(value);
+    const defaultValue = value !== undefined ? fecha.toISOString().substr(0, 10) : null;
+
     return (
         <Col
             xl={size === 'grande' ? 12 : size === 'mediano' ? 6 : size === 'pequeno' ? 4 : 3}
@@ -22,7 +25,7 @@ export default function InputFecha({
             <div className="form-group">
                 <label>{label}</label>
                 <input
-                    defaultValue={value}
+                    defaultValue={defaultValue}
                     disabled={disabled}
                     type={"date"}
                     name={name}

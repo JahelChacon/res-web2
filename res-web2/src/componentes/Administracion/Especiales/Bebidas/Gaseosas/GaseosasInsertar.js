@@ -6,7 +6,7 @@ export default function GaseosasInsertar({ token }) {
     const camposDerecha = {
         titulo: 'Información de la Bebida Gaseosa',
         campos: [
-            { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "grande" },
+            { tipo: "texto", disabled: true, label: "Código", name: "codigo", placeholder: "Código", size: "grande" },
             { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "grande" },
             { tipo: "SelectFromApi", tabla:"marcas" , label: "Marca", name: "marca", size: "grande" },
             { tipo: "SelectFromApi", tabla: "paises", label: "Nacionalidad", name: "nacionalidad", size: "grande" },

@@ -31,7 +31,7 @@ export default function Empleados({ token }) {
         { tipo: "texto", label: "Segundo Apellido", name: "segundoAppelido", placeholder: "Segundo Apellido", size: "mediano" },
         { tipo: "texto", label: "Telefono 1", name: "telefono1", placeholder: "Telefono 1", size: "mediano" },
         { tipo: "texto", label: "Telefono 2", name: "telefono2", placeholder: "Telefono 2", size: "mediano" },
-        { tipo: "texto", label: "Puesto", name: "puesto", placeholder: "Puesto", size: "mediano" },
+        { tipo: "SelectFromApi", tabla: "puestos", label: "Puesto", name: "puesto", size: "mediano" },
         { tipo: "SelectFromApi", tabla: "paises", label: "Nacionalidad", name: "nacionalidad", size: "mediano" },
         { tipo: "SelectFromApi", tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "mediano" },
         { tipo: "imagen", label: "Foto del Empleado", name: "foto", size: "mediano" },
