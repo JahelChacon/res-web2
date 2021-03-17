@@ -23,6 +23,7 @@ export default function Restaurantes({ token }) {
         { tipo: "texto", disabled: true, label: "Código", name: "codigo", placeholder: "Código", size: "mediano" },
         { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "mediano" },
         { tipo: "texto", label: "Dirección", name: "direccion", placeholder: "Dirección", size: "mediano" },
+        { tipo: "texto", label: "Especialidad", name: "especialidad", placeholder: "Especialidad", size: "mediano" },
         { tipo: "numero", label: "Cantidad de Clientes", name: "cantidadClientes", placeholder: "Cantidad de Clientes", size: "mediano" },
         { tipo: "texto", label: "Teléfono", name: "telefono", placeholder: "Teléfono", size: "mediano" },
     ];

@@ -6,7 +6,7 @@ export default function ComestiblesInsertar({ token }){
     const camposDerecha = {
         titulo: 'Información de Comestible',
         campos: [
-            { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "grande" },
+            { tipo: "texto", disabled: true, label: "Código", name: "codigo", placeholder: "Código", size: "grande" },
             { tipo: "numero", label: "Cantidad", name: "cantidad", placeholder: "Cantidad", size: "grande" },
             { tipo: "SelectFromApi", tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "grande" },
             { tipo: "texto", label: "Clase", name: "clase", placeholder: "Clase", size: "grande" },

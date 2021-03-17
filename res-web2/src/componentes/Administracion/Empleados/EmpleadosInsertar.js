@@ -18,7 +18,7 @@ export default function EmpleadosInsertar({ token }) {
 
     const camposIzquierda = {
         campos: [
-            { tipo: "texto", label: "Puesto", name: "puesto", placeholder: "Puesto", size: "grande" },
+            { tipo: "SelectFromApi", tabla: "puestos", label: "Puesto", name: "puesto", size: "grande" },
             { tipo: "SelectFromApi", tabla:"paises" , label: "Nacionalidad", name: "nacionalidad", size: "grande" },
             { tipo: "imagen", label: "Foto del Empleado", name: "foto", size: "grande" },
             { tipo: "SelectFromApi", tabla:"restaurantes" , label: "Restaurante", name: "restaurante", size: "grande" },

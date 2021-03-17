@@ -21,7 +21,7 @@ export default function Consecutivos({ token }){
         { tipo: "texto", disabled: true, label: "Código", name: "codigo", placeholder: "Código", size: "mediano" },
         { tipo: "texto", label: "Descripción", name: "descripcion", placeholder: "Descripción", size: "mediano" },
         { tipo: "texto", label: "Colección", name: "tabla", placeholder: "Colección", size: "mediano" },
-        { tipo: "texto", disabled: true, label: "Valor", name: "valor", placeholder: "Valor", size: "mediano" },
+        { tipo: "texto", readOnly: true, label: "Valor", name: "valor", placeholder: "Valor", size: "mediano" },
         { tipo: "texto", label: "Prefijo", name: "prefijo", placeholder: "Prefijo", size: "mediano" },
         { tipo: "checkbox", label: "Tiene Prefijo", name: "tienePrefijo", size: "mediano" },
     ];

@@ -11,6 +11,7 @@ export default function InputTexto({
     required = true,
     size = 'grande',
     disabled = false,
+    readOnly = false,
 }) {
     return (
         <Col
@@ -24,6 +25,7 @@ export default function InputTexto({
                 <input
                     defaultValue={value}
                     disabled={disabled}
+                    readOnly={readOnly}
                     type={"text"}
                     name={name}
                     placeholder={placeholder}

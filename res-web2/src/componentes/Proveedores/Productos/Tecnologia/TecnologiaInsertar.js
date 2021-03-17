@@ -9,6 +9,7 @@ export default function TecnologiaInsertar({ token }){
             { tipo: "texto", disabled: true, label: "Código", name: "codigo", placeholder: "Código", size: "grande" },
             { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "grande" },
             { tipo: "numero", label: "Cantidad", name: "cantidad", placeholder: "Cantidad", size: "grande" },
+            { tipo: "numero", label: "Precio", name: "precio", placeholder: "Precio", size: "grande" },
         ]
     };
 

@@ -6,7 +6,7 @@ export default function EspecialidadesInsertar({ token }) {
     const camposDerecha = {
         titulo: 'Información de la Especialidad',
         campos: [
-            { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "grande" },
+            { tipo: "texto", disabled: true, label: "Código", name: "codigo", placeholder: "Código", size: "grande" },
             { tipo: "texto", label: "Nombre del platillo", name: "nombre", placeholder: "Nombre del platillo", size: "grande" },
             { tipo: "texto", label: "Ingredientes", name: "ingredientes", placeholder: "Ingredientes", size: "grande" },
         ]

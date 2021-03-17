@@ -17,7 +17,7 @@ export default function Comestibles({ token }){
     ];
 
     const editarCampos = [
-        { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "mediano" },
+        { tipo: "texto", disabled: true, label: "Código", name: "codigo", placeholder: "Código", size: "mediano" },
         { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "mediano" },
         { tipo: "numero", label: "Cantidad", name: "cantidad", placeholder: "Cantidad", size: "mediano" },
         { tipo: "texto", label: "Tipo", name: "tipo", placeholder: "Tipo", size: "mediano" },

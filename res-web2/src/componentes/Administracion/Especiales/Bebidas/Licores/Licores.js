@@ -21,8 +21,8 @@ export default function Licores({ token }) {
     ];
 
     const editarCampos = [
-        { tipo: "numero", disabled: true, label: "Código", name: "codigo", placeholder: "Código", size: "mediano" },
-        { tipo: "numero", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "mediano" },
+        { tipo: "texto", disabled: true, label: "Código", name: "codigo", placeholder: "Código", size: "mediano" },
+        { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "mediano" },
         { tipo: "SelectFromApi", tabla:"marcas" , label: "Marca", name: "marca", size: "mediano" },
         { tipo: "SelectFromApi", tabla:"paises" , label: "Nacionalidad", name: "nacionalidad", size: "mediano" },
         { tipo: "texto", label: "Precio Unitario", name: "precioUnitario", placeholder: "Precio Unitario", size: "mediano" },

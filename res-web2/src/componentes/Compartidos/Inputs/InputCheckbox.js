@@ -7,6 +7,7 @@ export default function InputCheckbox({
     name,
     register,
     value,
+    onChange,
     size = 'grande'
 }) {
     return (
@@ -24,6 +25,7 @@ export default function InputCheckbox({
                     className="form-control"
                     label={label}
                     ref={register()}
+                    onChange={onChange}
                 />
             </Form.Group>
         </Col>
