@@ -32,7 +32,7 @@ export default function Tabla({
     const selectRow = {
         mode: 'radio',
         clickToSelect: true,
-        bgColor: !soloBusqueda && '#969696',
+        bgColor: soloBusqueda ? null : '#969696',
         hideSelectColumn: soloBusqueda,
         onSelect: (row) => {
             setfilaSeleccionada(row);

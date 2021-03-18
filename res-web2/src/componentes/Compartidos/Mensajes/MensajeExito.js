@@ -17,7 +17,5 @@ export default function MensajeExito({ texto }) {
                 </Alert>
             }
         </React.Fragment>
-
     )
-
 }

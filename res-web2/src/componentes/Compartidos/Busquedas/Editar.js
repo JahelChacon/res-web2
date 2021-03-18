@@ -3,6 +3,7 @@ import { Spinner } from "react-bootstrap";
 import { Modal, Card, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { API_URL } from "../../../utils/API"
+import { formatearFecha } from "../../../utils/utils";
 import { makeRequest } from "../../../utils/API";
 import InputTexto from "../Inputs/InputTexto";
 import InputNumero from "../Inputs/InputNumero";
@@ -38,9 +39,7 @@ export default function Editar({
         Object.keys(form).forEach(function (key) {
             // Formatea las fechas a MM/DD/YYY
             if (key === 'fechaIngreso' || key === 'fecha') {
-                const fecha = new Date(form[key]);
-                const fechaFormateada = [fecha.getMonth() + 1, fecha.getDate() + 1, fecha.getFullYear()].join('/');
-                form[key] = fechaFormateada;
+                form[key] = formatearFecha(form[key]);
             }
 
             // Cambio de contraseña

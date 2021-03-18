@@ -17,7 +17,7 @@ export default function Vinos({ token }) {
     const filtros = [
         { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "pequeno" },
         { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "pequeno" },
-        { tipo: "texto", label: "Año", name: "año", placeholder: "Año", size: "pequeno" },
+        { tipo: "texto", label: "Año", name: "cosecha", placeholder: "Año", size: "pequeno" },
         { tipo: "SelectFromApi", tabla:"paises" , label: "Nacionalidad", name: "nacionalidad", size: "pequeno" },
         { tipo: "SelectFromApi", tabla:"restaurantes" , label: "Restaurante", name: "restaurante", size: "pequeno" },
     ];

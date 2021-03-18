@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { makeRequest } from "../../../utils/API";
+import { formatearFecha } from "../../../utils/utils";
 import { Spinner } from "react-bootstrap";
 import InputTexto from "../../Compartidos/Inputs/InputTexto";
 import InputImagen from "../Inputs/InputImagen";
@@ -41,9 +42,7 @@ export default function Insertar({
         // Formatea las fechas a MM/DD/YYY
         Object.keys(form).forEach(function (key) {
             if (key === 'fechaIngreso' || key === 'fecha') {
-                const fecha = new Date(form[key]);
-                const fechaFormateada = [fecha.getMonth() + 1, fecha.getDate() + 1, fecha.getFullYear()].join('/');
-                form[key] = fechaFormateada;
+                form[key] = formatearFecha(form[key]);
             }
         });
 
