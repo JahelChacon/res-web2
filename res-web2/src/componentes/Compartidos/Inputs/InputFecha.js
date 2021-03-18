@@ -12,7 +12,7 @@ export default function InputFecha({
     size = 'grande',
     disabled = false,
 }) {
-    const fecha = new Date(value);
+    const fecha = new Date(`${value} 00:00`);
     const defaultValue = value !== undefined ? fecha.toISOString().substr(0, 10) : null;
 
     return (

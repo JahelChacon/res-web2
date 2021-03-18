@@ -14,8 +14,8 @@ export default function Marcas({ token }) {
 
     const filtros = [
         { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "pequeno" },
-        { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "pequeno" },
-        { tipo: "texto", label: "Empresa", name: "empresa", placeholder: "Empresa", size: "pequeno" },
+        { tipo: "texto", label: "Nombre", name: "nombreMarca", placeholder: "Nombre", size: "pequeno" },
+        { tipo: "texto", label: "Empresa", name: "nombreEmpresa", placeholder: "Empresa", size: "pequeno" },
         { tipo: "SelectFromApi", tabla: "paises", label: "Nacionalidad", name: "nacionalidad", size: "pequeno" },
     ];
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { makeRequest } from "../../../utils/API";
+import { formatearFecha } from "../../../utils/utils";
 import InputTexto from "../Inputs/InputTexto";
 import InputNumero from "../Inputs/InputNumero";
 import InputRadio from "../Inputs/InputRadio";
@@ -36,18 +37,54 @@ export default function Busqueda({
     const [cargando, setCargando] = useState(true);
     const [falloTabla, setFalloTabla] = useState(false);
     const [exitoFiltro, setExitoFiltro] = useState(false);
+    const [noDataFiltro, setNoDataFiltro] = useState(false);
 
     const onFiltrar = (filtros) => {
+        setExitoFiltro(false);
+        setNoDataFiltro(false);
+
         const data = tablaData.filter(function (item) {
-            for (var key in filtros) {
-                if (filtros[key] !== "" && item[key] !== filtros[key]) {
-                    return false;
+            for (var filtroKey in filtros) {
+                // Formatea las fechas de los filtros a MM/DD/YYY
+                if (filtros[filtroKey] !== "" && filtroKey === "fecha") {
+                    filtros[filtroKey] = formatearFecha(filtros[filtroKey]);
+                }
+
+                // Cambia valores numericos a String para hacer comparacion de filtros
+                if (typeof item[filtroKey] === "number") {
+                    item[filtroKey] = item[filtroKey].toString();
+                }
+
+                if (filtroKey !== "fechaInicio" && filtroKey !== "fechaFinal") {
+                    // Si el filtro no es vacio y no hace match no el item, no agrega el elemento al array
+                    if (filtros[filtroKey] !== "" && item[filtroKey] !== filtros[filtroKey]) {
+                        return false;
+                    }
                 }
             }
+
+            // Filtro rango de fechas
+            if (item.fecha && (filtros.fechaInicio || filtros.fechaFinal)) {
+                const itemFecha = new Date(`${item.fecha} 00:00`);
+                const fechaInicio = filtros.fechaInicio && new Date(`${filtros.fechaInicio} 00:00`);
+                const fechaFinal = filtros.fechaFinal && new Date(`${filtros.fechaFinal} 00:00`);
+                if (filtros.fechaInicio !== "" && filtros.fechaFinal === "") {
+                    return fechaInicio <= itemFecha;
+                } else if (filtros.fechaInicio === "" && filtros.fechaFinal !== "") {
+                    return itemFecha <= fechaFinal;
+                } else if (filtros.fechaInicio !== "" && filtros.fechaFinal !== "") {
+                    return fechaInicio <= itemFecha && itemFecha <= fechaFinal;
+                }
+            }
+
             return true;
         });
+        if (data.length > 0) {
+            setExitoFiltro(true);
+        } else {
+            setNoDataFiltro(true);
+        }
         setDataFiltrada(data);
-        setExitoFiltro(true);
     };
 
     const cargarTabla = () => {
@@ -58,6 +95,9 @@ export default function Busqueda({
             .then(data => {
                 setTablaData(data);
                 setCargando(false);
+                setDataFiltrada([]);
+                setExitoFiltro(false);
+                setNoDataFiltro(false);
             })
             .catch(() => {
                 setFalloTabla(true);
@@ -67,9 +107,8 @@ export default function Busqueda({
     const limpiarFiltros = () => {
         setDataFiltrada([]);
         reset();
-        if (exitoFiltro) {
-            setExitoFiltro(false);
-        }
+        setExitoFiltro(false);
+        setNoDataFiltro(false);
     };
 
     useEffect(cargarTabla, [tabla, token]);
@@ -174,6 +213,7 @@ export default function Busqueda({
                     </Row>
                 </Filtro>
                 {exitoFiltro && <MensajeExito texto="Filtros aplicados con éxito!"></MensajeExito>}
+                <MensajeError error={noDataFiltro} mensaje='No existen resultados para los filtros aplicados' />
                 <br></br>
             </form>
 

@@ -18,10 +18,8 @@ export default function Clientes({ token }) {
         { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "pequeno" },
         { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "pequeno" },
         { tipo: "SelectFromApi", tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "pequeno" },
-        { tipo: "fecha", label: "Fecha - Inicio", name: "fechaInicio", size: "x-pequeno" },
-        { tipo: "fecha", label: "Fecha - Final", name: "fechaInicio", size: "x-pequeno" },
-        { tipo: "fecha", label: "Fecha Reservación - Inicio", name: "fechaInicio", size: "x-pequeno" },
-        { tipo: "fecha", label: "Fecha Reservación - Final", name: "fechaInicio", size: "x-pequeno" },
+        { tipo: "fecha", label: "Fecha - Inicio", name: "fechaInicio", size: "mediano" },
+        { tipo: "fecha", label: "Fecha - Final", name: "fechaFinal", size: "mediano" },
         { tipo: "checkbox", label: "Barra", name: "barra", size: "mediano" },
         { tipo: "checkbox", label: "Reservación", name: "reservacion", size: "mediano" },
     ];

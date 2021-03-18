@@ -35,3 +35,9 @@ export const ROLES = {
     RESTAURANTE: "Restaurante",
     CONTABILIDAD: "Contabilidad"
 };
+
+export function formatearFecha(fecha) {
+    const fechaInicial = new Date(`${fecha} 00:00`);
+    const fechaFormateada = [fechaInicial.getMonth() + 1, fechaInicial.getDate(), fechaInicial.getFullYear()].join('/');
+    return fechaFormateada;
+};

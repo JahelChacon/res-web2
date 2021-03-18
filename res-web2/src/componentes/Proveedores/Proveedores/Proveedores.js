@@ -10,13 +10,13 @@ export default function Proveedores({ token }){
         { text: "Segundo Apellido", dataField: "segundoApellido" },
         { text: "Teléfono Oficina", dataField: "telefonoOficina" },
         { text: "Fax", dataField: "fax" },
-        { text: "Celular", dataField: "celular" }
+        { text: "Celular", dataField: "celular" },
+        { text: "Cédula", dataField: "cedula" }
     ];
 
     const filtros = [
         { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "pequeno" },
         { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "pequeno" },
-        { tipo: "texto", label: "Dirección", name: "direccion", placeholder: "Dirección", size: "pequeno" },
         { tipo: "texto", label: "Cédula", name: "cedula", placeholder: "Cédula", size: "pequeno" },
     ];
 
