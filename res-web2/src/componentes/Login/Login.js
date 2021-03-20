@@ -1,19 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux';
 import { useForm } from "react-hook-form";
+import { Spinner } from "react-bootstrap";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import { logIn } from '../../store/actions/user';
+import { logIn, limpiarMensaje } from '../../store/actions/user';
 import { Redirect } from "react-router-dom";
 import MensajeError from "../Compartidos/Mensajes/MensajeError";
 
-const Login = ({ signIn, usuario }) => {
+const Login = ({ signIn, usuario, errorMessage, limpiarError }) => {
     const { register, errors, handleSubmit, reset } = useForm();
-    const [intentoLogin, setIntentoLogin] = useState(false);
+    const [cargando, setCargando] = useState(false);
 
-    const onSubmit = function (formData) {
+    const onSubmit = (formData) => {
+        setCargando(true)
         signIn(formData.usuario, formData.contrasena);
-        setIntentoLogin(true);
     };
+
+    const onLimpiar = () => {
+        reset();
+        limpiarError();
+        setCargando(false);
+    };
+
+    useEffect(() => {
+        limpiarError();
+    }, [limpiarError])
 
     if (usuario) {
         if (usuario.administradorSistema ||
@@ -62,11 +73,19 @@ const Login = ({ signIn, usuario }) => {
                                     />
                                     {errors.contrasena && (<div style={{ color: "red", fontSize: "14px" }}>{errors.contrasena.message}</div>)}
                                 </div>
-                                <MensajeError error={!usuario && intentoLogin} mensaje='Usuario o contraseña incorrectos' />
+                                <MensajeError error={errorMessage} mensaje='Usuario o contraseña incorrectos' />
                             </Card.Body>
                             <Card.Footer style={{ textAlign: "right" }}>
-                                <Button type={"submit"} variant={"outline-success"}>Entrar</Button> {' '}
-                                <Button type={"reset"} onClick={reset} variant={"outline-warning"}>Limpiar</Button> {' '}
+                                {(cargando && !usuario && !errorMessage) ?
+                                    <div className="ml-4">
+                                        <Spinner animation="border" />
+                                    </div>
+                                    :
+                                    <React.Fragment>
+                                        <Button type={"submit"} variant={"outline-success"}>Entrar</Button> {' '}
+                                        <Button type={"reset"} onClick={onLimpiar} variant={"outline-warning"}>Limpiar</Button> {' '}
+                                    </React.Fragment>
+                                }
                             </Card.Footer>
                         </Card>
                     </Col>
@@ -77,8 +96,14 @@ const Login = ({ signIn, usuario }) => {
     )
 }
 
-const mapDispatchToProps = dispatch => ({
-    signIn: (usuario, contrasena) => dispatch(logIn(usuario, contrasena)),
+const mapStateToProps = (state) => ({
+    errorMessage: state.userReducer ? state.userReducer.errorMessage : false,
 });
 
-export default connect(null, mapDispatchToProps)(Login);
+
+const mapDispatchToProps = dispatch => ({
+    signIn: (usuario, contrasena) => dispatch(logIn(usuario, contrasena)),
+    limpiarError: () => dispatch(limpiarMensaje()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
