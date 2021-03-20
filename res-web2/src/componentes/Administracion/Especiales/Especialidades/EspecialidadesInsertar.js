@@ -2,7 +2,7 @@ import React from "react";
 import Insertar from "../../../Compartidos/Busquedas/Insertar";
 import { TABLAS } from "../../../../utils/utils";
 
-export default function EspecialidadesInsertar({ token }) {
+export default function EspecialidadesInsertar({ token, usuario }) {
     const camposDerecha = {
         titulo: 'Información de la Especialidad',
         campos: [
@@ -28,6 +28,7 @@ export default function EspecialidadesInsertar({ token }) {
             camposIzquierda={camposIzquierda}
             cancelarURL='/especialidades'
             token={token}
+            usuario={usuario}
             isFormData={true}
         />
     )

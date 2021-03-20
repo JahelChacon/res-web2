@@ -2,7 +2,7 @@ import React from "react";
 import Insertar from "../../../Compartidos/Busquedas/Insertar";
 import { TABLAS } from "../../../../utils/utils";
 
-export default function LimpiezaInsertar({ token }){
+export default function LimpiezaInsertar({ token, usuario }){
     const camposDerecha = {
         titulo: 'Información de los artículos',
         campos: [
@@ -31,6 +31,7 @@ export default function LimpiezaInsertar({ token }){
             camposDerecha={camposDerecha}
             camposIzquierda={camposIzquierda}
             token={token}
+            usuario={usuario}
         />
     )
 }

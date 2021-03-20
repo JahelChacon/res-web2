@@ -2,7 +2,7 @@ import React from "react";
 import Busqueda from "../../Compartidos/Busquedas/Busqueda";
 import { TABLAS } from "../../../utils/utils";
 
-export default function Cajas({ token }){
+export default function Cajas({ token, usuario }){
     const columnas = [
         { text: "Codigo", dataField: "codigo" },
         { text: "Fecha", dataField: "fecha" },
@@ -38,6 +38,7 @@ export default function Cajas({ token }){
             columnas={columnas}
             filtros={filtros}
             token={token}
+            usuario={usuario}
             backURL="/seguridad"
             editarTitulo='Editar Caja'
             editarCampos={editarCampos}

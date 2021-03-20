@@ -2,7 +2,7 @@ import React from "react";
 import Busqueda from "../../Compartidos/Busquedas/Busqueda";
 import { TABLAS } from "../../../utils/utils";
 
-export default function UnidadMedida({ token }){
+export default function UnidadMedida({ token, usuario }){
     const columnas = [
         { text: "Codigo", dataField: "codigo" },
         { text: "Unidad de Medida", dataField: "unidad" },
@@ -32,6 +32,7 @@ export default function UnidadMedida({ token }){
             columnas={columnas}
             filtros={filtros}
             token={token}
+            usuario={usuario}
             insertarURL='/medidas/insertar'
             backURL="/seguridad"
             editarTitulo='Editar Unidad de Medida'

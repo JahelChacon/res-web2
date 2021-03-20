@@ -2,7 +2,7 @@ import React from "react";
 import Busqueda from "../../Compartidos/Busquedas/Busqueda";
 import { TABLAS } from "../../../utils/utils";
 
-export default function Empleados({ token }) {
+export default function Empleados({ token, usuario }) {
     const columnas = [
         { text: "Codigo", dataField: "codigo" },
         { text: "Cedula", dataField: "cedula" },
@@ -44,6 +44,7 @@ export default function Empleados({ token }) {
             columnas={columnas}
             filtros={filtros}
             token={token}
+            usuario={usuario}
             backURL="/administracion"
             editarTitulo='Editar Empleado'
             editarCampos={editarCampos}

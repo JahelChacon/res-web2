@@ -1,4 +1,5 @@
 import { makeRequest } from '../../utils/API';
+import { insertarBitacora } from "../../utils/utils";
 
 export const LOG_IN = 'LOG_IN';
 export const GET_TOKEN = 'GET_TOKEN';
@@ -13,11 +14,13 @@ export const logIn = (usuario, contrasena) => async dispatch => {
       };
       const response = await makeRequest('POST', '/usuarios/login', null, data);
       const responseData = await response.json();
+      insertarBitacora(responseData.token, responseData.usuario.login, `Usuario ${responseData.usuario.login} logueado con éxito!`);
       dispatch({ type: GET_TOKEN, payload: responseData.token });
       dispatch({ type: LOG_IN, payload: responseData.usuario });
     }
   } catch (error) {
     console.log('Error: ', error);
+    insertarBitacora("", 'Fallo en logueo de usuario!');
   }
 };
 

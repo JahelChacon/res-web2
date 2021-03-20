@@ -2,7 +2,7 @@ import React from "react";
 import Busqueda from "../../Compartidos/Busquedas/Busqueda";
 import { TABLAS } from "../../../utils/utils";
 
-export default function Paises({ token }) {
+export default function Paises({ token, usuario }) {
     const columnas = [
         { text: "Codigo", dataField: "codigo" },
         { text: "Nombre", dataField: "nombre" },
@@ -26,6 +26,7 @@ export default function Paises({ token }) {
             columnas={columnas}
             filtros={filtros}
             token={token}
+            usuario={usuario}
             backURL="/seguridad"
             editarTitulo='Editar País'
             editarCampos={editarCampos}

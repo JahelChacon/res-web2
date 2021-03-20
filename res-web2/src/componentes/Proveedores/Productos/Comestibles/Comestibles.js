@@ -2,7 +2,7 @@ import React from "react";
 import Busqueda from "../../../Compartidos/Busquedas/Busqueda";
 import { TABLAS } from "../../../../utils/utils";
 
-export default function Comestibles({ token }){
+export default function Comestibles({ token, usuario }){
     const columnas = [
         { text: "Codigo", dataField: "codigo" },
         { text: "Nombre", dataField: "nombre" },
@@ -33,6 +33,7 @@ export default function Comestibles({ token }){
             titulo={"Comestibles"}
             tabla={TABLAS.COMESTIBLES}
             token={token}
+            usuario={usuario}
             columnas={columnas}
             filtros={filtros}
             backURL="/productos"

@@ -2,7 +2,7 @@ import React from "react";
 import Busqueda from "../../../../Compartidos/Busquedas/Busqueda";
 import { TABLAS } from "../../../../../utils/utils";
 
-export default function Licores({ token }) {
+export default function Licores({ token, usuario }) {
     const columnas = [
         { text: "Codigo", dataField: "codigo" },
         { text: "Nombre", dataField: "nombre" },
@@ -40,6 +40,7 @@ export default function Licores({ token }) {
             columnas={columnas}
             filtros={filtros}
             token={token}
+            usuario={usuario}
             backURL="/bebidas"
             editarTitulo='Editar Licor'
             editarCampos={editarCampos}

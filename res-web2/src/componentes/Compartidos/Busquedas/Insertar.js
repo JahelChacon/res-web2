@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { makeRequest } from "../../../utils/API";
-import { formatearFecha } from "../../../utils/utils";
+import { formatearFecha, insertarBitacora } from "../../../utils/utils";
 import { Spinner } from "react-bootstrap";
 import InputTexto from "../../Compartidos/Inputs/InputTexto";
 import InputImagen from "../Inputs/InputImagen";
@@ -25,6 +25,7 @@ export default function Insertar({
     camposIzquierda,
     cancelarURL,
     token,
+    usuario,
     isFormData
 }) {
     const { control, register, handleSubmit, reset, errors } = useForm();
@@ -64,9 +65,11 @@ export default function Insertar({
             .then(response => {
                 if (response.status === 200) {
                     setMostrarExito(true);
+                    insertarBitacora(token, usuario.login, `Elemento insertado a la tabla ${tabla} con éxito!`);
                     reset();
                 } else {
                     setMostrarFallo(true);
+                    insertarBitacora(token, usuario.login, `Fallo al insertar elemento a la tabla ${tabla}`);
                 }
                 setInsertando(false);
             })

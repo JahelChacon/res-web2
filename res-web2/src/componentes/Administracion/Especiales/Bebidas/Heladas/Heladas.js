@@ -2,7 +2,7 @@ import React from "react";
 import Busqueda from "../../../../Compartidos/Busquedas/Busqueda";
 import { TABLAS } from "../../../../../utils/utils";
 
-export default function Heladas({ token }) {
+export default function Heladas({ token, usuario }) {
     const columnas = [
         { text: "Codigo", dataField: "codigo" },
         { text: "Nombre", dataField: "nombre" },
@@ -34,6 +34,7 @@ export default function Heladas({ token }) {
             filtros={filtros}
             insertarURL='/bebidas-heladas/insertar'
             token={token}
+            usuario={usuario}
             backURL="/bebidas"
             editarTitulo='Editar Bebida Helada'
             editarCampos={editarCampos}

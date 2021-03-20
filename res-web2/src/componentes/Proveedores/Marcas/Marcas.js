@@ -2,7 +2,7 @@ import React from "react";
 import Busqueda from "../../Compartidos/Busquedas/Busqueda";
 import { TABLAS } from "../../../utils/utils";
 
-export default function Marcas({ token }) {
+export default function Marcas({ token, usuario }) {
     const columnas = [
         { text: "Codigo", dataField: "codigo" },
         { text: "Nombre", dataField: "nombreMarca" },
@@ -40,6 +40,7 @@ export default function Marcas({ token }) {
             filtros={filtros}
             backURL="/proveedores-inicio"
             token={token}
+            usuario={usuario}
             editarTitulo='Editar Marca'
             editarCampos={editarCampos}
             isFormData={true}

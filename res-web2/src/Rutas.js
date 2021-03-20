@@ -142,6 +142,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema || usuario.administradorSeguridad}
                     component={Usuarios}
                     token={token}
+                    usuario={usuario}
                     path="/usuarios"
                     exact
                 />
@@ -149,6 +150,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema || usuario.administradorSeguridad}
                     component={UsuariosInsertar}
                     token={token}
+                    usuario={usuario}
                     path="/usuarios/insertar"
                     exact
                 />
@@ -156,6 +158,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema || usuario.administradorSeguridad || usuario.administradorCuentas}
                     component={Cajas}
                     token={token}
+                    usuario={usuario}
                     path="/cajas"
                     exact
                 />
@@ -163,6 +166,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema || usuario.administradorSeguridad}
                     component={Consecutivos}
                     token={token}
+                    usuario={usuario}
                     path="/consecutivos"
                     exact
                 />
@@ -170,6 +174,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema || usuario.administradorSeguridad}
                     component={Roles}
                     token={token}
+                    usuario={usuario}
                     path="/roles"
                     exact
                 />
@@ -177,6 +182,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema || usuario.administradorSeguridad}
                     component={RolesInsertar}
                     token={token}
+                    usuario={usuario}
                     path="/roles/insertar"
                     exact
                 />
@@ -184,6 +190,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema || usuario.administradorSeguridad}
                     component={Paises}
                     token={token}
+                    usuario={usuario}
                     path="/paises"
                     exact
                 />
@@ -191,6 +198,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={PaisesInsertar || usuario.administradorSeguridad}
                     token={token}
+                    usuario={usuario}
                     path="/paises/insertar"
                     exact
                 />
@@ -198,6 +206,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema || usuario.administradorSeguridad}
                     component={UnidadMedida}
                     token={token}
+                    usuario={usuario}
                     path="/medidas"
                     exact
                 />
@@ -205,6 +214,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema || usuario.administradorSeguridad}
                     component={UnidadMedidaInsertar}
                     token={token}
+                    usuario={usuario}
                     path="/medidas/insertar"
                     exact
                 />
@@ -215,6 +225,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={Restaurantes}
                     token={token}
+                    usuario={usuario}
                     path="/restaurantes"
                     exact
                 />
@@ -225,6 +236,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={Clientes}
                     token={token}
+                    usuario={usuario}
                     path="/clientes"
                     exact
                 />
@@ -242,6 +254,7 @@ export function Rutas({ usuario, token }) {
                     component={Proveedores}
                     path="/proveedores"
                     token={token}
+                    usuario={usuario}
                     exact
                 />
                 <PrivateRoute
@@ -249,12 +262,14 @@ export function Rutas({ usuario, token }) {
                     component={ProveedoresInsertar}
                     path="/proveedores/insertar"
                     token={token}
+                    usuario={usuario}
                     exact
                 />
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
                     component={Marcas}
                     token={token}
+                    usuario={usuario}
                     path="/marcas"
                     exact
                 />
@@ -262,6 +277,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={MarcasInsertar}
                     token={token}
+                    usuario={usuario}
                     path="/marcas/insertar"
                     exact
                 />
@@ -275,6 +291,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={Comestibles}
                     token={token}
+                    usuario={usuario}
                     path="/comestibles"
                     exact
                 />
@@ -282,6 +299,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={ComestiblesInsertar}
                     token={token}
+                    usuario={usuario}
                     path="/comestibles/insertar"
                     exact
                 />
@@ -289,6 +307,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={Desechables}
                     token={token}
+                    usuario={usuario}
                     path="/desechables"
                     exact
                 />
@@ -296,6 +315,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={DesechablesInsertar}
                     token={token}
+                    usuario={usuario}
                     path="/desechables/insertar"
                     exact
                 />
@@ -303,6 +323,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={Limpieza}
                     token={token}
+                    usuario={usuario}
                     path="/limpieza"
                     exact
                 />
@@ -310,6 +331,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={LimpiezaInsertar}
                     token={token}
+                    usuario={usuario}
                     path="/limpieza/insertar"
                     exact
                 />
@@ -317,6 +339,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={Tecnologia}
                     token={token}
+                    usuario={usuario}
                     path="/tecnologia"
                     exact
                 />
@@ -324,6 +347,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={TecnologiaInsertar}
                     token={token}
+                    usuario={usuario}
                     path="/tecnologia/insertar"
                     exact
                 />
@@ -331,6 +355,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={Utensilios}
                     token={token}
+                    usuario={usuario}
                     path="/utensilios"
                     exact
                 />
@@ -338,6 +363,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={UtensiliosInsertar}
                     token={token}
+                    usuario={usuario}
                     path="/utensilios/insertar"
                     exact
                 />
@@ -355,6 +381,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={Empleados}
                     token={token}
+                    usuario={usuario}
                     path="/empleados"
                     exact
                 />
@@ -362,6 +389,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={EmpleadosInsertar}
                     token={token}
+                    usuario={usuario}
                     path="/empleados/insertar"
                     exact
                 />
@@ -375,6 +403,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={Mesas}
                     token={token}
+                    usuario={usuario}
                     path="/mesas"
                     exact
                 />
@@ -382,6 +411,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={MesasInsertar}
                     token={token}
+                    usuario={usuario}
                     path="/mesas/insertar"
                     exact
                 />
@@ -389,6 +419,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={Puestos}
                     token={token}
+                    usuario={usuario}
                     path="/puestos"
                     exact
                 />
@@ -396,6 +427,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={PuestosInsertar}
                     token={token}
+                    usuario={usuario}
                     path="/puestos/insertar"
                     exact
                 />
@@ -403,6 +435,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={Buffet}
                     token={token}
+                    usuario={usuario}
                     path="/buffet"
                     exact
                 />
@@ -410,6 +443,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={BuffetInsertar}
                     token={token}
+                    usuario={usuario}
                     path="/buffet/insertar"
                     exact
                 />
@@ -417,6 +451,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={Especialidades}
                     token={token}
+                    usuario={usuario}
                     path="/especialidades"
                     exact
                 />
@@ -424,6 +459,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={EspecialidadesInsertar}
                     token={token}
+                    usuario={usuario}
                     path="/especialidades/insertar"
                     exact
                 />
@@ -437,6 +473,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={Calientes}
                     token={token}
+                    usuario={usuario}
                     path="/bebidas-calientes"
                     exact
                 />
@@ -444,6 +481,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={CalientesInsertar}
                     token={token}
+                    usuario={usuario}
                     path="/bebidas-calientes/insertar"
                     exact
                 />
@@ -451,6 +489,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={Heladas}
                     token={token}
+                    usuario={usuario}
                     path="/bebidas-heladas"
                     exact
                 />
@@ -458,6 +497,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={HeladasInsertar}
                     token={token}
+                    usuario={usuario}
                     path="/bebidas-heladas/insertar"
                     exact
                 />
@@ -465,6 +505,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={Gaseosas}
                     token={token}
+                    usuario={usuario}
                     path="/gaseosas"
                     exact
                 />
@@ -472,6 +513,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={GaseosasInsertar}
                     token={token}
+                    usuario={usuario}
                     path="/gaseosas/insertar"
                     exact
                 />
@@ -479,6 +521,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={Vinos}
                     token={token}
+                    usuario={usuario}
                     path="/vinos"
                     exact
                 />
@@ -486,6 +529,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={VinosInsertar}
                     token={token}
+                    usuario={usuario}
                     path="/vinos/insertar"
                     exact
                 />
@@ -493,6 +537,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={Licores}
                     token={token}
+                    usuario={usuario}
                     path="/licores"
                     exact
                 />
@@ -500,6 +545,7 @@ export function Rutas({ usuario, token }) {
                     hasRole={usuario.administradorSistema}
                     component={LicoresInsertar}
                     token={token}
+                    usuario={usuario}
                     path="/licores/insertar"
                     exact
                 />
@@ -516,18 +562,24 @@ export function Rutas({ usuario, token }) {
                 <PrivateRoute
                     hasRole={usuario.administradorSistema || usuario.administradorSeguridad}
                     component={Bitacoras}
+                    token={token}
+                    usuario={usuario}
                     path="/bitacoras"
                     exact
                 />
                 <PrivateRoute
                     hasRole={usuario.administradorSistema}
                     component={ReporteUsuarios}
+                    token={token}
+                    usuario={usuario}
                     path="/reporte-usuarios"
                     exact
                 />
                 <PrivateRoute
                     hasRole={usuario.administradorSistema || usuario.administradorCuentas}
                     component={Facturas}
+                    token={token}
+                    usuario={usuario}
                     path="/facturas"
                     exact
                 />

@@ -2,7 +2,7 @@ import React from "react";
 import Insertar from "../../Compartidos/Busquedas/Insertar";
 import { TABLAS } from "../../../utils/utils";
 
-export default function EmpleadosInsertar({ token }) {
+export default function EmpleadosInsertar({ token, usuario }) {
     const camposDerecha = {
         titulo: 'Información del Empleado',
         campos: [
@@ -32,6 +32,7 @@ export default function EmpleadosInsertar({ token }) {
             camposDerecha={camposDerecha}
             camposIzquierda={camposIzquierda}
             token={token}
+            usuario={usuario}
             isFormData={true}
         />
     )

@@ -2,7 +2,7 @@ import React from "react";
 import Insertar from "../../../../Compartidos/Busquedas/Insertar";
 import { TABLAS } from "../../../../../utils/utils";
 
-export default function GaseosasInsertar({ token }) {
+export default function GaseosasInsertar({ token, usuario }) {
     const camposDerecha = {
         titulo: 'Información de la Bebida Gaseosa',
         campos: [
@@ -31,6 +31,7 @@ export default function GaseosasInsertar({ token }) {
             camposIzquierda={camposIzquierda}
             cancelarURL='/gaseosas'
             token={token}
+            usuario={usuario}
             isFormData={true}
         />
     )

@@ -2,7 +2,7 @@ import React from "react";
 import Busqueda from "../../../../Compartidos/Busquedas/Busqueda";
 import { TABLAS } from "../../../../../utils/utils";
 
-export default function Calientes({ token }) {
+export default function Calientes({ token, usuario }) {
     const columnas = [
         { text: "Codigo", dataField: "codigo" },
         { text: "Nombre", dataField: "nombre" },
@@ -13,7 +13,7 @@ export default function Calientes({ token }) {
     const filtros = [
         { tipo: "texto", label: "Código", name: "codigo", placeholder: "Código", size: "pequeno" },
         { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "pequeno" },
-        { tipo: "SelectFromApi", tabla:"restaurantes" , label: "Restaurante", name: "restaurante", size: "pequeno" },
+        { tipo: "SelectFromApi", tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "pequeno" },
     ];
 
     const editarCampos = [
@@ -21,7 +21,7 @@ export default function Calientes({ token }) {
         { tipo: "texto", label: "Nombre", name: "nombre", placeholder: "Nombre", size: "mediano" },
         { tipo: "texto", label: "Ingredientes", name: "ingredientes", placeholder: "Ingredientes", size: "mediano" },
         { tipo: "numero", label: "Precio", name: "precio", placeholder: "Precio", size: "mediano" },
-        { tipo: "SelectFromApi", tabla:"restaurantes" , label: "Restaurante", name: "restaurante", size: "mediano" },
+        { tipo: "SelectFromApi", tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "mediano" },
         { tipo: "texto", label: "Descripción", name: "descripcion", placeholder: "Descripción", size: "mediano" },
         { tipo: "imagen", label: "foto de la Bebida", name: "foto", size: "mediano" },
     ];
@@ -34,6 +34,7 @@ export default function Calientes({ token }) {
             filtros={filtros}
             insertarURL='/bebidas-calientes/insertar'
             token={token}
+            usuario={usuario}
             backURL="/bebidas"
             editarTitulo='Editar Bebida Caliente'
             editarCampos={editarCampos}

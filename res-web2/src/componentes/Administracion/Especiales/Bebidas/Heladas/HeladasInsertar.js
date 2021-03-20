@@ -2,7 +2,7 @@ import React from "react";
 import Insertar from "../../../../Compartidos/Busquedas/Insertar";
 import { TABLAS } from "../../../../../utils/utils";
 
-export default function HeladasInsertar({ token }) {
+export default function HeladasInsertar({ token, usuario }) {
     const camposDerecha = {
         titulo: 'Información de la Bebida Helada',
         campos: [
@@ -29,6 +29,7 @@ export default function HeladasInsertar({ token }) {
             camposIzquierda={camposIzquierda}
             cancelarURL='/bebidas-heladas'
             token={token}
+            usuario={usuario}
             isFormData={true}
         />
     )

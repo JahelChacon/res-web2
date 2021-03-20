@@ -2,7 +2,7 @@ import React from "react";
 import Insertar from "../../Compartidos/Busquedas/Insertar";
 import { TABLAS } from "../../../utils/utils";
 
-export default function ProveedoresInsertar({ token }) {
+export default function ProveedoresInsertar({ token, usuario }) {
     const camposDerecha = {
         titulo: 'Información del proveedor',
         campos: [
@@ -34,6 +34,7 @@ export default function ProveedoresInsertar({ token }) {
             camposDerecha={camposDerecha}
             camposIzquierda={camposIzquierda}
             token={token}
+            usuario={usuario}
             isFormData={true}
         />
     )

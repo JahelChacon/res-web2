@@ -2,7 +2,7 @@ import React from "react";
 import Busqueda from "../../Compartidos/Busquedas/Busqueda";
 import { TABLAS } from "../../../utils/utils";
 
-export default function Proveedores({ token }){
+export default function Proveedores({ token, usuario }){
     const columnas = [
         { text: "Codigo", dataField: "codigo" },
         { text: "Nombre", dataField: "nombre" },
@@ -43,6 +43,7 @@ export default function Proveedores({ token }){
             columnas={columnas}
             filtros={filtros}
             token={token}
+            usuario={usuario}
             backURL="/proveedores-inicio"
             editarTitulo='Editar Proveedor'
             editarCampos={editarCampos}
