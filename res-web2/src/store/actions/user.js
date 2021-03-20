@@ -4,6 +4,7 @@ import { insertarBitacora } from "../../utils/utils";
 export const LOG_IN = 'LOG_IN';
 export const GET_TOKEN = 'GET_TOKEN';
 export const LOG_OUT = 'LOG_OUT';
+export const SET_MENSAJE_ERROR = 'SET_MENSAJE_ERROR';
 
 export const logIn = (usuario, contrasena) => async dispatch => {
   try {
@@ -21,7 +22,12 @@ export const logIn = (usuario, contrasena) => async dispatch => {
   } catch (error) {
     console.log('Error: ', error);
     insertarBitacora("", 'Fallo en logueo de usuario!');
+    dispatch({ type: SET_MENSAJE_ERROR, payload: true });
   }
+};
+
+export const limpiarMensaje = () => async dispatch => {
+  dispatch({ type: SET_MENSAJE_ERROR, payload: false });
 };
 
 export const logOut = () => async dispatch => {
