@@ -2,7 +2,7 @@ import React from "react";
 import Busqueda from "../Compartidos/Busquedas/Busqueda";
 import { TABLAS } from "../../utils/utils";
 
-export default function Restaurantes({ token }) {
+export default function Restaurantes({ token, usuario }) {
     const columnas = [
         { text: "Codigo", dataField: "codigo" },
         { text: "Nombre", dataField: "nombre" },
@@ -35,6 +35,7 @@ export default function Restaurantes({ token }) {
             columnas={columnas}
             filtros={filtros}
             token={token}
+            usuario={usuario}
             editarTitulo='Editar Restaurante'
             editarCampos={editarCampos}
         />

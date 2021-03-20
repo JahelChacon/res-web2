@@ -2,7 +2,7 @@ import React from "react";
 import Busqueda from "../../../../Compartidos/Busquedas/Busqueda";
 import { TABLAS } from "../../../../../utils/utils";
 
-export default function Gaseosas({ token }) {
+export default function Gaseosas({ token, usuario }) {
     const columnas = [
         { text: "Codigo", dataField: "codigo" },
         { text: "Nombre", dataField: "nombre" },
@@ -36,6 +36,7 @@ export default function Gaseosas({ token }) {
             filtros={filtros}
             insertarURL='/gaseosas/insertar'
             token={token}
+            usuario={usuario}
             backURL="/bebidas"
             editarTitulo='Editar Bebida Gaseosa'
             editarCampos={editarCampos}

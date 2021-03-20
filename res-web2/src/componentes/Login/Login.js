@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from 'react-redux';
 import { useForm } from "react-hook-form";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { logIn } from '../../store/actions/user';
 import { Redirect } from "react-router-dom";
+import MensajeError from "../Compartidos/Mensajes/MensajeError";
 
 const Login = ({ signIn, usuario }) => {
     const { register, errors, handleSubmit, reset } = useForm();
+    const [intentoLogin, setIntentoLogin] = useState(false);
+
     const onSubmit = function (formData) {
         signIn(formData.usuario, formData.contrasena);
+        setIntentoLogin(true);
     };
 
     if (usuario) {
@@ -58,6 +62,7 @@ const Login = ({ signIn, usuario }) => {
                                     />
                                     {errors.contrasena && (<div style={{ color: "red", fontSize: "14px" }}>{errors.contrasena.message}</div>)}
                                 </div>
+                                <MensajeError error={!usuario && intentoLogin} mensaje='Usuario o contraseña incorrectos' />
                             </Card.Body>
                             <Card.Footer style={{ textAlign: "right" }}>
                                 <Button type={"submit"} variant={"outline-success"}>Entrar</Button> {' '}

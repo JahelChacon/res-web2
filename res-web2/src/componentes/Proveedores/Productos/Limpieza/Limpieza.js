@@ -2,7 +2,7 @@ import React from "react";
 import Busqueda from "../../../Compartidos/Busquedas/Busqueda";
 import { TABLAS } from "../../../../utils/utils";
 
-export default function Limpieza({ token }){
+export default function Limpieza({ token, usuario }){
     const columnas = [
         { text: "Codigo", dataField: "codigo" },
         { text: "Nombre", dataField: "nombre" },
@@ -35,6 +35,7 @@ export default function Limpieza({ token }){
             columnas={columnas}
             filtros={filtros}
             token={token}
+            usuario={usuario}
             backURL="/productos"
             editarTitulo='Editar Artículo de Limpieza'
             editarCampos={editarCampos}

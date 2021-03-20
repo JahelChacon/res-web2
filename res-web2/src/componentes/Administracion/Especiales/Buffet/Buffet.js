@@ -2,7 +2,7 @@ import React from "react";
 import Busqueda from "../../../Compartidos/Busquedas/Busqueda";
 import { TABLAS } from "../../../../utils/utils";
 
-export default function Buffet({ token }) {
+export default function Buffet({ token, usuario }) {
     const columnas = [
         { text: "Codigo", dataField: "codigo" },
         { text: "Nombre", dataField: "nombre" },
@@ -33,6 +33,7 @@ export default function Buffet({ token }) {
             columnas={columnas}
             filtros={filtros}
             token={token}
+            usuario={usuario}
             backURL="/especiales"
             editarTitulo='Editar Buffet'
             editarCampos={editarCampos}

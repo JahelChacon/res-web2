@@ -2,7 +2,7 @@ import React from "react";
 import Insertar from "../../../Compartidos/Busquedas/Insertar";
 import { TABLAS } from "../../../../utils/utils";
 
-export default function DesechablesInsertar({ token }){
+export default function DesechablesInsertar({ token, usuario }){
     const camposDerecha = {
         titulo: 'Información de Comestible',
         campos: [
@@ -26,6 +26,7 @@ export default function DesechablesInsertar({ token }){
             camposDerecha={camposDerecha}
             camposIzquierda={camposIzquierda}
             token={token}
+            usuario={usuario}
         />
     )
 }

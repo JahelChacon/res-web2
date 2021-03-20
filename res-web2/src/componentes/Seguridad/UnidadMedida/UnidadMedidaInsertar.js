@@ -2,7 +2,7 @@ import React from "react";
 import Insertar from "../../Compartidos/Busquedas/Insertar";
 import { TABLAS } from "../../../utils/utils";
 
-export default function UnidadMedidaInsertar({ token }) {
+export default function UnidadMedidaInsertar({ token, usuario }) {
     const camposDerecha = {
         titulo: 'Información de Unidades de Medida',
         campos: [
@@ -28,6 +28,7 @@ export default function UnidadMedidaInsertar({ token }) {
             camposIzquierda={camposIzquierda}
             cancelarURL='/medidas'
             token={token}
+            usuario={usuario}
         />
     )
 }

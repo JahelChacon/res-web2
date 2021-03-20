@@ -2,7 +2,7 @@ import React from "react";
 import Insertar from "../../Compartidos/Busquedas/Insertar";
 import { TABLAS } from "../../../utils/utils";
 
-export default function RolesInsertar({ token }) {
+export default function RolesInsertar({ token, usuario }) {
     const camposDerecha = {
         titulo: 'Información de los Roles',
         campos: [
@@ -18,6 +18,7 @@ export default function RolesInsertar({ token }) {
             tabla={TABLAS.ROL}
             camposDerecha={camposDerecha}
             token={token}
+            usuario={usuario}
         />
     )
 }

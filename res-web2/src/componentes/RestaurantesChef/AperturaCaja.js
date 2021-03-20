@@ -18,8 +18,8 @@ export default function AperturaCaja({ token, usuario }) {
 
     const onAceptar = (form) => {
         setInsertando(true);
-        var hoy = new Date();
-        var hoyFormato = [hoy.getMonth() + 1, hoy.getDate(), hoy.getFullYear()].join('/') + ' ' +
+        const hoy = new Date();
+        const hoyFormato = [hoy.getMonth() + 1, hoy.getDate(), hoy.getFullYear()].join('/') + ' ' +
             [hoy.getHours(), hoy.getMinutes()].join(':');
         const objectData = {
             fecha: hoyFormato,

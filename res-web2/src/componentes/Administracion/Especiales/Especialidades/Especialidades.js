@@ -2,7 +2,7 @@ import React from "react";
 import Busqueda from "../../../Compartidos/Busquedas/Busqueda";
 import { TABLAS } from "../../../../utils/utils";
 
-export default function Especialidades({ token }) {
+export default function Especialidades({ token, usuario }) {
     const columnas = [
         { text: "Codigo", dataField: "codigo" },
         { text: "Nombre del platillo", dataField: "nombre" },
@@ -33,6 +33,7 @@ export default function Especialidades({ token }) {
             filtros={filtros}
             insertarURL='/especialidades/insertar'
             token={token}
+            usuario={usuario}
             backURL="/especiales"
             editarTitulo='Editar Especialidad'
             editarCampos={editarCampos}

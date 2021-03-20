@@ -2,7 +2,7 @@ import React from "react";
 import Busqueda from "../Compartidos/Busquedas/Busqueda";
 import { TABLAS } from "../../utils/utils";
 
-export default function Clientes({ token }) {
+export default function Clientes({ token, usuario }) {
     const columnas = [
         { text: "Codigo", dataField: "codigo" },
         { text: "Nombre", dataField: "nombre" },
@@ -31,6 +31,7 @@ export default function Clientes({ token }) {
             columnas={columnas}
             filtros={filtros}
             token={token}
+            usuario={usuario}
             soloBusqueda={true}
         />
     )

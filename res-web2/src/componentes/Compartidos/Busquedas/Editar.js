@@ -3,7 +3,7 @@ import { Spinner } from "react-bootstrap";
 import { Modal, Card, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { API_URL } from "../../../utils/API"
-import { formatearFecha } from "../../../utils/utils";
+import { formatearFecha, insertarBitacora } from "../../../utils/utils";
 import { makeRequest } from "../../../utils/API";
 import InputTexto from "../Inputs/InputTexto";
 import InputNumero from "../Inputs/InputNumero";
@@ -22,6 +22,7 @@ export default function Editar({
     show,
     close,
     token,
+    usuario,
     campos,
     titulo,
     exitoEditar,
@@ -66,8 +67,10 @@ export default function Editar({
             .then(response => {
                 if (response.status === 200) {
                     exitoEditar();
+                    insertarBitacora(token, usuario.login, `Elemento ${elemento._id} de la tabla ${tabla} editado con éxito!`);
                 } else {
                     falloEditar();
+                    insertarBitacora(token, usuario.login, `Fallo al editar elemento ${elemento._id} de la tabla ${tabla}`);
                 }
                 setEditando(false);
             })

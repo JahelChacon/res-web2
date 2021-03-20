@@ -2,7 +2,7 @@ import React from "react";
 import Insertar from "../../../../Compartidos/Busquedas/Insertar";
 import { TABLAS } from "../../../../../utils/utils";
 
-export default function LicoresInsertar({ token }) {
+export default function LicoresInsertar({ token, usuario }) {
     const camposDerecha = {
         titulo: 'Información del Licor',
         campos: [
@@ -31,6 +31,7 @@ export default function LicoresInsertar({ token }) {
             camposDerecha={camposDerecha}
             camposIzquierda={camposIzquierda}
             token={token}
+            usuario={usuario}
             isFormData={true}
         />
     )

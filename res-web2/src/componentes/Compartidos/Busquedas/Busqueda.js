@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { makeRequest } from "../../../utils/API";
 import { formatearFecha } from "../../../utils/utils";
@@ -16,6 +16,7 @@ import Tabla from "./Tabla";
 import MensajeCargando from "../Mensajes/MensajeCargando";
 import MensajeError from "../Mensajes/MensajeError";
 import MensajeExito from "../Mensajes/MensajeExito";
+import BotonAtras from "../Botones/BotonAtras";
 
 export default function Busqueda({
     titulo,
@@ -29,7 +30,8 @@ export default function Busqueda({
     soloBusqueda,
     soloEditar,
     isFormData,
-    token
+    token,
+    usuario
 }) {
     const { control, register, handleSubmit, reset, errors } = useForm();
     const [tablaData, setTablaData] = useState([]);
@@ -64,8 +66,8 @@ export default function Busqueda({
             }
 
             // Filtro rango de fechas
-            if (item.fecha && (filtros.fechaInicio || filtros.fechaFinal)) {
-                const itemFecha = new Date(`${item.fecha} 00:00`);
+            if ((item.fecha || item.fechaHora) && (filtros.fechaInicio || filtros.fechaFinal)) {
+                const itemFecha = item.fecha ? new Date(`${item.fecha} 00:00`) : new Date(`${item.fechaHora}`);
                 const fechaInicio = filtros.fechaInicio && new Date(`${filtros.fechaInicio} 00:00`);
                 const fechaFinal = filtros.fechaFinal && new Date(`${filtros.fechaFinal} 00:00`);
                 if (filtros.fechaInicio !== "" && filtros.fechaFinal === "") {
@@ -116,102 +118,108 @@ export default function Busqueda({
     return (
         <Container>
             <form>
-                <Filtro
-                    soloEditar={soloEditar}
-                    soloBusqueda={soloBusqueda}
-                    filtrar={handleSubmit(onFiltrar)}
-                    backURL={backURL}
-                    titulo={titulo}
-                    limpiar={limpiarFiltros}
-                    insertarURL={insertarURL ? insertarURL : tabla + '/insertar'}>
-                    <Row>
-                        {
-                            filtros.length > 0 && filtros.map(((filtro, index) =>
-                                filtro.tipo === 'texto'
-                                    ?
-                                    <InputTexto
-                                        key={index}
-                                        label={filtro.label}
-                                        name={filtro.name}
-                                        placeholder={filtro.placeholder}
-                                        size={filtro.size}
-                                        required={false}
-                                        register={register}
-                                        errors={errors} />
-                                    : filtro.tipo === 'SelectFromApi'
+                <Row>
+                    <Col className="text-left" xl={12} lg={12} md={12} sm={12} xs={12}>
+                        <BotonAtras url={backURL} />
+                    </Col>
+                </Row>
+                {filtros &&
+                    <Filtro
+                        soloEditar={soloEditar}
+                        soloBusqueda={soloBusqueda}
+                        filtrar={handleSubmit(onFiltrar)}
+                        titulo={titulo}
+                        limpiar={limpiarFiltros}
+                        insertarURL={insertarURL ? insertarURL : tabla + '/insertar'}>
+                        <Row>
+                            {
+                                filtros.length > 0 && filtros.map(((filtro, index) =>
+                                    filtro.tipo === 'texto'
                                         ?
-                                        <SelectFromApi
+                                        <InputTexto
                                             key={index}
-                                            token={token}
-                                            tabla={filtro.tabla}
                                             label={filtro.label}
                                             name={filtro.name}
+                                            placeholder={filtro.placeholder}
                                             size={filtro.size}
                                             required={false}
                                             register={register}
                                             errors={errors} />
-                                        : filtro.tipo === 'numero'
+                                        : filtro.tipo === 'SelectFromApi'
                                             ?
-                                            <InputNumero
+                                            <SelectFromApi
                                                 key={index}
+                                                token={token}
+                                                tabla={filtro.tabla}
                                                 label={filtro.label}
                                                 name={filtro.name}
-                                                placeholder={filtro.placeholder}
                                                 size={filtro.size}
                                                 required={false}
                                                 register={register}
                                                 errors={errors} />
-                                            : filtro.tipo === 'radio'
+                                            : filtro.tipo === 'numero'
                                                 ?
-                                                <InputRadio
+                                                <InputNumero
                                                     key={index}
                                                     label={filtro.label}
                                                     name={filtro.name}
-                                                    value={filtro.value}
+                                                    placeholder={filtro.placeholder}
                                                     size={filtro.size}
-                                                    register={register} />
-                                                : filtro.tipo === 'fecha'
+                                                    required={false}
+                                                    register={register}
+                                                    errors={errors} />
+                                                : filtro.tipo === 'radio'
                                                     ?
-                                                    <InputFecha
+                                                    <InputRadio
                                                         key={index}
                                                         label={filtro.label}
                                                         name={filtro.name}
+                                                        value={filtro.value}
                                                         size={filtro.size}
-                                                        required={false}
-                                                        register={register}
-                                                        errors={errors} />
-                                                    : filtro.tipo === 'checkbox'
+                                                        register={register} />
+                                                    : filtro.tipo === 'fecha'
                                                         ?
-                                                        <InputCheckbox
+                                                        <InputFecha
                                                             key={index}
                                                             label={filtro.label}
                                                             name={filtro.name}
-                                                            value={filtro.value}
                                                             size={filtro.size}
-                                                            register={register} />
-                                                        : filtro.tipo === 'password'
+                                                            required={false}
+                                                            register={register}
+                                                            errors={errors} />
+                                                        : filtro.tipo === 'checkbox'
                                                             ?
-                                                            <InputPassword
+                                                            <InputCheckbox
                                                                 key={index}
                                                                 label={filtro.label}
                                                                 name={filtro.name}
-                                                                placeholder={filtro.placeholder}
+                                                                value={filtro.value}
                                                                 size={filtro.size}
-                                                                required={false}
-                                                                register={register}
-                                                                errors={errors} />
-                                                            : filtro.tipo === 'SelectProductos' &&
-                                                            <SelectProductos
-                                                                key={index}
-                                                                label={filtro.label}
-                                                                name={filtro.name}
-                                                                size={filtro.size}
-                                                                control={control}
-                                                                token={token} />
-                            ))
-                        }
-                    </Row>
-                </Filtro>
+                                                                register={register} />
+                                                            : filtro.tipo === 'password'
+                                                                ?
+                                                                <InputPassword
+                                                                    key={index}
+                                                                    label={filtro.label}
+                                                                    name={filtro.name}
+                                                                    placeholder={filtro.placeholder}
+                                                                    size={filtro.size}
+                                                                    required={false}
+                                                                    register={register}
+                                                                    errors={errors} />
+                                                                : filtro.tipo === 'SelectProductos' &&
+                                                                <SelectProductos
+                                                                    key={index}
+                                                                    label={filtro.label}
+                                                                    name={filtro.name}
+                                                                    size={filtro.size}
+                                                                    control={control}
+                                                                    token={token} />
+                                ))
+                            }
+                        </Row>
+                    </Filtro>
+                }
                 {exitoFiltro && <MensajeExito texto="Filtros aplicados con éxito!"></MensajeExito>}
                 <MensajeError error={noDataFiltro} mensaje='No existen resultados para los filtros aplicados' />
                 <br></br>
@@ -227,6 +235,7 @@ export default function Busqueda({
                     editarCampos={editarCampos}
                     editarTitulo={editarTitulo}
                     token={token}
+                    usuario={usuario}
                     tablaData={dataFiltrada.length > 0 ? dataFiltrada : tablaData}
                     cargarTabla={cargarTabla}
                     columnas={columnas}

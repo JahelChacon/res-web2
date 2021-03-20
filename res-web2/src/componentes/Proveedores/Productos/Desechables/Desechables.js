@@ -2,7 +2,7 @@ import React from "react";
 import Busqueda from "../../../Compartidos/Busquedas/Busqueda";
 import { TABLAS } from "../../../../utils/utils";
 
-export default function Desechables({ token }){
+export default function Desechables({ token, usuario }){
     const columnas = [
         { text: "Codigo", dataField: "codigo" },
         { text: "Nombre", dataField: "nombre" },
@@ -30,6 +30,7 @@ export default function Desechables({ token }){
             columnas={columnas}
             filtros={filtros}
             token={token}
+            usuario={usuario}
             backURL="/productos"
             editarTitulo='Editar Desechable'
             editarCampos={editarCampos}

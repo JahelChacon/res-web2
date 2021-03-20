@@ -2,7 +2,7 @@ import React from "react";
 import Insertar from "../../Compartidos/Busquedas/Insertar";
 import { TABLAS } from "../../../utils/utils";
 
-export default function PuestosInsertar({ token }) {
+export default function PuestosInsertar({ token, usuario }) {
     const camposDerecha = {
         titulo: 'Información del Puesto',
         campos: [
@@ -26,6 +26,7 @@ export default function PuestosInsertar({ token }) {
             camposDerecha={camposDerecha}
             camposIzquierda={camposIzquierda}
             token={token}
+            usuario={usuario}
         />
     )
 }

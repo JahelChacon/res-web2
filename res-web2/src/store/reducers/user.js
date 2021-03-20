@@ -11,7 +11,7 @@ const userReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         usuario: action.payload,
       });
-      case userAct.LOG_OUT:
+    case userAct.LOG_OUT:
       return Object.assign({}, state, {
         usuario: false,
         usuarioToken: false,

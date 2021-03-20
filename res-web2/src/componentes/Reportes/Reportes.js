@@ -28,7 +28,7 @@ export default function Reportes({ usuario }) {
                 }
                 {usuario.administradorSistema &&
                     <TemplateCard
-                        titulo={"Usuarios"}
+                        titulo={"Clientes"}
                         img={clientes}
                         imgWebp={clientesWebp}
                         alt={"Usuarios"}

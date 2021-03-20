@@ -2,7 +2,7 @@ import React from "react";
 import Busqueda from "../../Compartidos/Busquedas/Busqueda";
 import { TABLAS } from "../../../utils/utils";
 
-export default function Consecutivos({ token }){
+export default function Consecutivos({ token, usuario }){
     const columnas = [
         { text: "Codigo", dataField: "codigo" },
         { text: "Descripción", dataField: "descripcion" },
@@ -33,6 +33,7 @@ export default function Consecutivos({ token }){
             columnas={columnas}
             filtros={filtros}
             token={token}
+            usuario={usuario}
             backURL="/seguridad"
             editarTitulo='Editar Consecutivo'
             editarCampos={editarCampos}

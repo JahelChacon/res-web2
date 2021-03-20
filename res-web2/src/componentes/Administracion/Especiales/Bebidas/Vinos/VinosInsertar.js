@@ -2,7 +2,7 @@ import React from "react";
 import Insertar from "../../../../Compartidos/Busquedas/Insertar";
 import { TABLAS } from "../../../../../utils/utils";
 
-export default function VinosInsertar({ token }) {
+export default function VinosInsertar({ token, usuario }) {
     const camposDerecha = {
         titulo: 'Información del Vino',
         campos: [
@@ -32,6 +32,7 @@ export default function VinosInsertar({ token }) {
             camposDerecha={camposDerecha}
             camposIzquierda={camposIzquierda}
             token={token}
+            usuario={usuario}
             isFormData={true}
         />
     )
