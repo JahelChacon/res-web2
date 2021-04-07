@@ -27,7 +27,7 @@ function App({ usuarioLogueado, tokenUsuario, signOut }) {
                   <NavDropdown title="Ayuda" id="basic-nav-dropdown">
                     {
                       usuarioLogueado.administradorSistema ?
-                        <NavDropdown.Item to="/reporte-sistema">Sistema</NavDropdown.Item>
+                        <Link to="/ayuda" className="dropdown-item">Sistema</Link>
                         : usuarioLogueado.administradorSeguridad ?
                           <NavDropdown.Item to="/reporte-reguridad">Seguridad</NavDropdown.Item>
                           : usuarioLogueado.administradorRestaurante &&
