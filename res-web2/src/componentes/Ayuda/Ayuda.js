@@ -6,6 +6,7 @@ import menu_admin from "../../img/Ayuda/menu_admin.png";
 import menu_proveedores from "../../img/Ayuda/menu_proveedores.png";
 import menu_reportes from "../../img/Ayuda/menu_reportes.png";
 import cliente_principal from "../../img/Ayuda/cliente_principal.png";
+import filtros from "../../img/Ayuda/filtros.png";
 
 
 function Accordion({ header, children }) {
@@ -54,6 +55,9 @@ export default function Ayuda(){
             </Accordion>
             <Accordion header={(<h2>Página de los clientes</h2>)}>
                 <img src={cliente_principal} style={{ width: "100%", height: "100%" }} />
+            </Accordion>
+            <Accordion header={(<h2>Filtros</h2>)}>
+                <img src={filtros} style={{ width: "100%", height: "100%" }} />
             </Accordion>
         </Fragment>
     )   
