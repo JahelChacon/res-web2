@@ -7,6 +7,12 @@ import menu_proveedores from "../../img/Ayuda/menu_proveedores.png";
 import menu_reportes from "../../img/Ayuda/menu_reportes.png";
 import cliente_principal from "../../img/Ayuda/cliente_principal.png";
 import filtros from "../../img/Ayuda/filtros.png";
+import usuarios from "../../img/Ayuda/usuarios.png";
+import cajas from "../../img/Ayuda/cajas.png";
+import unidad_medida from "../../img/Ayuda/unidad_medida.png";
+import paises from "../../img/Ayuda/paises.png";
+import consecutivos from "../../img/Ayuda/consecutivos.png";
+import roles from "../../img/Ayuda/roles.png";
 
 
 function Accordion({ header, children }) {
@@ -58,6 +64,24 @@ export default function Ayuda(){
             </Accordion>
             <Accordion header={(<h2>Filtros</h2>)}>
                 <img src={filtros} style={{ width: "100%", height: "100%" }} />
+            </Accordion>
+            <Accordion header={(<h2>Roles</h2>)}>
+                <img src={roles} style={{ width: "100%", height: "100%" }} />
+            </Accordion>
+            <Accordion header={(<h2>Cajas</h2>)}>
+                <img src={cajas} style={{ width: "100%", height: "100%" }} />
+            </Accordion>
+            <Accordion header={(<h2>Usuarios</h2>)}>
+                <img src={usuarios} style={{ width: "100%", height: "100%" }} />
+            </Accordion>
+            <Accordion header={(<h2>Unidades de Medida</h2>)}>
+                <img src={unidad_medida} style={{ width: "100%", height: "100%" }} />
+            </Accordion>
+            <Accordion header={(<h2>Países</h2>)}>
+                <img src={paises} style={{ width: "100%", height: "100%" }} />
+            </Accordion>
+            <Accordion header={(<h2>Consecutivos</h2>)}>
+                <img src={consecutivos} style={{ width: "100%", height: "100%" }} />
             </Accordion>
         </Fragment>
     )   
