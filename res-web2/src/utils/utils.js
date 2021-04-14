@@ -82,21 +82,3 @@ export function insertarBitacora(token, usuario, descripcion) {
     }
     makeRequest('POST', '/bitacora/add', token, data);
 };
-
-
-
-// const onChange = (currentValues) => {
-//     // Suma los precios de todos los buffet seleccionados
-//     if (allBuffet.length > 0 && currentValues.length > 0) {
-//         let monto = 0;
-//         currentValues.forEach(currentValue => {
-//             const buffetEncontrado = allBuffet.find(buffet => buffet._id === currentValue.value);
-//             if (typeof buffetEncontrado !== 'undefined' && buffetEncontrado.precio) {
-//                 monto = monto + parseInt(buffetEncontrado.precio);
-//             }
-//         });
-//         setMontoTotal(monto);
-//     } else if (currentValues.length === 0) {
-//         setMontoTotal(0);
-//     }
-// }
