@@ -7,7 +7,6 @@ export default function ProcesosBarras({ token }) {
         { text: "Codigo", dataField: "codigo" },
         { text: "Nombre", dataField: "nombre" },
         { text: "Monto Pagado", dataField: "montoPago" },
-        { text: "Detalle", dataField: "detalle" },
         { text: "Fecha", dataField: "fecha" },
         { text: "Reservación", dataField: "reservacion" },
         { text: "Restaurante", dataField: "restaurante" },
@@ -22,10 +21,14 @@ export default function ProcesosBarras({ token }) {
         <Busqueda
             titulo={"Clientes en Barras"}
             tabla={TABLAS.CLIENTE}
+            editarCampos='EditarClienteBarra'
+            tamano='xl'
+            barra={true}
             columnas={columnas}
             filtros={filtros}
             token={token}
             soloEditar={true}
+            editarTitulo='Editar Cliente'
         />
     )
 }

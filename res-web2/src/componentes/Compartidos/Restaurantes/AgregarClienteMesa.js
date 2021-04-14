@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { Modal, Card, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { formatearFecha, STATUS_MESA } from "../../../utils/utils";
+import { makeRequest } from "../../../utils/API";
 import InputTexto from "../Inputs/InputTexto";
 import InputCheckbox from "../Inputs/InputCheckbox";
 import InputFecha from "../Inputs/InputFecha";
@@ -18,20 +20,43 @@ export default function AgregarClienteMesa({
     mesa
 }) {
     const { register, reset, handleSubmit, errors } = useForm();
-    const [agregando] = useState(false);
+    const [agregando, setAgregando] = useState(false);
+    const fechaActual = new Date();
+    const fechaFormateada = [fechaActual.getMonth() + 1, fechaActual.getDate(), fechaActual.getFullYear()].join('/');
+    const horaFormateada = [fechaActual.getHours(), fechaActual.getMinutes()].join(':');
 
     const onAgregar = (form) => {
-        console.log('Agregando cliente de mesa: ', mesa);
-        exitoAgregar();
-        // makeRequest('POST', `/${tabla}/update/${elemento._id}`, token, form)
-        //     .then(response => {
-        //         if (response.status === 200) {
-        //             exitoEditar();
-        //         } else {
-        //             falloEditar();
-        //         }
-        //         setAgregando(false);
-        //     })
+        setAgregando(true);
+        const data = {
+            nombre: form.nombre,
+            fecha: formatearFecha(form.fechaLlegada),
+            reservacion: form.reservacion ? true : false,
+            restaurante: form.restaurante,
+            barra: false,
+            mesa: mesa._id,
+            horaEntrada: form.horaEntrada,
+            detalle: [],
+            montoPago: 0
+        };
+        // Agregar cliente
+        makeRequest('POST', `/clientes/add`, token, data)
+            .then(response => {
+                if (response.status === 200) {
+                    // Actualizar status de Mesa
+                    mesa.status = form.reservacion ? STATUS_MESA.RESERVADA : STATUS_MESA.OCUPADA;
+                    makeRequest('POST', `/mesas/update/${mesa._id}`, token, mesa)
+                        .then(response => {
+                            if (response.status === 200) {
+                                exitoAgregar();
+                            } else {
+                                falloAgregar();
+                            }
+                            setAgregando(false);
+                        })
+                } else {
+                    falloAgregar();
+                }
+            })
     };
 
     return (
@@ -39,7 +64,7 @@ export default function AgregarClienteMesa({
             <Modal.Body>
                 <form>
                     <Card>
-                        <Card.Header className="bg-primary text-white text-center">
+                        <Card.Header className="bg-secondary text-white text-center">
                             <h2>Agregar Cliente en Mesa {mesa.numero}</h2>
                         </Card.Header>
                         <Card.Body>
@@ -48,16 +73,16 @@ export default function AgregarClienteMesa({
                                 <InputTexto
                                     label='Codigo del Cliente'
                                     name='codigo'
-                                    placeholder='Codigo del Cliente'
-                                    size='medium'
-                                    disabled={true}
+                                    size='x-pequeno'
+                                    required={false}
+                                    readOnly={true}
                                     register={register}
                                     errors={errors} />
                                 <InputTexto
                                     label='Nombre del Cliente'
                                     name='nombre'
                                     placeholder='Nombre del Cliente'
-                                    size='medium'
+                                    size='x-pequeno'
                                     register={register}
                                     errors={errors} />
                                 <InputTexto
@@ -65,8 +90,8 @@ export default function AgregarClienteMesa({
                                     label='Nombre de la Mesa'
                                     name='mesa'
                                     placeholder='Nombre de la Mesa'
-                                    size='medium'
-                                    disabled={true}
+                                    size='x-pequeno'
+                                    readOnly={true}
                                     register={register}
                                     errors={errors} />
                                 <SelectFromApi
@@ -75,95 +100,83 @@ export default function AgregarClienteMesa({
                                     tabla='restaurantes'
                                     label='Restaurante'
                                     name='restaurante'
-                                    size='medium'
-                                    disabled={true}
+                                    size='x-pequeno'
+                                    readOnly={true}
                                     register={register}
                                     errors={errors} />
                                 <InputTexto
+                                    value={horaFormateada}
                                     label='Hora de Entrada'
                                     name='horaEntrada'
-                                    placeholder='Hora de Entrada'
-                                    size='medium'
+                                    size='x-pequeno'
+                                    readOnly={true}
                                     register={register}
                                     errors={errors} />
                                 <InputTexto
-                                    label='Hora de Salida'
-                                    name='horaSalida'
-                                    placeholder='Hora de Salida'
-                                    size='medium'
-                                    register={register}
-                                    errors={errors} />
-                                <InputTexto
+                                    value="00:00"
                                     label='Duración en la Mesa'
                                     name='duracion'
-                                    placeholder='Duración en la Mesa'
-                                    size='medium'
-                                    register={register}
-                                    errors={errors} />
-                                <InputTexto
-                                    label='Monto de Pago'
-                                    name='pago'
-                                    placeholder='Monto de Pago'
-                                    size='medium'
+                                    size='x-pequeno'
+                                    required={false}
+                                    readOnly={true}
                                     register={register}
                                     errors={errors} />
                             </Row>
                             <h3>Fechas del Cliente</h3>
                             <Row>
-                                <InputCheckbox
-                                    label='Reservación'
-                                    name='reservacion'
-                                    size='medium'
-                                    register={register} />
-                            </Row>
-                            <Row>
                                 <InputFecha
                                     label='Fecha de Llegada'
                                     name='fechaLlegada'
-                                    size='medium'
-                                    register={register}
-                                    errors={errors} />
-                                <InputFecha
-                                    label='Fecha de Reservación'
-                                    name='fechaReservacion'
-                                    size='medium'
+                                    size='x-pequeno'
+                                    value={fechaFormateada}
+                                    readOnly={true}
                                     register={register}
                                     errors={errors} />
                             </Row>
-                            <h3>Información del Pedido</h3>
+                            <Row>
+                                <InputCheckbox
+                                    label='Reservación'
+                                    name='reservacion'
+                                    size='x-pequeno'
+                                    register={register} />
+                            </Row>
+                            {/* <h3>Información del Pedido</h3>
                             <Row>
                                 <InputTexto
                                     value={mesa.numero}
                                     label='Numero de la Mesa'
                                     name='mesaNumero'
                                     placeholder='Numero de la Mesa'
-                                    size='medium'
-                                    disabled={true}
+                                    size='x-pequeno'
+                                    readOnly={true}
                                     register={register}
                                     errors={errors} />
                             </Row>
+                            <Divider />
                             {
                                 mesa.sillas && [...Array(mesa.sillas)].map(((silla, index) =>
-                                    <Row key={index}>
-                                        <InputTexto
-                                            key={index}
-                                            label={`Pedido Silla ${index + 1}`}
-                                            name={`pedidoSilla${index + 1}`}
-                                            placeholder={`Pedido Silla ${index + 1}`}
-                                            size='medium'
-                                            register={register}
-                                            errors={errors} />
-                                    </Row>
+                                    <SelectPedido
+                                        key={index}
+                                        token={token}
+                                        label={`Pedido Silla ${index + 1}`}
+                                        name={`pedidoSilla${index + 1}`}
+                                        silla={index + 1}
+                                        size='x-pequeno'
+                                        control={control}
+                                        getValues={getValues}
+                                        register={register}
+                                        errors={errors} />
                                 ))
-                            }
+                            } */}
                             <h3>Facturación</h3>
                             <Row>
                                 <InputTexto
+                                    value="SIN PAGAR"
                                     label='Estado de la Cuenta'
                                     name='estadoCuenta'
                                     placeholder='Estado de la Cuenta'
-                                    size='medium'
-                                    disabled={true}
+                                    size='x-pequeno'
+                                    readOnly={true}
                                     register={register}
                                     errors={errors} />
                             </Row>

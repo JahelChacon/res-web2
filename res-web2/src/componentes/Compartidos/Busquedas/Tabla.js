@@ -11,6 +11,8 @@ import Editar from "./Editar";
 import ModalExito from "../Mensajes/ModalExito";
 import ModalError from "../Mensajes/ModalError";
 import ModalConfirmacion from "../Mensajes/ModalConfirmacion";
+import EditarClienteMesa from "../Restaurantes/EditarClienteMesa";
+import EditarClienteBarra from "../Restaurantes/EditarClienteBarra";
 
 export default function Tabla({
     columnas,
@@ -22,6 +24,7 @@ export default function Tabla({
     isFormData,
     cargarTabla,
     tablaData,
+    tamano,
     tabla
 }) {
     const [filaSeleccionada, setfilaSeleccionada] = useState(false);
@@ -86,7 +89,7 @@ export default function Tabla({
 
     const habilitarSort = () => {
         if (columnas && columnas.length > 0) {
-            columnas.map(function (columna, index) {
+            columnas.forEach(function (columna, index) {
                 columnas[index] = {
                     ...columna,
                     sort: true,
@@ -137,18 +140,44 @@ export default function Tabla({
             }
             {!soloBusqueda &&
                 <React.Fragment>
-                    <Editar
-                        tabla={tabla}
-                        titulo={editarTitulo}
-                        exitoEditar={onEditarExito}
-                        falloEditar={onEditarFallo}
-                        token={token}
-                        usuario={usuario}
-                        close={() => setMostrarEditar(false)}
-                        show={mostrarEditar}
-                        elemento={filaSeleccionada}
-                        isFormData={isFormData}
-                        campos={editarCampos} />
+                    {
+                        editarCampos === "EditarClienteMesa"
+                            ?
+                            <EditarClienteMesa
+                                tamano={tamano}
+                                titulo={editarTitulo}
+                                exitoEditar={onEditarExito}
+                                falloEditar={onEditarFallo}
+                                token={token}
+                                close={() => setMostrarEditar(false)}
+                                show={mostrarEditar}
+                                cliente={filaSeleccionada} />
+                            : editarCampos === "EditarClienteBarra" ?
+                                <EditarClienteBarra
+                                    tamano={tamano}
+                                    titulo={editarTitulo}
+                                    exitoEditar={onEditarExito}
+                                    falloEditar={onEditarFallo}
+                                    token={token}
+                                    close={() => setMostrarEditar(false)}
+                                    show={mostrarEditar}
+                                    cliente={filaSeleccionada} />
+                                :
+                                <Editar
+                                    tamano={tamano}
+                                    tabla={tabla}
+                                    titulo={editarTitulo}
+                                    exitoEditar={onEditarExito}
+                                    falloEditar={onEditarFallo}
+                                    token={token}
+                                    usuario={usuario}
+                                    close={() => setMostrarEditar(false)}
+                                    show={mostrarEditar}
+                                    elemento={filaSeleccionada}
+                                    isFormData={isFormData}
+                                    campos={editarCampos} />
+                    }
+
                     <ModalExito close={onCerrarExitoModal} show={exitoEditar} texto='Elemento Editado con éxito!' />
                     <ModalExito close={onCerrarErorModal} show={exitoEliminar} texto='Elemento Eliminado con éxito!' />
                     <ModalError close={() => setFalloEditar(false)} show={falloEditar} texto='Ocurrió un error al Editar el elemento. Por favor, intente de nuevo.' />

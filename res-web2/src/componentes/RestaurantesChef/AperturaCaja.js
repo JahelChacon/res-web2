@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { makeRequest } from "../../utils/API";
@@ -6,7 +6,7 @@ import { TABLAS } from "../../utils/utils";
 import { Spinner } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
 import SelectFromApi from "../Compartidos/Inputs/SelectFromApi";
-import InputTexto from "../Compartidos/Inputs/InputTexto";
+import InputNumero from "../Compartidos/Inputs/InputNumero";
 import BotonesCajas from "../Compartidos/Botones/BotonesCajas";
 import MensajeError from "../Compartidos/Mensajes/MensajeError";
 
@@ -42,7 +42,7 @@ export default function AperturaCaja({ token, usuario }) {
 
     };
 
-    const restauranteRedirect = () => {
+    const restauranteRedirect = useCallback(() => {
         switch (usuario.restaurante) {
             case 'Turin Anivo':
                 setRedirectRestaurante('turin-anivo');
@@ -53,7 +53,7 @@ export default function AperturaCaja({ token, usuario }) {
             default:
                 setRedirectRestaurante('piccola-stella');
         }
-    }
+      }, [usuario.restaurante])
 
     useEffect(() => {
         // Toma la fecha de hoy y valida si ya hay aperturas de caja
@@ -72,7 +72,7 @@ export default function AperturaCaja({ token, usuario }) {
                     restauranteRedirect();
                 }
             })
-    }, [token]);
+    }, [token, restauranteRedirect]);
 
     return (
         <React.Fragment>
@@ -95,7 +95,7 @@ export default function AperturaCaja({ token, usuario }) {
                                         disabled={true}
                                         register={register}
                                         errors={errors} />
-                                    <InputTexto
+                                    <InputNumero
                                         label='Monto de Apertura'
                                         name='montoApertura'
                                         placeholder='Monto de Apertura'

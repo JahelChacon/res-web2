@@ -13,6 +13,7 @@ export default function SelectFromApi({
     size,
     required,
     disabled,
+    readOnly,
     tabla,
     token
 }) {
@@ -46,6 +47,7 @@ export default function SelectFromApi({
                         value={value}
                         required={required}
                         disabled={disabled}
+                        readOnly={readOnly}
                         label={label}
                         name={name}
                         size={size}
