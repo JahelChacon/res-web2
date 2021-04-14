@@ -3,6 +3,7 @@ import { Col } from "react-bootstrap"
 
 export default function InputNumero({
     value,
+    currentValue,
     label,
     name,
     placeholder,
@@ -24,6 +25,7 @@ export default function InputNumero({
                 <label>{label}</label>
                 <input
                     defaultValue={value}
+                    value={currentValue}
                     disabled={disabled}
                     readOnly={readOnly}
                     type={"number"}

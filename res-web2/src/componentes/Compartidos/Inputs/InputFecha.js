@@ -8,6 +8,7 @@ export default function InputFecha({
     placeholder,
     register,
     errors,
+    readOnly,
     required = true,
     size = 'grande',
     disabled = false,
@@ -25,6 +26,7 @@ export default function InputFecha({
             <div className="form-group">
                 <label>{label}</label>
                 <input
+                    readOnly={readOnly}
                     defaultValue={defaultValue}
                     disabled={disabled}
                     type={"date"}

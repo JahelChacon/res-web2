@@ -24,6 +24,7 @@ export default function Mesas({ token, usuario }) {
         { tipo: "numero", label: "Numero", name: "numero", placeholder: "Numero", size: "mediano" },
         { tipo: "numero", label: "Cantidad de Sillas", name: "sillas", placeholder: "Sillas", size: "mediano" },
         { tipo: "SelectFromApi", tabla: "restaurantes", label: "Restaurante", name: "restaurante", size: "mediano" },
+        { tipo: "SelectStatus", disabled: true, label: "Status", name: "status", size: "mediano" },
     ];
 
     return (

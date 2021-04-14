@@ -38,11 +38,38 @@ export const ROLES = {
     CONTABILIDAD: "Contabilidad"
 };
 
+export const STATUS_MESA = {
+    LIBRE: "LIBRE",
+    OCUPADA: "OCUPADA",
+    RESERVADA: "RESERVADA"
+};
+
 export function formatearFecha(fecha) {
     const fechaInicial = new Date(`${fecha} 00:00`);
     const fechaFormateada = [fechaInicial.getMonth() + 1, fechaInicial.getDate(), fechaInicial.getFullYear()].join('/');
     return fechaFormateada;
 };
+
+export function esNumeroValido(valor) {
+    if (valor && typeof valor !== 'undefined') {
+        return true;
+    }
+    return false;
+}
+
+export function restarTiempos(inicio, final) {
+    if (inicio && final) {
+        const totalMinutes = function (value) {
+            var match = (/(\d{1,2}):(\d{1,2})/g).exec(value);
+            return (Number(match[1]) * 60) + Number(match[2]);
+        }
+        const diferenciaMinutos = totalMinutes(final) - totalMinutes(inicio);
+        const hora = Math.floor(diferenciaMinutos / 60);
+        const minutos = diferenciaMinutos % 60;
+        return hora + ':' + minutos;
+    }
+    return '00:00'
+}
 
 export function insertarBitacora(token, usuario, descripcion) {
     const hoy = new Date();
@@ -55,3 +82,21 @@ export function insertarBitacora(token, usuario, descripcion) {
     }
     makeRequest('POST', '/bitacora/add', token, data);
 };
+
+
+
+// const onChange = (currentValues) => {
+//     // Suma los precios de todos los buffet seleccionados
+//     if (allBuffet.length > 0 && currentValues.length > 0) {
+//         let monto = 0;
+//         currentValues.forEach(currentValue => {
+//             const buffetEncontrado = allBuffet.find(buffet => buffet._id === currentValue.value);
+//             if (typeof buffetEncontrado !== 'undefined' && buffetEncontrado.precio) {
+//                 monto = monto + parseInt(buffetEncontrado.precio);
+//             }
+//         });
+//         setMontoTotal(monto);
+//     } else if (currentValues.length === 0) {
+//         setMontoTotal(0);
+//     }
+// }

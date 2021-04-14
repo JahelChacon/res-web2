@@ -31,6 +31,9 @@ export default function Busqueda({
     soloEditar,
     isFormData,
     token,
+    tamano,
+    barra,
+    mesas,
     usuario
 }) {
     const { control, register, handleSubmit, reset, errors } = useForm();
@@ -95,6 +98,11 @@ export default function Busqueda({
         makeRequest('GET', '/' + tabla, token)
             .then(response => response.json())
             .then(data => {
+                if (barra) {
+                    data = data.filter(elemento => elemento.barra);
+                } else if (mesas) {
+                    data = data.filter(elemento => !elemento.barra);
+                }
                 setTablaData(data);
                 setCargando(false);
                 setDataFiltrada([]);
@@ -113,7 +121,7 @@ export default function Busqueda({
         setNoDataFiltro(false);
     };
 
-    useEffect(cargarTabla, [tabla, token]);
+    useEffect(cargarTabla, [tabla, token, barra, mesas]);
 
     return (
         <Container>
@@ -230,6 +238,7 @@ export default function Busqueda({
             {
                 (!cargando && !falloTabla) &&
                 <Tabla
+                    tamano={tamano}
                     isFormData={isFormData}
                     soloBusqueda={soloBusqueda}
                     editarCampos={editarCampos}

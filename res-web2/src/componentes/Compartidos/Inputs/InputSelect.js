@@ -9,6 +9,7 @@ export default function InputSelect({
     register,
     errors,
     disabled,
+    readOnly,
     required = true,
     size = 'grande'
 }) {
@@ -22,6 +23,7 @@ export default function InputSelect({
             <div className="form-group">
                 <label>{label}</label>
                 <select
+                    readOnly={readOnly}
                     disabled={disabled}
                     defaultValue={value}
                     name={name}

@@ -19,9 +19,6 @@ function App({ usuarioLogueado, tokenUsuario, signOut }) {
           <Nav className="mr-auto">
             {(usuarioLogueado) &&
               <React.Fragment>
-                <NavDropdown title="Sistema" id="basic-nav-dropdown">
-                  <NavDropdown.Item to="/informacion">Información</NavDropdown.Item>
-                </NavDropdown>
                 {
                   !usuarioLogueado.administradorCuentas &&
                   <NavDropdown title="Ayuda" id="basic-nav-dropdown">
@@ -62,7 +59,7 @@ function App({ usuarioLogueado, tokenUsuario, signOut }) {
         </Navbar.Collapse>
       </Navbar >
       <div className="container-fluid padding">
-        <Rutas usuario={usuarioLogueado} token={tokenUsuario} />
+        <Rutas usuario={usuarioLogueado} token={tokenUsuario} logout={signOut}/>
       </div>
     </div >
   );

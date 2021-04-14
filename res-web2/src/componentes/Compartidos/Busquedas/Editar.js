@@ -15,6 +15,7 @@ import InputFecha from "../Inputs/InputFecha";
 import EditPassword from "../Inputs/EditPassword";
 import SelectProductos from "../Inputs/SelectProductos";
 import SelectFromApi from "../Inputs/SelectFromApi";
+import SelectStatus from "../Inputs/SelectStatus";
 import BotonesEditar from "../Botones/BotonesEditar";
 
 export default function Editar({
@@ -28,6 +29,7 @@ export default function Editar({
     exitoEditar,
     falloEditar,
     elemento,
+    tamano = 'lg',
     isFormData
 }) {
     const { control, register, reset, handleSubmit, errors } = useForm();
@@ -77,7 +79,7 @@ export default function Editar({
     };
 
     return (
-        <Modal show={show} onHide={close} centered size="lg">
+        <Modal show={show} onHide={close} centered size={tamano}>
             <Modal.Body>
                 <form>
                     <Card>
@@ -182,20 +184,31 @@ export default function Editar({
                                                                         : campo.tipo === 'SelectProductos'
                                                                             ?
                                                                             <SelectProductos
-                                                                                value={elemento.productos && JSON.parse(elemento.productos)}
+                                                                                value={(elemento.productos && elemento.productos.length > 0) && elemento.productos}
                                                                                 key={index}
                                                                                 label={campo.label}
                                                                                 name={campo.name}
                                                                                 size={campo.size}
                                                                                 control={control}
                                                                                 token={token} />
-                                                                            : campo.tipo === 'EditPassword' &&
-                                                                            <EditPassword
-                                                                                key={index}
-                                                                                name={campo.name}
-                                                                                size={campo.size}
-                                                                                register={register}
-                                                                                errors={errors} />
+                                                                            : campo.tipo === 'EditPassword'
+                                                                                ?
+                                                                                <EditPassword
+                                                                                    key={index}
+                                                                                    name={campo.name}
+                                                                                    size={campo.size}
+                                                                                    register={register}
+                                                                                    errors={errors} />
+                                                                                : campo.tipo === 'SelectStatus' &&
+                                                                                <SelectStatus
+                                                                                    value={elemento[campo.name]}
+                                                                                    key={index}
+                                                                                    label={campo.label}
+                                                                                    name={campo.name}
+                                                                                    disabled={campo.disabled}
+                                                                                    register={register}
+                                                                                    errors={errors}
+                                                                                    size={campo.size} />
                                     ))
                                 }
                             </Row>

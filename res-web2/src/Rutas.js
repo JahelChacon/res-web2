@@ -88,13 +88,14 @@ const Facturas = lazy(() => import("../src/componentes/Reportes/Facturas/Factura
 
 // RESTAURANTES CHEF
 const AperturaCaja = lazy(() => import("../src/componentes/RestaurantesChef/AperturaCaja"));
+const CierreCaja = lazy(() => import("../src/componentes/RestaurantesChef/CierreCaja"));
 const PiccolaStella = lazy(() => import("../src/componentes/RestaurantesChef/PiccolaStella"));
 const TurinAnivo = lazy(() => import("../src/componentes/RestaurantesChef/TurinAnivo"));
 const NotteDiFuoco = lazy(() => import("../src/componentes/RestaurantesChef/NotteDiFuoco"));
 const ProcesosMesas = lazy(() => import("../src/componentes/RestaurantesChef/ProcesosMesas"));
 const ProcesosBarras = lazy(() => import("../src/componentes/RestaurantesChef/ProcesosBarras"));
 
-export function Rutas({ usuario, token }) {
+export function Rutas({ usuario, token, logout }) {
     return (
         <Suspense fallback={<div>Cargando</div>}>
             <Switch>
@@ -118,7 +119,7 @@ export function Rutas({ usuario, token }) {
 
                 {/* LOGIN */}
                 <Route path="/login" exact>
-                    <Login usuario={usuario} />
+                    <Login token={token} usuario={usuario} />
                 </Route>
 
                 {/* MENU */}
@@ -591,6 +592,15 @@ export function Rutas({ usuario, token }) {
                     token={token}
                     usuario={usuario}
                     path="/apertura-caja"
+                    exact
+                />
+                <PrivateRoute
+                    hasRole={usuario.administradorRestaurante}
+                    component={CierreCaja}
+                    token={token}
+                    logout={logout}
+                    usuario={usuario}
+                    path="/cierre-caja"
                     exact
                 />
                 <PrivateRoute

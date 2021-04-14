@@ -3,6 +3,7 @@ import { Col } from "react-bootstrap"
 
 export default function InputTexto({
     value,
+    currentValue,
     label,
     name,
     placeholder,
@@ -23,6 +24,7 @@ export default function InputTexto({
             <div className="form-group">
                 <label>{label}</label>
                 <input
+                    value={currentValue}
                     defaultValue={value}
                     disabled={disabled}
                     readOnly={readOnly}

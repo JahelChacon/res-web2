@@ -1,16 +1,42 @@
-import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import React, { useState } from "react";
+import { Container, Row, Col, Card, Spinner } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { makeRequest } from "../../utils/API";
 import SelectFromApi from "../Compartidos/Inputs/SelectFromApi";
-import InputTexto from "../Compartidos/Inputs/InputTexto";
+import InputNumero from "../Compartidos/Inputs/InputNumero";
 import BotonesCajas from "../Compartidos/Botones/BotonesCajas";
+import MensajeError from "../Compartidos/Mensajes/MensajeError";
 
-export default function CierreCaja({ token }) {
+export default function CierreCaja({ token, usuario, logout }) {
     const { register, handleSubmit, reset, errors } = useForm();
+    const [mostrarFallo, setMostrarFallo] = useState(false);
+    const [insertando, setInsertando] = useState(false);
 
     const onAceptar = (form) => {
-        console.log('form submit', form);
+
+
+        setInsertando(true);
+        const hoy = new Date();
+        const hoyFormato = [hoy.getMonth() + 1, hoy.getDate(), hoy.getFullYear()].join('/') + ' ' +
+            [hoy.getHours(), hoy.getMinutes()].join(':');
+        const objectData = {
+            fecha: hoyFormato,
+            dineroRecibido: form.montoCierre,
+            aperturaCaja: false,
+            cierreCaja: true,
+            descripcion: "Cierre de caja",
+            restaurante: usuario.restaurante,
+        };
+        // Agregar Cierre de caja
+        makeRequest('POST', `/facturas/add`, token, objectData, false)
+            .then(response => {
+                if (response.status === 200) {
+                    logout();
+                } else {
+                    setMostrarFallo(true);
+                    setInsertando(false);
+                }
+            })
     };
 
     return (
@@ -25,7 +51,7 @@ export default function CierreCaja({ token }) {
                             <Card.Body className="text-left">
                                 <SelectFromApi
                                     token={token}
-                                    value='Piccola Stella'
+                                    value={usuario.restaurante}
                                     tabla='restaurantes'
                                     label='Restaurantes'
                                     name='restaurantes'
@@ -33,16 +59,24 @@ export default function CierreCaja({ token }) {
                                     disabled={true}
                                     register={register}
                                     errors={errors} />
-                                <InputTexto
+                                <InputNumero
                                     label='Monto de Cierre'
                                     name='montoCierre'
                                     placeholder='Monto de Cierre'
                                     size='grande'
                                     register={register}
                                     errors={errors} />
+                                <MensajeError error={mostrarFallo} />
                             </Card.Body>
                             <Card.Footer style={{ textAlign: "right" }}>
-                                <BotonesCajas aceptar={handleSubmit(onAceptar)} limpiar={reset} />
+                                {
+                                    insertando ?
+                                        <div className="mr-4">
+                                            <Spinner animation="border" />
+                                        </div>
+                                        :
+                                        <BotonesCajas cancelar={true} aceptar={handleSubmit(onAceptar)} limpiar={reset} />
+                                }
                             </Card.Footer>
                         </Card>
                     </Col>
