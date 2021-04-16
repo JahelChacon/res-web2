@@ -58,7 +58,7 @@ export default function ProductosModal({
                             </div>
                             : !cargando && !fallo &&
                             <Card.Body className="text-center">
-                                <img onError={onBrokenImage} src={platillo ? API_URL + platillo.foto : productosImagen} alt={'Platillo'} style={{ height: "120px", width: "120px", objectFit: "cover" }}></img>
+                                <img onError={onBrokenImage} src={platillo ? API_URL + platillo.foto : productosImagen} alt={'Platillo'} style={{ height: "200px", width: "200px", objectFit: "cover" }}></img>
                                 <select
                                     name='platillos'
                                     className="form-control mt-3"

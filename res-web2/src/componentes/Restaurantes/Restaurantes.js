@@ -38,6 +38,7 @@ export default function Restaurantes({ token, usuario }) {
             usuario={usuario}
             editarTitulo='Editar Restaurante'
             editarCampos={editarCampos}
+            soloEditar={true}
         />
     )
 }

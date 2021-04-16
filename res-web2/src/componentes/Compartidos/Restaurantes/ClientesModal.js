@@ -7,7 +7,7 @@ export default function ClientesModal({
     show,
     close,
     mesas,
-    clientes
+    clientesBarra
 }) {
     const [mesasOcupadas, setMesasOcupadas] = useState([]);
     const [reservaciones, setReservaciones] = useState([]);
@@ -36,7 +36,7 @@ export default function ClientesModal({
                         <img src={clientesImagen} alt={'Clientes'} style={{ height: "120px", width: "120px", objectFit: "cover" }}></img>
                         <ListGroup variant="flush">
                             <ListGroup.Item><strong>Mesas: </strong>{mesasOcupadas}</ListGroup.Item>
-                            <ListGroup.Item><strong>Barra: </strong>0</ListGroup.Item>
+                            <ListGroup.Item><strong>Barra: </strong>{clientesBarra.length}</ListGroup.Item>
                             <ListGroup.Item><strong>Reservaciones: </strong>{reservaciones}</ListGroup.Item>
                         </ListGroup>
                     </Card.Body>
