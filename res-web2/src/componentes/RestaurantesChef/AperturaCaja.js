@@ -65,14 +65,14 @@ export default function AperturaCaja({ token, usuario }) {
                 const existeCaja = data.some(function (item) {
                     var fechaCaja = new Date(item.fecha);
                     fechaCaja.setHours(0, 0, 0, 0);
-                    return (+today === +fechaCaja) && (item.aperturaCaja === true);
+                    return (+today === +fechaCaja) && (item.aperturaCaja === true) && item.restaurante === usuario.restaurante;
                 });
 
                 if (existeCaja) {
                     restauranteRedirect();
                 }
             })
-    }, [token, restauranteRedirect]);
+    }, [token, restauranteRedirect, usuario.restaurante]);
 
     return (
         <React.Fragment>

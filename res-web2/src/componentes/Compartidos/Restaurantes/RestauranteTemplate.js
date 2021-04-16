@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card, Spinner } from "react-bootstrap";
 import { makeRequest } from "../../../utils/API";
@@ -24,6 +24,9 @@ export default function RestauranteTemplate({ token, restaurante, barras }) {
     const [mesaSeleccionada, setMesaSeleccionada] = useState(false);
     const [cargando, setCargando] = useState(false);
     const [falloMesas, setFalloMesas] = useState(false);
+    const [clientesBarra, setClientesBarra] = useState([]);
+    const [cargandoClientes, setCargandoClientes] = useState(false);
+    const [falloClientes, setFalloClientes] = useState(false);
     // Modales
     const [mostrarMesas, setMostrarMesas] = useState(false);
     const [mostrarReservaciones, setMostrarReservaciones] = useState(false);
@@ -35,7 +38,7 @@ export default function RestauranteTemplate({ token, restaurante, barras }) {
     const [agregarClienteExito, setAgregarClienteExito] = useState(false);
     const [agregarClienteFallo, setAgregarClienteFallo] = useState(false);
 
-    const cargarMesas = () => {
+    const cargarMesas = useCallback(() => {
         setCargando(true);
         makeRequest('GET', '/mesas', token)
             .then(response => response.json())
@@ -50,7 +53,23 @@ export default function RestauranteTemplate({ token, restaurante, barras }) {
             .catch(() => {
                 setFalloMesas(true);
             });
-    };
+    }, [restaurante, token]);
+
+    const cargarClientes = useCallback(() => {
+        setCargandoClientes(true);
+        makeRequest('GET', '/clientes', token)
+            .then(response => response.json())
+            .then(data => {
+                const enBarra = data.filter(function (item) {
+                    return item.barra === true && item.montoPago === 0;
+                });
+                setClientesBarra(enBarra);
+                setCargandoClientes(false);
+            })
+            .catch(() => {
+                setFalloClientes(true);
+            });
+    }, [token]);
 
     // Agregar Cliente
     const onMostrarAgregarClienteMesa = (mesa) => {
@@ -64,6 +83,7 @@ export default function RestauranteTemplate({ token, restaurante, barras }) {
         setMesaSeleccionada(false);
         setAgregarClienteExito(true);
         cargarMesas();
+        cargarClientes();
     };
 
     const onAgregarClientefallo = () => {
@@ -73,11 +93,15 @@ export default function RestauranteTemplate({ token, restaurante, barras }) {
         setAgregarClienteFallo(true);
     };
 
-    useEffect(cargarMesas, [token, restaurante]);
+    useEffect(() => {
+        cargarMesas();
+        cargarClientes();
+    }, [token, restaurante, cargarMesas, cargarClientes]);
 
     return (
         <React.Fragment>
             <Container>
+                <h2>{restaurante}</h2>
                 <Card>
                     <Card.Body>
                         <Row>
@@ -98,11 +122,18 @@ export default function RestauranteTemplate({ token, restaurante, barras }) {
                             </Card.Body>
                         </Card>
                     </div>
-                    <Barra
-                        name='barra-1'
-                        label='Barra 1'
-                        agregarCliente={() => setMostrarAgregarClienteBarra(true)}
-                    />
+                    {
+                        cargandoClientes && !falloClientes
+                            ?
+                            <div className="ml-4">
+                                <Spinner animation="border" />
+                            </div>
+                            : !cargandoClientes && !falloClientes &&
+                            <Barra
+                                name='barra-1'
+                                label='Barra 1'
+                                agregarCliente={() => setMostrarAgregarClienteBarra(true)} />
+                    }
                 </Row>
                 <Row style={{ width: '100%' }}>
 
@@ -127,12 +158,17 @@ export default function RestauranteTemplate({ token, restaurante, barras }) {
                     <MensajeError error={falloMesas} />
                 </Row>
                 {
-                    barras > 1 &&
-                    <Barra
-                        name='barra-2'
-                        label='Barra 2'
-                        agregarCliente={() => setMostrarAgregarClienteBarra(true)}
-                    />
+                    barras > 1 && cargandoClientes && !falloClientes
+                        ?
+                        <div className="ml-4">
+                            <Spinner animation="border" />
+                        </div>
+                        : barras > 1 && !cargandoClientes && !falloClientes &&
+                        <Barra
+                            name='barra-2'
+                            label='Barra 2'
+                            agregarCliente={() => setMostrarAgregarClienteBarra(true)}
+                        />
                 }
 
             </Container>
@@ -149,15 +185,13 @@ export default function RestauranteTemplate({ token, restaurante, barras }) {
                 show={mostrarAgregarClienteBarra}
                 token={token}
                 restaurante={restaurante}
+
                 exitoAgregar={onAgregarClienteExito}
                 falloAgregar={onAgregarClientefallo} />
-
-
-
             {/* Modales */}
             <MesasModal mesas={mesas} close={() => setMostrarMesas(false)} show={mostrarMesas} />
             <ReservacionesModal mesas={mesas} close={() => setMostrarReservaciones(false)} show={mostrarReservaciones} />
-            <ClientesModal mesas={mesas} close={() => setMostrarClientes(false)} show={mostrarClientes} />
+            <ClientesModal clientesBarra={clientesBarra} mesas={mesas} close={() => setMostrarClientes(false)} show={mostrarClientes} />
             <ProductosModal token={token} close={() => setMostrarProductos(false)} show={mostrarProductos} />
             {/* Agregar cliente */}
             <ModalExito close={() => setAgregarClienteExito(false)} show={agregarClienteExito} texto='Cliente agregado con Éxito!' />

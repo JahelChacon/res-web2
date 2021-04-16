@@ -7,7 +7,6 @@ export default function ReporteUsuarios({ token, usuario }) {
         { text: "Codigo", dataField: "codigo" },
         { text: "Nombre", dataField: "nombre" },
         { text: "Monto Pagado", dataField: "montoPago" },
-        { text: "Detalle", dataField: "detalle" },
         { text: "Fecha", dataField: "fecha" },
         { text: "Reservación", dataField: "reservacion" },
         { text: "Barra", dataField: "barra" },
