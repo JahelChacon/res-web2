@@ -212,6 +212,7 @@ export default function EditarClienteMesa({
                                             name='fechaLlegada'
                                             size='x-pequeno'
                                             value={cliente.fecha}
+                                            required={false}
                                             readOnly={true}
                                             register={register}
                                             errors={errors} />

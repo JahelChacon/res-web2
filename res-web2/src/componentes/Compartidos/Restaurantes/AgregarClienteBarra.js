@@ -94,6 +94,7 @@ export default function AgregarClienteBarra({
                                     size='x-pequeno'
                                     value={fechaFormateada}
                                     readOnly={true}
+                                    required={false}
                                     register={register}
                                     errors={errors} />
                                 <InputTexto

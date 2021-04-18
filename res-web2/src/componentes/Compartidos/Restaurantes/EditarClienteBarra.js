@@ -112,6 +112,7 @@ export default function EditarClienteBarra({
                                     label='Fecha de Llegada'
                                     name='fechaLlegada'
                                     size='x-pequeno'
+                                    required={false}
                                     value={cliente.fecha}
                                     readOnly={true}
                                     register={register}
