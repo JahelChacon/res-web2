@@ -128,6 +128,7 @@ export default function AgregarClienteMesa({
                                     label='Fecha de Llegada'
                                     name='fechaLlegada'
                                     size='x-pequeno'
+                                    required={false}
                                     value={fechaFormateada}
                                     readOnly={true}
                                     register={register}
