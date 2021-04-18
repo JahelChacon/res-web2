@@ -14,7 +14,7 @@ export default function InputFecha({
     disabled = false,
 }) {
     const fecha = new Date(`${value} 00:00`);
-    const defaultValue = value !== undefined ? fecha.toISOString().substr(0, 10) : null;
+    const defaultValue = value !== undefined && value !== 'NaN/NaN/NaN' ? fecha.toISOString().substr(0, 10) : null;
 
     return (
         <Col

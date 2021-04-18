@@ -23,6 +23,7 @@ export default function Tabla({
     soloBusqueda,
     isFormData,
     cargarTabla,
+    noEliminar,
     tablaData,
     tamano,
     tabla
@@ -113,9 +114,10 @@ export default function Tabla({
                     {!soloBusqueda &&
                         <Container className="text-left bg-light border p-3">
                             {
-                                eliminando ?
+                                !noEliminar && eliminando ?
                                     <Spinner animation="border" />
-                                    :
+                                    : 
+                                    !noEliminar &&
                                     <Button className="mr-1" disabled={!filaSeleccionada} onClick={() => setMostrarConfirmacionEliminar(true)} variant='outline-dark' type={"button"}>Eliminar</Button>
                             }
                             <Button disabled={!filaSeleccionada} onClick={() => setMostrarEditar(true)} variant='outline-info' type={"button"}>Editar</Button>

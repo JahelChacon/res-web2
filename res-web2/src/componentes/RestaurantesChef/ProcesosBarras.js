@@ -2,7 +2,7 @@ import React from "react";
 import Busqueda from "../Compartidos/Busquedas/Busqueda";
 import { TABLAS } from "../../utils/utils";
 
-export default function ProcesosBarras({ token }) {
+export default function ProcesosBarras({ token, usuario }) {
     const columnas = [
         { text: "Codigo", dataField: "codigo" },
         { text: "Nombre", dataField: "nombre" },
@@ -24,8 +24,10 @@ export default function ProcesosBarras({ token }) {
             editarCampos='EditarClienteBarra'
             tamano='xl'
             barra={true}
+            usuario={usuario}
             columnas={columnas}
             filtros={filtros}
+            noEliminar={true}
             token={token}
             soloEditar={true}
             editarTitulo='Editar Cliente'

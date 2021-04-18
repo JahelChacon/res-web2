@@ -628,12 +628,14 @@ export function Rutas({ usuario, token, logout }) {
                     hasRole={usuario.administradorRestaurante}
                     component={ProcesosMesas}
                     token={token}
+                    usuario={usuario}
                     path="/procesos-mesas"
                     exact
                 />
                 <PrivateRoute
                     hasRole={usuario.administradorRestaurante}
                     component={ProcesosBarras}
+                    usuario={usuario}
                     token={token}
                     path="/procesos-barras"
                     exact
