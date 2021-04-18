@@ -2,7 +2,7 @@ import React from "react";
 import Busqueda from "../Compartidos/Busquedas/Busqueda";
 import { TABLAS } from "../../utils/utils";
 
-export default function ProcesosMesas({ token }) {
+export default function ProcesosMesas({ token, usuario }) {
     const columnas = [
         { text: "Codigo", dataField: "codigo" },
         { text: "Nombre", dataField: "nombre" },
@@ -22,10 +22,12 @@ export default function ProcesosMesas({ token }) {
             titulo={"Clientes en Mesas"}
             tabla={TABLAS.CLIENTE}
             editarCampos='EditarClienteMesa'
+            usuario={usuario}
             tamano='xl'
             mesas={true}
             columnas={columnas}
             filtros={filtros}
+            noEliminar={true}
             token={token}
             soloEditar={true}
             editarTitulo='Editar Cliente'

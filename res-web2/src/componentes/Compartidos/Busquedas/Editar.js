@@ -111,6 +111,7 @@ export default function Editar({
                                                     key={index}
                                                     texto={campo.texto && campo.texto}
                                                     token={token}
+                                                    disabled={campo.disabled}
                                                     tabla={campo.tabla}
                                                     label={campo.label}
                                                     name={campo.name}
@@ -155,6 +156,7 @@ export default function Editar({
                                                                 <InputCheckbox
                                                                     key={index}
                                                                     label={campo.label}
+                                                                    disabled={campo.disabled}
                                                                     name={campo.name}
                                                                     value={elemento[campo.name] && elemento[campo.name]}
                                                                     size={campo.size}
@@ -179,6 +181,7 @@ export default function Editar({
                                                                             name={campo.name}
                                                                             size={campo.size}
                                                                             required={false}
+                                                                            disabled={campo.disabled}
                                                                             register={register}
                                                                             errors={errors} />
                                                                         : campo.tipo === 'SelectProductos'

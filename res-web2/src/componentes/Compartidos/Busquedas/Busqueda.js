@@ -29,6 +29,7 @@ export default function Busqueda({
     editarCampos,
     soloBusqueda,
     soloEditar,
+    noEliminar,
     isFormData,
     token,
     tamano,
@@ -99,9 +100,9 @@ export default function Busqueda({
             .then(response => response.json())
             .then(data => {
                 if (barra) {
-                    data = data.filter(elemento => elemento.barra);
+                    data = data.filter(elemento => elemento.barra && elemento.restaurante === usuario.restaurante);
                 } else if (mesas) {
-                    data = data.filter(elemento => !elemento.barra);
+                    data = data.filter(elemento => !elemento.barra && elemento.restaurante === usuario.restaurante);
                 }
                 setTablaData(data);
                 setCargando(false);
@@ -121,7 +122,7 @@ export default function Busqueda({
         setNoDataFiltro(false);
     };
 
-    useEffect(cargarTabla, [tabla, token, barra, mesas]);
+    useEffect(cargarTabla, [tabla, token, barra, mesas, usuario.restaurante]);
 
     return (
         <Container>
@@ -243,6 +244,7 @@ export default function Busqueda({
                     soloBusqueda={soloBusqueda}
                     editarCampos={editarCampos}
                     editarTitulo={editarTitulo}
+                    noEliminar={noEliminar}
                     token={token}
                     usuario={usuario}
                     tablaData={dataFiltrada.length > 0 ? dataFiltrada : tablaData}

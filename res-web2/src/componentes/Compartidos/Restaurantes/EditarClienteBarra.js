@@ -65,7 +65,6 @@ export default function EditarClienteBarra({
                 }
             });
         }
-        console.log('precio', precio);
         setMontoTotal(precio);
     }
 
